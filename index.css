@@ -127,20 +127,21 @@ body, input, textarea, select, button {
 }
 
 /* Extend background under status bar for PWA */
-html {
+html, body {
   background-color: var(--brand-background);
+  /* CRITICAL: Use fixed height to extend under iOS status bar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
 }
 
 body { 
-  background-color: var(--brand-background);
-  /* Ensure content extends to edges on iOS */
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
   color: var(--brand-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Prevent elastic scrolling on body to feel more app-like */
-  overscroll-behavior-y: none;
   /* Prevent text selection to feel like an app */
   user-select: none;
   -webkit-user-select: none;
@@ -186,7 +187,7 @@ button, a, [role="button"] {
 
 /* PWA Full Screen Container - extends under status bar like native apps */
 .pwa-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -194,6 +195,7 @@ button, a, [role="button"] {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
 }
 
 /* ========== ANIMATIONS ========== */
