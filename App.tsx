@@ -114,12 +114,25 @@ const App: React.FC = () => {
       const authCheck = async () => {
         try {
           // Check if this is a password recovery redirect (check URL hash for tokens)
-          const hash = window.location.hash.substring(1);
+          // Hash could be: #access_token=xxx&type=recovery OR #/access_token=xxx (with HashRouter)
+          let hash = window.location.hash;
+          
+          // Remove leading # and handle HashRouter prefix
+          if (hash.startsWith('#')) {
+            hash = hash.substring(1);
+          }
+          if (hash.startsWith('/')) {
+            hash = hash.substring(1);
+          }
+          
+          // Parse the hash params
           const hashParams = new URLSearchParams(hash);
           const accessToken = hashParams.get('access_token');
           const refreshToken = hashParams.get('refresh_token');
           const tokenType = hashParams.get('type');
           const isRecovery = tokenType === 'recovery';
+          
+          console.log('Auth check - hash:', hash.substring(0, 50) + '...', 'isRecovery:', isRecovery, 'hasTokens:', !!accessToken);
           
           // If we have recovery tokens in the URL, set the session manually
           if (isRecovery && accessToken && refreshToken) {
@@ -134,10 +147,15 @@ const App: React.FC = () => {
               // Get the session we just set
               const { data: { session: recoverySession } } = await supabase.auth.getSession();
               setSession(recoverySession);
+              console.log('Recovery session set successfully');
               return; // Skip normal auth check
             } else {
               console.error('Failed to set recovery session:', error);
             }
+          } else if (isRecovery || hash.includes('type=recovery')) {
+            // Recovery detected but missing tokens - might be processed by Supabase already
+            // Check if we have a session and it's a recovery event
+            console.log('Recovery type detected, checking for existing session...');
           }
           
           // 1. Get session from storage (fast)
@@ -177,10 +195,27 @@ const App: React.FC = () => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, newSession) => {
       console.log('Auth state changed:', event, !!newSession);
       if (isMounted) {
-        // Detect PASSWORD_RECOVERY event
+        // Detect PASSWORD_RECOVERY event - this is the primary way Supabase signals recovery
         if (event === 'PASSWORD_RECOVERY') {
+          console.log('PASSWORD_RECOVERY event detected!');
           setIsPasswordRecovery(true);
+          setSession(newSession);
+          // Clear the hash to prevent re-processing on page refresh
+          if (window.location.hash.includes('type=recovery')) {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+          return; // Don't process further
         }
+        
+        // For other events, check if we're in recovery mode (URL might have recovery type)
+        if (event === 'SIGNED_IN' && window.location.hash.includes('type=recovery')) {
+          console.log('SIGNED_IN with recovery hash detected!');
+          setIsPasswordRecovery(true);
+          setSession(newSession);
+          return;
+        }
+        
+        // Normal flow - only update session if not in recovery mode
         setSession(newSession);
       }
     });
