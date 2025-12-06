@@ -161,7 +161,7 @@ export const ShoppingList: React.FC = () => {
     <div className="min-h-screen bg-[#0D0D0D] pb-28">
       
       {/* ========== YELLOW HEADER WITH TOMATO RED STRIPES ========== */}
-      <div className="relative bg-[#FFC244] overflow-hidden">
+      <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
         {/* Tomato red slanting stripes */}
         <div className="absolute -right-16 -top-20 w-[200px] h-[350px] bg-[#E84142] rotate-[20deg] opacity-90" />
         <div className="absolute -right-20 -top-10 w-[80px] h-[320px] bg-[#FF6B6B] rotate-[20deg] opacity-70" />
@@ -171,8 +171,8 @@ export const ShoppingList: React.FC = () => {
         <div className="absolute right-6 top-16 w-3 h-3 bg-[#E84142] rounded-full opacity-60" />
         <div className="absolute right-14 top-24 w-2 h-2 bg-white rounded-full opacity-40" />
         
-        {/* Header content - safe area + design padding */}
-        <div className="relative z-10 px-5 pb-6" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 2rem)' }}>
+        {/* Header content */}
+        <div className="relative z-10 px-5 pt-8 pb-6">
           {/* Title row with share button */}
           <div className="flex items-start justify-between mb-3">
             <div>

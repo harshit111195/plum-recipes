@@ -25,7 +25,6 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const [socialLoading, setSocialLoading] = useState<'google' | 'apple' | null>(null);
     const [isExiting, setIsExiting] = useState(false);
     const [resetEmailSent, setResetEmailSent] = useState(false);
 
@@ -157,45 +156,6 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
         setResetEmailSent(false);
     };
 
-    const handleSocialLogin = async (provider: 'google' | 'apple') => {
-        setSocialLoading(provider);
-        try {
-            const isNative = typeof window !== 'undefined' && 
-                (window as any).Capacitor?.isNativePlatform();
-            
-            if (isNative) {
-                const { Browser } = await import('@capacitor/browser');
-                const { data, error } = await supabase.auth.signInWithOAuth({
-                    provider,
-                    options: {
-                        redirectTo: 'com.plum.app://auth-callback',
-                        skipBrowserRedirect: true,
-                    },
-                });
-                if (error) throw error;
-                if (data?.url) {
-                    await Browser.open({ 
-                        url: data.url,
-                        windowName: '_blank',
-                        presentationStyle: 'popover',
-                    });
-                }
-            } else {
-                const { error } = await supabase.auth.signInWithOAuth({
-                    provider,
-                    options: {
-                        redirectTo: window.location.origin,
-                    },
-                });
-                if (error) throw error;
-            }
-        } catch (error: any) {
-            hapticError();
-            toast.error(`Could not connect to ${provider}`);
-            setSocialLoading(null);
-        }
-    };
-
     return (
         <MotionDiv
             initial={{ opacity: 1, scale: 1 }}
@@ -204,10 +164,10 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                 scale: isExiting ? 0.95 : 1
             }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 w-full flex flex-col overflow-y-auto overflow-x-hidden bg-[#0D0D0D]"
+            className="min-h-screen w-full relative flex flex-col overflow-hidden bg-[#0D0D0D]"
         >
             {/* ========== YELLOW HEADER SECTION ========== */}
-            <div className="relative bg-[#FFC244] overflow-hidden">
+            <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
                 {/* Decorative food icons */}
                 <div className="absolute inset-0 overflow-hidden opacity-20">
                     {FOOD_ICONS.map((icon, i) => (
@@ -225,8 +185,8 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                     ))}
                 </div>
                 
-                {/* Header content - pt-safe moves content below notch, background still extends up */}
-                <div className="relative z-10 px-6 pt-12 pb-16 flex flex-col items-center" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 3rem)' }}>
+                {/* Header content */}
+                <div className="relative z-10 px-6 pt-12 pb-16 flex flex-col items-center">
                     {/* Logo with glow */}
                     <MotionDiv
                         initial={{ scale: 0, opacity: 0 }}
@@ -320,41 +280,6 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                 exit={{ opacity: 0, x: 20 }}
                                 transition={{ duration: 0.2 }}
                             >
-                                {/* Social Login Buttons */}
-                                <div className="grid grid-cols-2 gap-3 mb-5">
-                                    <button
-                                        onClick={() => handleSocialLogin('apple')}
-                                        disabled={!!socialLoading}
-                                        className="flex items-center justify-center gap-2 bg-[#1A1A1A] h-14 rounded-2xl text-white font-bold text-sm border border-[#333333] hover:bg-[#2A2A2A] active:scale-[0.98] transition disabled:opacity-50"
-                                    >
-                                        {socialLoading === 'apple' ? <Loader2 size={18} className="animate-spin" /> : (
-                                            <>
-                                                <svg viewBox="0 0 384 512" width="18" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 43.3-25.6 68.8 26.1 2 52.3-15.9 69.5-31.2z"/></svg>
-                                                Apple
-                                            </>
-                                        )}
-                                    </button>
-                                    <button
-                                        onClick={() => handleSocialLogin('google')}
-                                        disabled={!!socialLoading}
-                                        className="flex items-center justify-center gap-2 bg-[#1A1A1A] h-14 rounded-2xl text-white font-bold text-sm border border-[#333333] hover:bg-[#2A2A2A] active:scale-[0.98] transition disabled:opacity-50"
-                                    >
-                                        {socialLoading === 'google' ? <Loader2 size={18} className="animate-spin" /> : (
-                                            <>
-                                                <svg viewBox="0 0 24 24" width="18" height="18"><g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)"><path fill="#4285F4" d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z"/><path fill="#34A853" d="M -14.754 63.239 C -11.514 63.239 -8.804 62.159 -6.824 60.329 L -10.684 57.329 C -11.764 58.049 -13.134 58.489 -14.754 58.489 C -17.884 58.489 -20.534 56.379 -21.484 53.529 L -25.464 53.529 L -25.464 56.619 C -23.494 60.539 -19.444 63.239 -14.754 63.239 Z"/><path fill="#FBBC05" d="M -21.484 53.529 C -21.734 52.769 -21.864 51.959 -21.864 51.129 C -21.864 50.299 -21.734 49.489 -21.484 48.729 L -21.484 45.639 L -25.464 45.639 C -26.284 47.269 -26.754 49.129 -26.754 51.129 C -26.754 53.129 -26.284 54.989 -25.464 56.619 L -21.484 53.529 Z"/><path fill="#EA4335" d="M -14.754 43.769 C -12.984 43.769 -11.404 44.379 -10.154 45.579 L -6.734 42.159 C -8.804 40.229 -11.514 39.239 -14.754 39.239 C -19.444 39.239 -23.494 41.939 -25.464 45.859 L -21.484 48.949 C -20.534 46.099 -17.884 43.769 -14.754 43.769 Z"/></g></svg>
-                                                Google
-                                            </>
-                                        )}
-                                    </button>
-                                </div>
-
-                                {/* Divider */}
-                                <div className="relative flex py-3 items-center mb-5">
-                                    <div className="flex-grow border-t border-[#333333]"></div>
-                                    <span className="flex-shrink-0 mx-4 text-[#6B6B6B] text-[11px] font-bold uppercase tracking-wider">or continue with email</span>
-                                    <div className="flex-grow border-t border-[#333333]"></div>
-                                </div>
-
                                 {/* Email Form */}
                                 <form onSubmit={handleEmailAuth} className="space-y-4" aria-label="Sign in form">
                                     <div>

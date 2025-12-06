@@ -299,9 +299,9 @@ export const RecipeGenerator: React.FC = () => {
         /* ========== MAIN COOK VIEW ========== */
         <MotionDiv key="main" {...variants} className="min-h-screen bg-[#0D0D0D] pb-28 relative">
           {/* ========== PLAIN YELLOW HEADER ========== */}
-          <div className="relative bg-[#FFC244] overflow-hidden">
-            {/* Header content - safe area padding + design padding */}
-            <div className="relative z-10 px-5 pb-10" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 2.5rem)' }}>
+          <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
+            {/* Header content */}
+            <div className="relative z-10 px-5 pt-10 pb-10">
               {/* Title row */}
               <div className="flex items-start justify-between">
                 <div>

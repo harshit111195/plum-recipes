@@ -1,6 +1,3 @@
-// DEBUG: Log immediately when module loads
-console.log('🍑 App.tsx loading... URL:', window.location.href);
-console.log('🍑 Hash:', window.location.hash);
 
 import React, { Suspense, useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
@@ -18,31 +15,11 @@ import { OnboardingFlow } from './components/Onboarding/OnboardingFlow';
 import { TourGuide } from './components/Onboarding/TourGuide';
 import { SplashScreen } from './components/SplashScreen';
 import { AuthScreen } from './components/AuthScreen';
-import { PasswordResetScreen } from './components/PasswordResetScreen';
 import { Loader2 } from 'lucide-react';
 import { Toaster } from 'react-hot-toast';
-import toast from 'react-hot-toast';
 import { supabase } from './services/supabase';
 import { Session } from '@supabase/supabase-js';
 import { UI } from './brand';
-
-// Check for recovery IMMEDIATELY before anything else
-const checkInitialRecovery = () => {
-  const hash = window.location.hash;
-  console.log('🔐 Checking initial recovery, hash:', hash);
-  
-  if (hash.includes('type=recovery') || hash.includes('access_token')) {
-    console.log('🔐 Recovery tokens detected in URL!');
-    return true;
-  }
-  if (hash.includes('error=')) {
-    console.log('🔐 Error detected in URL');
-    return false;
-  }
-  return false;
-};
-
-const INITIAL_RECOVERY_DETECTED = checkInitialRecovery();
 
 // Lazy Load heavy routes
 const PantryView = React.lazy(() => import('./components/PantryView').then(module => ({ default: module.PantryView })));
@@ -100,19 +77,19 @@ const AppContent: React.FC = () => {
   // Only show loader on initial load, not on subsequent navigations
   if (isLoading && !hasLoadedOnce) {
     return (
-      <div className="fixed inset-0 bg-brand-background flex items-center justify-center">
+      <div className="min-h-screen bg-brand-background flex items-center justify-center">
         <Loader2 className="animate-spin text-brand-primary" size={40} />
       </div>
     );
   }
 
   return (
-    <div className="fixed inset-0 overflow-y-auto overflow-x-hidden bg-brand-background text-brand-text font-sans selection:bg-blue-100">
+    <div className="min-h-screen bg-brand-background text-brand-text font-sans selection:bg-blue-100">
       <ScrollToTop />
       <OfflineBanner />
       <OnboardingFlow />
       <TourGuide />
-      <main className="w-full min-h-screen">
+      <main className="w-full">
         <AnimatedRoutes />
       </main>
       <Navigation />
@@ -123,10 +100,6 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
-  const [isPasswordRecovery, setIsPasswordRecovery] = useState(INITIAL_RECOVERY_DETECTED);
-  
-  // Log state for debugging
-  console.log('🍑 App render - isPasswordRecovery:', isPasswordRecovery, 'checkingAuth:', checkingAuth, 'hasSession:', !!session);
 
   useEffect(() => {
     let isMounted = true;
@@ -138,58 +111,6 @@ const App: React.FC = () => {
       
       const authCheck = async () => {
         try {
-          // Check if this is a password recovery redirect (check URL hash for tokens)
-          // Hash could be: #access_token=xxx&type=recovery OR #/access_token=xxx (with HashRouter)
-          let hash = window.location.hash;
-          
-          // Remove leading # and handle HashRouter prefix
-          if (hash.startsWith('#')) {
-            hash = hash.substring(1);
-          }
-          if (hash.startsWith('/')) {
-            hash = hash.substring(1);
-          }
-          
-          // Parse the hash params
-          const hashParams = new URLSearchParams(hash);
-          const accessToken = hashParams.get('access_token');
-          const refreshToken = hashParams.get('refresh_token');
-          const tokenType = hashParams.get('type');
-          const isRecovery = tokenType === 'recovery';
-          
-          // Check for errors (e.g., expired link)
-          const errorCode = hashParams.get('error_code');
-          const errorDescription = hashParams.get('error_description');
-          
-          if (errorCode) {
-            console.error('Auth error from URL:', errorCode, errorDescription);
-            // Show user-friendly error message
-            const friendlyMessage = errorCode === 'otp_expired' 
-              ? 'Your password reset link has expired. Please request a new one.'
-              : errorDescription?.replace(/\+/g, ' ') || 'Something went wrong. Please try again.';
-            
-            // Clear the error from URL
-            window.history.replaceState(null, '', window.location.pathname);
-            
-            // Show toast error
-            toast.error(friendlyMessage, { duration: 5000 });
-            
-            // Reset recovery state since there was an error
-            if (isMounted) setIsPasswordRecovery(false);
-          }
-          
-          console.log('Auth check - hash:', hash.substring(0, 50) + '...', 'isRecovery:', isRecovery, 'hasTokens:', !!accessToken);
-          
-          // If recovery is detected, let Supabase SDK handle the tokens automatically
-          // We just need to set the recovery flag so we show the password reset screen
-          if (isRecovery || hash.includes('type=recovery') || hash.includes('access_token')) {
-            console.log('🔐 Recovery flow detected, setting recovery mode');
-            if (isMounted) {
-              setIsPasswordRecovery(true);
-            }
-            // Don't return - continue to get session which Supabase SDK will have established
-          }
-          
           // 1. Get session from storage (fast)
           const { data: { session: localSession } } = await supabase.auth.getSession();
 
@@ -227,27 +148,6 @@ const App: React.FC = () => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, newSession) => {
       console.log('Auth state changed:', event, !!newSession);
       if (isMounted) {
-        // Detect PASSWORD_RECOVERY event - this is the primary way Supabase signals recovery
-        if (event === 'PASSWORD_RECOVERY') {
-          console.log('PASSWORD_RECOVERY event detected!');
-          setIsPasswordRecovery(true);
-          setSession(newSession);
-          // Clear the hash to prevent re-processing on page refresh
-          if (window.location.hash.includes('type=recovery')) {
-            window.history.replaceState(null, '', window.location.pathname);
-          }
-          return; // Don't process further
-        }
-        
-        // For other events, check if we're in recovery mode (URL might have recovery type)
-        if (event === 'SIGNED_IN' && window.location.hash.includes('type=recovery')) {
-          console.log('SIGNED_IN with recovery hash detected!');
-          setIsPasswordRecovery(true);
-          setSession(newSession);
-          return;
-        }
-        
-        // Normal flow - only update session if not in recovery mode
         setSession(newSession);
       }
     });
@@ -310,23 +210,12 @@ const App: React.FC = () => {
     return <SplashScreen />;
   }
 
-  // Handle password recovery completion
-  const handlePasswordResetSuccess = () => {
-    setIsPasswordRecovery(false);
-    // Clear the hash to remove recovery tokens
-    window.location.hash = '/';
-    window.scrollTo(0, 0);
-  };
-
   return (
     <>
       <Toaster position="bottom-center" toastOptions={{
           style: { background: '#333', color: '#fff', borderRadius: '12px', fontSize: '14px' },
       }} />
-      {isPasswordRecovery ? (
-        // Show password reset screen when in recovery mode (even with valid session)
-        <PasswordResetScreen onSuccess={handlePasswordResetSuccess} />
-      ) : !session ? (
+      {!session ? (
         <AuthScreen onSuccess={() => { 
           // The session will be updated via onAuthStateChange
           // Just navigate to home
