@@ -126,8 +126,16 @@ body, input, textarea, select, button {
   font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
+/* Extend background under status bar for PWA */
+html {
+  background-color: var(--brand-background);
+}
+
 body { 
   background-color: var(--brand-background);
+  /* Ensure content extends to edges on iOS */
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   color: var(--brand-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
