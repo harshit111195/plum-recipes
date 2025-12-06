@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    
+    <!-- 🍑 BRAND METADATA - Update brand.ts for app-wide changes -->
+    <title>Plum</title>
+    <meta name="description" content="AI-powered recipe generator that creates delicious meals from your pantry ingredients." />
+    <meta name="application-name" content="Plum" />
+    <meta name="apple-mobile-web-app-title" content="Plum" />
+    
+    <!-- Theme Colors - Sync with brand.ts COLORS -->
+    <meta name="theme-color" content="#0D0D0D" />
+    <meta name="msapplication-navbutton-color" content="#0D0D0D" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
+    <!-- Security - Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://pagead2.googlesyndication.com https://*.sentry.io;
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data: blob: https: http:;
+      font-src 'self' data:;
+      connect-src 'self' https://*.supabase.co wss://*.supabase.co https://generativelanguage.googleapis.com https://*.sentry.io https://*.ingest.sentry.io https://*.ingest.de.sentry.io;
+      frame-src 'self' https://pagead2.googlesyndication.com;
+      media-src 'self' blob:;
+      worker-src 'self' blob:;
+    ">
+    
+    <!-- Performance - Preconnect to critical origins -->
+    <link rel="preconnect" href="https://irpziphnckxichjyyeaj.supabase.co" crossorigin>
+    <link rel="dns-prefetch" href="https://irpziphnckxichjyyeaj.supabase.co">
+    <link rel="preconnect" href="https://generativelanguage.googleapis.com" crossorigin>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/logo.png" as="image" type="image/png">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Plum - Cook Smarter, Not Harder" />
+    <meta property="og:description" content="AI-powered recipe generator that creates delicious meals from your pantry ingredients." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/logo.png" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Plum - Cook Smarter, Not Harder" />
+    <meta name="twitter:description" content="AI-powered recipe generator that creates delicious meals from your pantry ingredients." />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    
+    <!-- AdSense disabled - using house ads (Pro upsell) instead -->
+    <!-- To enable AdSense: uncomment and replace placeholder ID -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ID" crossorigin="anonymous"></script> -->
+    
+    <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

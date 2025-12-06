@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/**
+ * 🍑 PLUM BRAND CSS VARIABLES
+ * ============================================
+ * Dark mode only design with Purple/Green buttons
+ * 
+ * For JavaScript/TypeScript access, see brand.ts
+ * Keep these in sync with brand.ts COLORS object.
+ */
+
+/* ========== DARK MODE (Only) ========== */
+:root {
+  /* Primary Brand Colors (Yellow - for hero cards, accents) */
+  --brand-primary: #FFC244;           /* Yellow - Main brand color */
+  --brand-primary-light: #FFD470;     /* Lighter yellow */
+  --brand-primary-lighter: #FFE4A0;   /* Even lighter */
+  --brand-primary-dark: #E5A830;      /* Darker for hover states */
+  
+  /* Button Colors */
+  --brand-button-primary: #8B5CF6;    /* Purple - Primary buttons */
+  --brand-button-primary-hover: #7C3AED; /* Darker purple for hover */
+  --brand-button-secondary: #34D399;  /* Green - Secondary buttons */
+  --brand-button-secondary-hover: #10B981; /* Darker green for hover */
+  
+  /* Secondary/Accent Colors */
+  --brand-secondary: #E84142;         /* Tomato Red */
+  --brand-accent: #00A67E;            /* Green accent */
+  
+  /* Dark Background Colors */
+  --brand-background: #0D0D0D;        /* Near black background */
+  --brand-surface: #1A1A1A;           /* Dark surface */
+  --brand-surface-secondary: #2A2A2A; /* Slightly lighter surface */
+  
+  /* Text Colors */
+  --brand-text: #FFFFFF;              /* White text */
+  --brand-text-secondary: #A0A0A0;    /* Muted white */
+  --brand-text-tertiary: #6B6B6B;     /* Even more muted */
+  
+  /* Semantic Colors */
+  --brand-success: #34D399;           /* Bright green */
+  --brand-warning: #FBBF24;           /* Bright amber */
+  --brand-error: #F87171;             /* Bright red */
+  --brand-info: #60A5FA;              /* Bright blue */
+  
+  /* UI Colors */
+  --brand-divider: #333333;           /* Dark divider */
+  --brand-overlay: rgba(0,0,0,0.7);   /* Dark overlay */
+  
+  /* Shadows (glow effect) */
+  --shadow-primary: 0 4px 14px -2px rgba(139, 92, 246, 0.3);
+  --shadow-secondary: 0 4px 14px -2px rgba(52, 211, 153, 0.25);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.5);
+  
+  /* Color scheme for browser UI */
+  color-scheme: dark;
+  
+  /* Color consistency across screens */
+  color-interpolation: sRGB;
+}
+
+/* ========== COLOR CONSISTENCY ========== */
+/* Ensure consistent color rendering across devices */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display P3 colors for vibrant screens (iPhones, newer Macs) */
+@supports (color: color(display-p3 1 0 0)) {
+  :root {
+    --brand-primary: color(display-p3 1 0.76 0.27);      /* Vibrant yellow */
+    --brand-secondary: color(display-p3 0.91 0.25 0.26); /* Vibrant tomato red */
+    --brand-accent: color(display-p3 0 0.65 0.49);       /* Vibrant green */
+    --brand-button-primary: color(display-p3 0.55 0.36 0.96); /* Vibrant purple */
+  }
+}
+
+/* ========== SEMANTIC CLASS ALIASES ========== */
+/* Use these for consistent brand styling */
+.text-brand { color: var(--brand-primary); }
+.text-brand-dark { color: var(--brand-primary-dark); }
+.bg-brand { background-color: var(--brand-primary); }
+.bg-brand-light { background-color: var(--brand-primary-light); }
+.border-brand { border-color: var(--brand-primary); }
+
+.text-primary { color: var(--brand-text); }
+.text-secondary { color: var(--brand-text-secondary); }
+.text-tertiary { color: var(--brand-text-tertiary); }
+
+.bg-background { background-color: var(--brand-background); }
+.bg-surface { background-color: var(--brand-surface); }
+.bg-surface-secondary { background-color: var(--brand-surface-secondary); }
+
+.text-success { color: var(--brand-success); }
+.text-warning { color: var(--brand-warning); }
+.text-error { color: var(--brand-error); }
+.text-info { color: var(--brand-info); }
+
+/* ========== SOLID BRAND COLORS (No gradients) ========== */
+.gradient-brand {
+  background: var(--brand-primary);
+}
+
+.gradient-brand-horizontal {
+  background: var(--brand-primary);
+}
+
+.gradient-brand-secondary {
+  background: var(--brand-secondary);
+}
+
+.gradient-brand-splash {
+  background: var(--brand-primary);
+}
+
+/* Splash gradient uses surface color in dark mode */
+.gradient-brand-splash {
+  background: var(--brand-surface);
+}
+
+/* ========== GLOBAL STYLES ========== */
+/* Global Font Stack - SF Pro Rounded (Apple) -> System Fallbacks */
+body, input, textarea, select, button { 
+  font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body { 
+  background-color: var(--brand-background);
+  color: var(--brand-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent elastic scrolling on body to feel more app-like */
+  overscroll-behavior-y: none;
+  /* Prevent text selection to feel like an app */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Allow text selection in inputs */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* ========== UTILITY CLASSES ========== */
+/* Hide scrollbar for cleaner UI */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* iOS-like Press State */
+.active-press:active {
+  opacity: 0.7;
+  transform: scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* iOS Touch Optimization */
+button, a, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+/* ========== SAFE AREAS (iPhone X+) ========== */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Animated shine effect for header */
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
+}
+
+/* Shimmer effect for badges */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Float animation for badges */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.header-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255,255,255,0.08), 
+    rgba(255,255,255,0.15), 
+    rgba(255,255,255,0.08), 
+    transparent
+  );
+  animation: shine 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ========== ACCESSIBILITY ========== */
+/* Screen reader only - visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible outline for keyboard navigation */
+.focus-visible:focus {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== BRAND SHADOW UTILITIES ========== */
+.shadow-brand {
+  box-shadow: var(--shadow-primary);
+}
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
