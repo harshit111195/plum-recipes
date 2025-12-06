@@ -113,13 +113,31 @@ const App: React.FC = () => {
       
       const authCheck = async () => {
         try {
-          // Check if this is a password recovery redirect (check URL hash)
-          const hashParams = new URLSearchParams(window.location.hash.substring(1));
-          const isRecovery = hashParams.get('type') === 'recovery' || 
-                            window.location.hash.includes('type=recovery');
+          // Check if this is a password recovery redirect (check URL hash for tokens)
+          const hash = window.location.hash.substring(1);
+          const hashParams = new URLSearchParams(hash);
+          const accessToken = hashParams.get('access_token');
+          const refreshToken = hashParams.get('refresh_token');
+          const tokenType = hashParams.get('type');
+          const isRecovery = tokenType === 'recovery';
           
-          if (isRecovery && isMounted) {
-            setIsPasswordRecovery(true);
+          // If we have recovery tokens in the URL, set the session manually
+          if (isRecovery && accessToken && refreshToken) {
+            console.log('Password recovery detected, setting session from URL tokens');
+            const { error } = await supabase.auth.setSession({
+              access_token: accessToken,
+              refresh_token: refreshToken,
+            });
+            
+            if (!error && isMounted) {
+              setIsPasswordRecovery(true);
+              // Get the session we just set
+              const { data: { session: recoverySession } } = await supabase.auth.getSession();
+              setSession(recoverySession);
+              return; // Skip normal auth check
+            } else {
+              console.error('Failed to set recovery session:', error);
+            }
           }
           
           // 1. Get session from storage (fast)
