@@ -654,7 +654,8 @@ export const PantryView: React.FC = () => {
       )}
       </AnimatePresence>
       {/* FAB (Floating Action Button): #7C3AED purple bg | Shadow: purple/30 | Icon: white */}
-      {typeof document !== 'undefined' && createPortal(
+      {/* Hide FAB when modal is open */}
+      {!isAdding && typeof document !== 'undefined' && createPortal(
         <button 
           id="tour-pantry-add" 
           onClick={handleFabClick}
