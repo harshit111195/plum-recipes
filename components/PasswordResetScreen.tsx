@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../services/supabase';
 import { Lock, Loader2, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -17,6 +17,62 @@ export const PasswordResetScreen: React.FC<Props> = ({ onSuccess }) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [sessionReady, setSessionReady] = useState(false);
+    const [initError, setInitError] = useState<string | null>(null);
+    
+    // Try to establish session from URL tokens on mount
+    useEffect(() => {
+        const initSession = async () => {
+            console.log('🔐 PasswordResetScreen: Initializing session...');
+            
+            // Parse tokens from URL hash
+            let hash = window.location.hash;
+            if (hash.startsWith('#')) hash = hash.substring(1);
+            if (hash.startsWith('/')) hash = hash.substring(1);
+            
+            const hashParams = new URLSearchParams(hash);
+            const accessToken = hashParams.get('access_token');
+            const refreshToken = hashParams.get('refresh_token');
+            
+            console.log('🔐 Has tokens:', !!accessToken, !!refreshToken);
+            
+            if (accessToken && refreshToken) {
+                try {
+                    const { error } = await supabase.auth.setSession({
+                        access_token: accessToken,
+                        refresh_token: refreshToken,
+                    });
+                    
+                    if (error) {
+                        console.error('🔐 Failed to set session:', error);
+                        setInitError('Session expired. Please request a new password reset.');
+                        return;
+                    }
+                    
+                    console.log('🔐 Session set successfully!');
+                    // Clear URL hash after setting session
+                    window.history.replaceState(null, '', window.location.pathname);
+                } catch (err) {
+                    console.error('🔐 Error setting session:', err);
+                    setInitError('Failed to initialize session.');
+                    return;
+                }
+            } else {
+                // Check if we already have a session (from onAuthStateChange)
+                const { data: { session } } = await supabase.auth.getSession();
+                if (!session) {
+                    console.warn('🔐 No session found and no tokens in URL');
+                    setInitError('Session not found. Please request a new password reset link.');
+                    return;
+                }
+                console.log('🔐 Using existing session');
+            }
+            
+            setSessionReady(true);
+        };
+        
+        initSession();
+    }, []);
 
     const handleResetPassword = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -85,7 +141,26 @@ export const PasswordResetScreen: React.FC<Props> = ({ onSuccess }) => {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     className="max-w-md mx-auto"
                 >
-                    {!success ? (
+                    {initError ? (
+                        <div className="text-center py-12">
+                            <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <Lock size={28} className="text-red-400" />
+                            </div>
+                            <h2 className="text-xl font-bold text-white mb-2">Unable to Reset Password</h2>
+                            <p className="text-[#A0A0A0] text-sm mb-6">{initError}</p>
+                            <button 
+                                onClick={() => window.location.href = '/'}
+                                className="bg-[#1A1A1A] text-white font-medium py-3 px-6 rounded-xl border border-[#333333] hover:border-[#FFC244] transition-all"
+                            >
+                                Back to Login
+                            </button>
+                        </div>
+                    ) : !sessionReady ? (
+                        <div className="flex flex-col items-center justify-center py-12">
+                            <Loader2 className="animate-spin text-[#FFC244] mb-4" size={32} />
+                            <p className="text-[#A0A0A0] text-sm">Setting up secure session...</p>
+                        </div>
+                    ) : !success ? (
                         <>
                             <div className="text-center mb-8">
                                 <div className="w-16 h-16 bg-[#1A1A1A] rounded-full flex items-center justify-center mx-auto mb-4">

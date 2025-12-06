@@ -1,3 +1,6 @@
+// DEBUG: Log immediately when module loads
+console.log('🍑 App.tsx loading... URL:', window.location.href);
+console.log('🍑 Hash:', window.location.hash);
 
 import React, { Suspense, useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
@@ -18,9 +21,28 @@ import { AuthScreen } from './components/AuthScreen';
 import { PasswordResetScreen } from './components/PasswordResetScreen';
 import { Loader2 } from 'lucide-react';
 import { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { supabase } from './services/supabase';
 import { Session } from '@supabase/supabase-js';
 import { UI } from './brand';
+
+// Check for recovery IMMEDIATELY before anything else
+const checkInitialRecovery = () => {
+  const hash = window.location.hash;
+  console.log('🔐 Checking initial recovery, hash:', hash);
+  
+  if (hash.includes('type=recovery') || hash.includes('access_token')) {
+    console.log('🔐 Recovery tokens detected in URL!');
+    return true;
+  }
+  if (hash.includes('error=')) {
+    console.log('🔐 Error detected in URL');
+    return false;
+  }
+  return false;
+};
+
+const INITIAL_RECOVERY_DETECTED = checkInitialRecovery();
 
 // Lazy Load heavy routes
 const PantryView = React.lazy(() => import('./components/PantryView').then(module => ({ default: module.PantryView })));
@@ -101,7 +123,10 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
-  const [isPasswordRecovery, setIsPasswordRecovery] = useState(false);
+  const [isPasswordRecovery, setIsPasswordRecovery] = useState(INITIAL_RECOVERY_DETECTED);
+  
+  // Log state for debugging
+  console.log('🍑 App render - isPasswordRecovery:', isPasswordRecovery, 'checkingAuth:', checkingAuth, 'hasSession:', !!session);
 
   useEffect(() => {
     let isMounted = true;
@@ -146,10 +171,11 @@ const App: React.FC = () => {
             // Clear the error from URL
             window.history.replaceState(null, '', window.location.pathname);
             
-            // Import toast dynamically to show error
-            import('react-hot-toast').then(({ default: toast }) => {
-              toast.error(friendlyMessage, { duration: 5000 });
-            });
+            // Show toast error
+            toast.error(friendlyMessage, { duration: 5000 });
+            
+            // Reset recovery state since there was an error
+            if (isMounted) setIsPasswordRecovery(false);
           }
           
           console.log('Auth check - hash:', hash.substring(0, 50) + '...', 'isRecovery:', isRecovery, 'hasTokens:', !!accessToken);
