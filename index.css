@@ -126,22 +126,18 @@ body, input, textarea, select, button {
   font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-/* Extend background under status bar for PWA */
-html, body {
+/* Background for PWA */
+html {
   background-color: var(--brand-background);
-  /* CRITICAL: Use fixed height to extend under iOS status bar */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
 }
 
 body { 
+  background-color: var(--brand-background);
   color: var(--brand-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent elastic scrolling on body to feel more app-like */
+  overscroll-behavior-y: none;
   /* Prevent text selection to feel like an app */
   user-select: none;
   -webkit-user-select: none;
@@ -187,7 +183,7 @@ button, a, [role="button"] {
 
 /* PWA Full Screen Container - extends under status bar like native apps */
 .pwa-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
