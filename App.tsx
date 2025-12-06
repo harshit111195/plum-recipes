@@ -15,6 +15,7 @@ import { OnboardingFlow } from './components/Onboarding/OnboardingFlow';
 import { TourGuide } from './components/Onboarding/TourGuide';
 import { SplashScreen } from './components/SplashScreen';
 import { AuthScreen } from './components/AuthScreen';
+import { PasswordResetScreen } from './components/PasswordResetScreen';
 import { Loader2 } from 'lucide-react';
 import { Toaster } from 'react-hot-toast';
 import { supabase } from './services/supabase';
@@ -100,6 +101,7 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
+  const [isPasswordRecovery, setIsPasswordRecovery] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -111,6 +113,15 @@ const App: React.FC = () => {
       
       const authCheck = async () => {
         try {
+          // Check if this is a password recovery redirect (check URL hash)
+          const hashParams = new URLSearchParams(window.location.hash.substring(1));
+          const isRecovery = hashParams.get('type') === 'recovery' || 
+                            window.location.hash.includes('type=recovery');
+          
+          if (isRecovery && isMounted) {
+            setIsPasswordRecovery(true);
+          }
+          
           // 1. Get session from storage (fast)
           const { data: { session: localSession } } = await supabase.auth.getSession();
 
@@ -148,6 +159,10 @@ const App: React.FC = () => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, newSession) => {
       console.log('Auth state changed:', event, !!newSession);
       if (isMounted) {
+        // Detect PASSWORD_RECOVERY event
+        if (event === 'PASSWORD_RECOVERY') {
+          setIsPasswordRecovery(true);
+        }
         setSession(newSession);
       }
     });
@@ -210,12 +225,23 @@ const App: React.FC = () => {
     return <SplashScreen />;
   }
 
+  // Handle password recovery completion
+  const handlePasswordResetSuccess = () => {
+    setIsPasswordRecovery(false);
+    // Clear the hash to remove recovery tokens
+    window.location.hash = '/';
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <Toaster position="bottom-center" toastOptions={{
           style: { background: '#333', color: '#fff', borderRadius: '12px', fontSize: '14px' },
       }} />
-      {!session ? (
+      {isPasswordRecovery ? (
+        // Show password reset screen when in recovery mode (even with valid session)
+        <PasswordResetScreen onSuccess={handlePasswordResetSuccess} />
+      ) : !session ? (
         <AuthScreen onSuccess={() => { 
           // The session will be updated via onAuthStateChange
           // Just navigate to home
