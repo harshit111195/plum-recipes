@@ -204,7 +204,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                 scale: isExiting ? 0.95 : 1
             }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="pwa-container w-full relative flex flex-col bg-[#0D0D0D]"
+            className="fixed inset-0 w-full flex flex-col overflow-y-auto overflow-x-hidden bg-[#0D0D0D]"
         >
             {/* ========== YELLOW HEADER SECTION ========== */}
             <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
