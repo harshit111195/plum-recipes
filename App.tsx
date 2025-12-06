@@ -180,28 +180,14 @@ const App: React.FC = () => {
           
           console.log('Auth check - hash:', hash.substring(0, 50) + '...', 'isRecovery:', isRecovery, 'hasTokens:', !!accessToken);
           
-          // If we have recovery tokens in the URL, set the session manually
-          if (isRecovery && accessToken && refreshToken) {
-            console.log('Password recovery detected, setting session from URL tokens');
-            const { error } = await supabase.auth.setSession({
-              access_token: accessToken,
-              refresh_token: refreshToken,
-            });
-            
-            if (!error && isMounted) {
+          // If recovery is detected, let Supabase SDK handle the tokens automatically
+          // We just need to set the recovery flag so we show the password reset screen
+          if (isRecovery || hash.includes('type=recovery') || hash.includes('access_token')) {
+            console.log('🔐 Recovery flow detected, setting recovery mode');
+            if (isMounted) {
               setIsPasswordRecovery(true);
-              // Get the session we just set
-              const { data: { session: recoverySession } } = await supabase.auth.getSession();
-              setSession(recoverySession);
-              console.log('Recovery session set successfully');
-              return; // Skip normal auth check
-            } else {
-              console.error('Failed to set recovery session:', error);
             }
-          } else if (isRecovery || hash.includes('type=recovery')) {
-            // Recovery detected but missing tokens - might be processed by Supabase already
-            // Check if we have a session and it's a recovery event
-            console.log('Recovery type detected, checking for existing session...');
+            // Don't return - continue to get session which Supabase SDK will have established
           }
           
           // 1. Get session from storage (fast)

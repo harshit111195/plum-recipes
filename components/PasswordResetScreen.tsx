@@ -20,55 +20,58 @@ export const PasswordResetScreen: React.FC<Props> = ({ onSuccess }) => {
     const [sessionReady, setSessionReady] = useState(false);
     const [initError, setInitError] = useState<string | null>(null);
     
-    // Try to establish session from URL tokens on mount
+    // Check for existing session on mount
+    // Supabase SDK auto-processes URL tokens, so we just need to wait for the session
     useEffect(() => {
         const initSession = async () => {
-            console.log('🔐 PasswordResetScreen: Initializing session...');
+            console.log('🔐 PasswordResetScreen: Checking for session...');
             
-            // Parse tokens from URL hash
-            let hash = window.location.hash;
-            if (hash.startsWith('#')) hash = hash.substring(1);
-            if (hash.startsWith('/')) hash = hash.substring(1);
+            // Give Supabase SDK a moment to process URL tokens (it does this automatically)
+            // We'll poll for a session a few times
+            let attempts = 0;
+            const maxAttempts = 10;
             
-            const hashParams = new URLSearchParams(hash);
-            const accessToken = hashParams.get('access_token');
-            const refreshToken = hashParams.get('refresh_token');
-            
-            console.log('🔐 Has tokens:', !!accessToken, !!refreshToken);
-            
-            if (accessToken && refreshToken) {
-                try {
-                    const { error } = await supabase.auth.setSession({
-                        access_token: accessToken,
-                        refresh_token: refreshToken,
-                    });
-                    
-                    if (error) {
-                        console.error('🔐 Failed to set session:', error);
-                        setInitError('Session expired. Please request a new password reset.');
-                        return;
-                    }
-                    
-                    console.log('🔐 Session set successfully!');
-                    // Clear URL hash after setting session
-                    window.history.replaceState(null, '', window.location.pathname);
-                } catch (err) {
-                    console.error('🔐 Error setting session:', err);
-                    setInitError('Failed to initialize session.');
-                    return;
-                }
-            } else {
-                // Check if we already have a session (from onAuthStateChange)
+            const checkSession = async (): Promise<boolean> => {
                 const { data: { session } } = await supabase.auth.getSession();
-                if (!session) {
-                    console.warn('🔐 No session found and no tokens in URL');
-                    setInitError('Session not found. Please request a new password reset link.');
-                    return;
+                console.log('🔐 Session check attempt', attempts + 1, '- has session:', !!session);
+                
+                if (session) {
+                    console.log('🔐 Session found! User:', session.user?.email);
+                    return true;
                 }
-                console.log('🔐 Using existing session');
+                return false;
+            };
+            
+            // Check immediately
+            if (await checkSession()) {
+                setSessionReady(true);
+                // Clear URL hash
+                if (window.location.hash) {
+                    window.history.replaceState(null, '', window.location.pathname);
+                }
+                return;
             }
             
-            setSessionReady(true);
+            // Poll for session (Supabase SDK might still be processing)
+            const interval = setInterval(async () => {
+                attempts++;
+                if (await checkSession()) {
+                    clearInterval(interval);
+                    setSessionReady(true);
+                    if (window.location.hash) {
+                        window.history.replaceState(null, '', window.location.pathname);
+                    }
+                    return;
+                }
+                
+                if (attempts >= maxAttempts) {
+                    clearInterval(interval);
+                    console.error('🔐 No session found after', maxAttempts, 'attempts');
+                    setInitError('Session not found. The reset link may have expired. Please request a new one.');
+                }
+            }, 300);
+            
+            return () => clearInterval(interval);
         };
         
         initSession();
