@@ -459,7 +459,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
         )}
         
         {/* Yellow Header Section - compact for mobile */}
-        <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
+        <div className="relative bg-[#FFC244] overflow-hidden">
           {/* Purple wavy accent - diagonal stripe extending to bottom */}
           <div className="absolute -right-10 -top-10 w-[180px] h-[500px] bg-[#7C3AED] rotate-[20deg] opacity-90" />
           <div className="absolute -right-16 top-0 w-[80px] h-[500px] bg-[#7C3AED] rotate-[20deg] opacity-70" />
@@ -467,8 +467,8 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
           <div className="absolute right-6 top-16 w-3 h-3 bg-[#7C3AED] rounded-full opacity-60" />
           <div className="absolute right-14 top-24 w-2 h-2 bg-white rounded-full opacity-40" />
           
-          {/* Header content - optimized spacing */}
-          <div className="relative z-10 px-5 pt-5 pb-10">
+          {/* Header content - safe area padding + design padding */}
+          <div className="relative z-10 px-5 pb-10" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 1.25rem)' }}>
             {/* Top row: Date */}
             <div className="mb-3">
               <div className="inline-flex items-center gap-1.5 bg-black/10 px-2.5 py-1 rounded-full">

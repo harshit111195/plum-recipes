@@ -207,7 +207,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
             className="fixed inset-0 w-full flex flex-col overflow-y-auto overflow-x-hidden bg-[#0D0D0D]"
         >
             {/* ========== YELLOW HEADER SECTION ========== */}
-            <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
+            <div className="relative bg-[#FFC244] overflow-hidden">
                 {/* Decorative food icons */}
                 <div className="absolute inset-0 overflow-hidden opacity-20">
                     {FOOD_ICONS.map((icon, i) => (
@@ -225,8 +225,8 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                     ))}
                 </div>
                 
-                {/* Header content */}
-                <div className="relative z-10 px-6 pt-12 pb-16 flex flex-col items-center">
+                {/* Header content - pt-safe moves content below notch, background still extends up */}
+                <div className="relative z-10 px-6 pt-12 pb-16 flex flex-col items-center" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 3rem)' }}>
                     {/* Logo with glow */}
                     <MotionDiv
                         initial={{ scale: 0, opacity: 0 }}

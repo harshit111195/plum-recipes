@@ -208,9 +208,9 @@ export const Settings: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0D0D0D] pb-28">
       {/* ========== BRANDED HEADER ========== */}
-      <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
-        {/* Header content - increased height by 30% */}
-        <div className="relative z-10 px-5 pt-10 pb-12">
+      <div className="relative bg-[#FFC244] overflow-hidden">
+        {/* Header content - safe area + design padding */}
+        <div className="relative z-10 px-5 pb-12" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 2.5rem)' }}>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-2xl">⚙️</span>
             <h1 className="text-[28px] font-bold text-black">Settings</h1>
