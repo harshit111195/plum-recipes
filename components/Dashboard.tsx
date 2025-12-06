@@ -5,7 +5,7 @@ import { useInventory } from '../context/InventoryContext';
 import { useRecipes } from '../context/RecipeContext';
 import { 
   Coffee, Sun, Moon, X,
-  Check, History, ChefHat, Plus, RefreshCw,
+  Check, History, ChefHat, Plus,
   Clock, ChevronRight, Utensils,
   AlertCircle, BatteryWarning, Archive, Sparkles, Trash2
 } from 'lucide-react';
@@ -279,8 +279,6 @@ export const Dashboard: React.FC = () => {
   const [showLowStock, setShowLowStock] = useState(false);
   const [showOutOfStock, setShowOutOfStock] = useState(false);
   const [showCleanUp, setShowCleanUp] = useState(false);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [pullDistance, setPullDistance] = useState(0);
   const [userName, setUserName] = useState<string>('');
   
   const isLoading = inventoryLoading || recipesLoading;
@@ -295,35 +293,6 @@ export const Dashboard: React.FC = () => {
       }
     });
   }, []);
-  
-  // Pull to refresh logic
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    if (window.scrollY === 0) {
-      const touch = e.touches[0];
-      (e.currentTarget as any).startY = touch.clientY;
-    }
-  }, []);
-  
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    if (window.scrollY === 0 && (e.currentTarget as any).startY) {
-      const touch = e.touches[0];
-      const diff = touch.clientY - (e.currentTarget as any).startY;
-      if (diff > 0 && diff < 150) {
-        setPullDistance(diff);
-      }
-    }
-  }, []);
-  
-  const handleTouchEnd = useCallback(async () => {
-    if (pullDistance > 80) {
-      setIsRefreshing(true);
-      // Simulate refresh - in real app, this would refetch data
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setIsRefreshing(false);
-      toast.success('Dashboard refreshed!', { icon: '🔄' });
-    }
-    setPullDistance(0);
-  }, [pullDistance]);
   
   const hour = new Date().getHours();
   const timeContext = useMemo(() => {
@@ -439,25 +408,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
 
   // Background: #0D0D0D (near black - page bg)
   return (
-    <div 
-      className="min-h-screen bg-[#0D0D0D] pb-28 relative"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-        {/* Pull to refresh indicator */}
-        {(pullDistance > 0 || isRefreshing) && (
-          <div 
-            className="absolute left-0 right-0 flex justify-center z-50 transition-all"
-            style={{ top: Math.min(pullDistance, 80) - 40 }}
-          >
-            {/* Refresh icon: purple bg | Icon: white */}
-            <div className={`w-10 h-10 rounded-full bg-[#7C3AED] shadow-lg flex items-center justify-center ${isRefreshing ? 'animate-spin' : ''}`}>
-              <RefreshCw size={20} className="text-white" />
-            </div>
-          </div>
-        )}
-        
+    <div className="min-h-screen bg-[#0D0D0D] pb-28 relative">
         {/* Yellow Header Section - compact for mobile */}
         <div className="relative bg-[#FFC244] overflow-hidden">
           {/* Purple wavy accent - diagonal stripe extending to bottom */}
