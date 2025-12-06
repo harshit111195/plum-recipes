@@ -77,19 +77,19 @@ const AppContent: React.FC = () => {
   // Only show loader on initial load, not on subsequent navigations
   if (isLoading && !hasLoadedOnce) {
     return (
-      <div className="min-h-screen bg-brand-background flex items-center justify-center">
+      <div className="pwa-container bg-brand-background flex items-center justify-center">
         <Loader2 className="animate-spin text-brand-primary" size={40} />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-brand-background text-brand-text font-sans selection:bg-blue-100">
+    <div className="pwa-container bg-brand-background text-brand-text font-sans selection:bg-blue-100">
       <ScrollToTop />
       <OfflineBanner />
       <OnboardingFlow />
       <TourGuide />
-      <main className="w-full">
+      <main className="w-full min-h-screen">
         <AnimatedRoutes />
       </main>
       <Navigation />
