@@ -132,6 +132,26 @@ const App: React.FC = () => {
           const tokenType = hashParams.get('type');
           const isRecovery = tokenType === 'recovery';
           
+          // Check for errors (e.g., expired link)
+          const errorCode = hashParams.get('error_code');
+          const errorDescription = hashParams.get('error_description');
+          
+          if (errorCode) {
+            console.error('Auth error from URL:', errorCode, errorDescription);
+            // Show user-friendly error message
+            const friendlyMessage = errorCode === 'otp_expired' 
+              ? 'Your password reset link has expired. Please request a new one.'
+              : errorDescription?.replace(/\+/g, ' ') || 'Something went wrong. Please try again.';
+            
+            // Clear the error from URL
+            window.history.replaceState(null, '', window.location.pathname);
+            
+            // Import toast dynamically to show error
+            import('react-hot-toast').then(({ default: toast }) => {
+              toast.error(friendlyMessage, { duration: 5000 });
+            });
+          }
+          
           console.log('Auth check - hash:', hash.substring(0, 50) + '...', 'isRecovery:', isRecovery, 'hasTokens:', !!accessToken);
           
           // If we have recovery tokens in the URL, set the session manually
