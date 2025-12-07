@@ -78,7 +78,7 @@ export const CONFIG = {
         generateThumbnail: '/generate-thumbnail',
         askStep: '/ask-step'
     },
-    timeout: 60000, // Increased for tunnel testing
+    timeout: 120000, // 2 minutes - allows time for recipe + image generation with large pantries
     retries: 3
   },
 
