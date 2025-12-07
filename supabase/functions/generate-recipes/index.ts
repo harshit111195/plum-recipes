@@ -133,6 +133,12 @@ serve(async (req) => {
           - Dinner: Full meals like curries, stir-fries, roasts, pasta dishes, rice bowls. Can be hearty and more elaborate.
           - Snack: Small bites, appetizers, dips, quick munchies, energy bars, smoothies. Must be portion-appropriate for snacking.
           ALL recipes MUST be appropriate for the requested meal type. A breakfast request should NEVER return curry or stew.
+      12. AVOID DUPLICATES & MAXIMIZE VARIETY: When given a list of previous recipe titles:
+          - NEVER repeat the same recipe title or a very similar title
+          - NEVER create recipes that are variations of the same dish (e.g., if "Chicken Curry" was shown, don't suggest "Spicy Chicken Curry", "Creamy Chicken Curry", or "Chicken Tikka Masala")
+          - Create COMPLETELY DIFFERENT dishes using different cooking methods, cuisines, or primary ingredients
+          - Maximize variety - if previous recipes were Asian-style, suggest Mediterranean, Mexican, or other cuisines
+          - Think of each new batch as an opportunity to show the user something fresh and unexpected
     `;
 
     const genAI = new GoogleGenerativeAI(apiKey);
@@ -240,9 +246,11 @@ ${heroInstruction}
 ${sanitizedContext?.prioritizeExpiring ? 'PRIORITY: Use expiring ingredients first.' : ''}
 ${sanitizedContext?.homeStyle ? 'STYLE: Keep recipes simple and homestyle.' : ''}
 
-AVOID TITLES: ${sanitizedTitles.join(", ") || 'None'}
-
-Generate ${recipeCount} ${sanitizedContext?.mealType || 'Dinner'} recipes. Be witty and fun in descriptions.
+${sanitizedTitles.length > 0 ? `
+CRITICAL - PREVIOUSLY SHOWN (DO NOT REPEAT OR CREATE SIMILAR): [${sanitizedTitles.join(", ")}]
+Generate COMPLETELY DIFFERENT recipes. No variations of the above dishes. Different cuisines, different cooking methods, different primary ingredients.
+` : ''}
+Generate ${recipeCount} UNIQUE ${sanitizedContext?.mealType || 'Dinner'} recipes. Be witty and fun in descriptions.
 For imagePrompt: Write a SHORT visual description for food photography (e.g., "Golden crispy fried chicken with herbs on white plate"). No adjectives like "delicious" - only visual details.
     `;
 
