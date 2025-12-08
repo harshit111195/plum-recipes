@@ -120,7 +120,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                 </MotionDiv>
                 {/* Text: #FFFFFF | #A0A0A0 */}
                 <h3 className="text-2xl font-bold text-brand-text mb-2">Message Sent!</h3>
-                <p className="text-brand-text-secondary text-[15px] leading-relaxed">
+                <p className="text-brand-text-secondary text-body leading-relaxed">
                   Thanks for helping us cook up a better app. 🍳
                 </p>
               </MotionDiv>
@@ -142,8 +142,8 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                     </div>
                     <div>
                       {/* Title: #FFFFFF | Subtitle: #A0A0A0 */}
-                      <h3 className="text-[20px] font-bold text-brand-text">Feedback</h3>
-                      <p className="text-[13px] text-brand-text-secondary">Tell the chef what you think</p>
+                      <h3 className="text-h2 font-bold text-brand-text">Feedback</h3>
+                      <p className="text-caption text-brand-text-secondary">Tell the chef what you think</p>
                     </div>
                   </div>
 
@@ -178,7 +178,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     placeholder="Found a bug? Have a feature idea? Let us know..."
-                    className="w-full bg-brand-background rounded-xl p-4 h-32 text-brand-text text-[15px] outline-none focus:ring-2 focus:ring-brand-primary/20 transition mb-4 resize-none border border-brand-divider focus:border-brand-primary/50 placeholder-brand-text-tertiary"
+                    className="w-full bg-brand-background rounded-xl p-4 h-32 text-brand-text text-body outline-none focus:ring-2 focus:ring-brand-primary/20 transition mb-4 resize-none border border-brand-divider focus:border-brand-primary/50 placeholder-brand-text-tertiary"
                   />
 
                   {/* Submit button: #7C3AED (purple) */}

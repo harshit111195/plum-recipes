@@ -178,9 +178,9 @@ export const ShoppingList: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-3xl">🛒</span>
-                <h1 className="text-[28px] font-bold text-black tracking-tight">The Haul</h1>
+                <h1 className="text-h1 font-bold text-black tracking-tight">The Haul</h1>
               </div>
-              <p className="text-black/70 text-[15px] font-medium">
+              <p className="text-black/70 text-body font-medium">
                 {activeItems.length} to buy • {completedItems.length} done
               </p>
             </div>
@@ -205,7 +205,7 @@ export const ShoppingList: React.FC = () => {
             <form onSubmit={handleAdd} className="flex-1">
               <input 
                 type="text" 
-                className="w-full text-[16px] outline-none placeholder-black/40 bg-transparent font-medium text-black pl-10 pr-4 py-2" 
+                className="w-full text-h3 outline-none placeholder-black/40 bg-transparent font-medium text-black pl-10 pr-4 py-2" 
                 placeholder="Add item..." 
                 value={newItem} 
                 onChange={e => setNewItem(e.target.value)} 
@@ -216,7 +216,7 @@ export const ShoppingList: React.FC = () => {
                 initial={{ scale: 0 }} 
                 animate={{ scale: 1 }} 
                 onClick={handleAdd} 
-                className="bg-brand-button-secondary hover:bg-brand-button-secondary-hover text-white px-4 py-1.5 rounded-full text-[13px] font-bold mr-1 active:scale-95 transition"
+                className="bg-brand-button-secondary hover:bg-brand-button-secondary-hover text-white px-4 py-1.5 rounded-full text-caption font-bold mr-1 active:scale-95 transition"
               >
                 Add
               </MotionButton>
@@ -238,7 +238,7 @@ export const ShoppingList: React.FC = () => {
                   onClick={() => setShowRestock(!showRestock)}
                   className="w-full flex items-center justify-between p-3 active:bg-brand-button-primary/5 transition"
                 >
-                  <div className="flex items-center gap-2 text-brand-button-primary font-bold text-xs uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-brand-button-primary font-bold text-caption uppercase tracking-wider">
                     <RefreshCw size={12} /> Smart Restock
                     <span className="text-brand-text-secondary font-medium normal-case">({restockSuggestions.length} suggestions)</span>
                   </div>
@@ -262,7 +262,7 @@ export const ShoppingList: React.FC = () => {
                             key={`suggest-${item.id}`} 
                             className="flex items-center justify-between bg-brand-surface p-2.5 rounded-xl border border-brand-button-primary/20"
                           >
-                            <span className="text-[15px] font-medium text-brand-text">{item.name}</span>
+                            <span className="text-body font-medium text-brand-text">{item.name}</span>
                             <button 
                               onClick={() => addToShoppingList([item.name])} 
                               className="w-7 h-7 flex items-center justify-center bg-brand-button-primary text-white rounded-full hover:bg-brand-button-primary-hover active:scale-90 transition"
@@ -280,7 +280,7 @@ export const ShoppingList: React.FC = () => {
 
         {/* ========== ACTIVE ITEMS LIST ========== */}
         {activeItems.length > 0 && (
-          <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider px-1">
+          <h2 className="text-caption font-bold text-brand-text-secondary uppercase tracking-wider px-1">
             🛍️ To Buy ({activeItems.length})
           </h2>
         )}
@@ -302,7 +302,7 @@ export const ShoppingList: React.FC = () => {
                     <Circle size={26} strokeWidth={1.5} />
                   </div>
                   {/* Item name - #FFFFFF white */}
-                  <span className="text-[17px] text-brand-text font-semibold leading-tight">{item.name}</span>
+                  <span className="text-h3 text-brand-text font-semibold leading-tight">{item.name}</span>
                 </button>
                 {/* Delete button - #6B6B6B tertiary, hover #F87171 red */}
                 <button 
@@ -324,7 +324,7 @@ export const ShoppingList: React.FC = () => {
                   {/* Toggle button - #A0A0A0 muted text */}
                   <button 
                     onClick={() => setShowCompleted(!showCompleted)} 
-                    className="flex items-center gap-1 text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider ml-1 hover:text-brand-text transition"
+                    className="flex items-center gap-1 text-caption font-bold text-brand-text-secondary uppercase tracking-wider ml-1 hover:text-brand-text transition"
                   >
                     {showCompleted ? <ChevronDown size={14} /> : <ChevronRight size={14} />} Completed ({completedItems.length})
                   </button>
@@ -332,7 +332,7 @@ export const ShoppingList: React.FC = () => {
                   {showCompleted && (
                     <button 
                       onClick={clearCheckedItems} 
-                      className="text-brand-primary text-[13px] font-medium active:opacity-50"
+                      className="text-brand-primary text-caption font-medium active:opacity-50"
                     >
                       Clear All
                     </button>
@@ -359,7 +359,7 @@ export const ShoppingList: React.FC = () => {
                             <CheckCircle2 size={26} className="fill-brand-primary text-white" />
                           </button>
                           {/* Completed item name - #A0A0A0 muted with strikethrough */}
-                          <span className="flex-1 text-[17px] text-brand-text-secondary line-through decoration-2 decoration-brand-text-secondary/30 font-medium">
+                          <span className="flex-1 text-h3 text-brand-text-secondary line-through decoration-2 decoration-brand-text-secondary/30 font-medium">
                             {item.name}
                           </span>
                           {/* Remove button - #6B6B6B tertiary, hover #F87171 red */}
@@ -387,7 +387,7 @@ export const ShoppingList: React.FC = () => {
               {/* Empty title - #FFFFFF white */}
               <h3 className="text-[22px] font-bold text-brand-text mb-2">All stocked up. Nice.</h3>
               {/* Empty description - #A0A0A0 muted */}
-              <p className="text-brand-text-secondary max-w-[220px] leading-relaxed text-[15px]">
+              <p className="text-brand-text-secondary max-w-[220px] leading-relaxed text-body">
                 Your list is empty. Add items or generate a shopping list from a recipe.
               </p>
             </div>
@@ -416,27 +416,27 @@ export const ShoppingList: React.FC = () => {
                 {/* Modal title - #FFFFFF white */}
                 <h3 className="text-[19px] font-bold text-brand-text mb-1">Mark as Bought?</h3>
                 {/* Modal description - #A0A0A0 muted */}
-                <p className="text-[15px] text-brand-text-secondary mb-4">
+                <p className="text-body text-brand-text-secondary mb-4">
                   Did you buy <span className="text-brand-text font-semibold">{confirmingItem.name}</span>?
                 </p>
                 
                 <div className="space-y-3">
                   {/* Quantity input row - #0D0D0D background */}
                   <div className="bg-brand-background rounded-xl p-3 flex items-center justify-center gap-2">
-                    <span className="text-[15px] font-bold text-brand-text-secondary uppercase text-xs tracking-wider">Qty:</span>
+                    <span className="text-body font-bold text-brand-text-secondary uppercase text-caption tracking-wider">Qty:</span>
                     {/* Quantity input - #1A1A1A surface */}
                     <input 
                       type="text" 
                       value={buyQty} 
                       onChange={(e) => setBuyQty(e.target.value)} 
-                      className="w-16 text-center bg-brand-surface rounded-lg py-1 text-[17px] font-bold text-brand-text shadow-sm outline-none border border-black/5" 
+                      className="w-16 text-center bg-brand-surface rounded-lg py-1 text-h3 font-bold text-brand-text shadow-sm outline-none border border-black/5" 
                       autoFocus 
                     />
                     {/* Unit select - #1A1A1A surface */}
                     <select 
                       value={buyUnit} 
                       onChange={(e) => setBuyUnit(e.target.value)} 
-                      className="bg-brand-surface rounded-lg py-1 px-2 text-[17px] font-bold text-brand-text shadow-sm outline-none border border-black/5"
+                      className="bg-brand-surface rounded-lg py-1 px-2 text-h3 font-bold text-brand-text shadow-sm outline-none border border-black/5"
                     >
                       {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
                     </select>
@@ -444,7 +444,7 @@ export const ShoppingList: React.FC = () => {
                   
                   {/* Category select - #0D0D0D background */}
                   <select 
-                    className="w-full bg-brand-background text-brand-text text-[15px] font-medium p-3 rounded-xl appearance-none outline-none border-none text-center" 
+                    className="w-full bg-brand-background text-brand-text text-body font-medium p-3 rounded-xl appearance-none outline-none border-none text-center" 
                     value={buyCategory} 
                     onChange={e => setBuyCategory(e.target.value)}
                   >
@@ -453,10 +453,10 @@ export const ShoppingList: React.FC = () => {
                   
                   {/* Expiry date input - #0D0D0D background */}
                   <div className="relative flex items-center bg-brand-background rounded-xl px-3">
-                    <span className="text-brand-text-secondary text-[13px] mr-2 uppercase font-bold tracking-wider">Expires:</span>
+                    <span className="text-brand-text-secondary text-caption mr-2 uppercase font-bold tracking-wider">Expires:</span>
                     <input 
                       type="date" 
-                      className="flex-1 bg-transparent py-2.5 text-[15px] outline-none text-brand-text text-center" 
+                      className="flex-1 bg-transparent py-2.5 text-body outline-none text-brand-text text-center" 
                       value={buyExpiry} 
                       onChange={e => setBuyExpiry(e.target.value)} 
                     />
@@ -469,21 +469,21 @@ export const ShoppingList: React.FC = () => {
                 {/* Add to Pantry button - #1A1A1A surface, #FFC244 yellow text */}
                 <button 
                   onClick={() => confirmPurchase(true)} 
-                  className="w-full py-3.5 bg-brand-surface text-brand-primary font-bold text-[17px] active:bg-brand-surface-secondary transition"
+                  className="w-full py-3.5 bg-brand-surface text-brand-primary font-bold text-h3 active:bg-brand-surface-secondary transition"
                 >
                   Add to Pantry & Complete
                 </button>
                 {/* Just Complete button - #1A1A1A surface, #FFC244 yellow text */}
                 <button 
                   onClick={() => confirmPurchase(false)} 
-                  className="w-full py-3.5 bg-brand-surface text-brand-primary text-[17px] active:bg-brand-surface-secondary transition"
+                  className="w-full py-3.5 bg-brand-surface text-brand-primary text-h3 active:bg-brand-surface-secondary transition"
                 >
                   Just Mark Complete
                 </button>
                 {/* Cancel button - #1A1A1A surface, #F87171 red text */}
                 <button 
                   onClick={() => setConfirmingItem(null)} 
-                  className="w-full py-3.5 bg-brand-surface text-brand-error font-semibold text-[17px] active:bg-brand-surface-secondary transition"
+                  className="w-full py-3.5 bg-brand-surface text-brand-error font-semibold text-h3 active:bg-brand-surface-secondary transition"
                 >
                   Cancel
                 </button>

@@ -161,8 +161,8 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
     if (len < 50) return "text-[32px] md:text-[40px] leading-tight tracking-tight"; // Short
     if (len < 100) return "text-[26px] md:text-[32px] leading-snug"; // Medium
     if (len < 200) return "text-[22px] md:text-[26px] leading-normal"; // Long
-    if (len < 350) return "text-[18px] md:text-[22px] leading-relaxed"; // Very Long
-    return "text-[16px] md:text-[18px] leading-relaxed"; // Novel
+    if (len < 350) return "text-h3 md:text-[22px] leading-relaxed"; // Very Long
+    return "text-h3 md:text-h3 leading-relaxed"; // Novel
   };
 
 
@@ -312,7 +312,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                                 <div className="flex items-center gap-2 text-brand-primary font-bold text-xs uppercase tracking-wider mb-2">
                                     <Sparkles size={12} fill="currentColor" /> Chef's Note
                                 </div>
-                                <p className="text-brand-text-secondary text-[15px] leading-relaxed">{aiTip}</p>
+                                <p className="text-brand-text-secondary text-body leading-relaxed">{aiTip}</p>
                             </MotionDiv>
                         )}
                         </AnimatePresence>

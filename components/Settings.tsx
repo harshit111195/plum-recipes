@@ -42,9 +42,9 @@ const Section: React.FC<{ title: string; children: React.ReactNode; icon?: React
         <div className="flex items-center justify-between mb-2 px-1">
             <div className="flex items-center gap-2">
                 {icon && <div className="text-brand-primary">{icon}</div>}
-                <h2 className="text-[12px] font-bold uppercase tracking-wider text-brand-text-secondary">{title}</h2>
+                <h2 className="text-caption font-bold uppercase tracking-wider text-brand-text-secondary">{title}</h2>
             </div>
-            {hint && <span className="text-[11px] text-brand-text-tertiary">{hint}</span>}
+            {hint && <span className="text-caption text-brand-text-tertiary">{hint}</span>}
         </div>
         <div className="bg-brand-surface rounded-2xl overflow-hidden shadow-sm border border-brand-divider">{children}</div>
     </div>
@@ -54,7 +54,7 @@ const Section: React.FC<{ title: string; children: React.ReactNode; icon?: React
 const GroupHeader: React.FC<{ title: string; emoji: string }> = ({ title, emoji }) => (
     <div className="flex items-center gap-2 mb-3 mt-6 first:mt-0">
         <span className="text-lg">{emoji}</span>
-        <span className="text-[13px] font-bold text-brand-text uppercase tracking-wide">{title}</span>
+        <span className="text-caption font-bold text-brand-text uppercase tracking-wide">{title}</span>
         <div className="flex-1 h-[1px] bg-brand-divider ml-2"></div>
     </div>
 );
@@ -62,7 +62,7 @@ const GroupHeader: React.FC<{ title: string; emoji: string }> = ({ title, emoji 
 const TogglePill: React.FC<{ label: string; active: boolean; onClick: () => void }> = ({ label, active, onClick }) => (
     <button 
         onClick={onClick} 
-        className={`px-4 py-2 rounded-full text-[14px] font-semibold transition-all duration-200 ${
+        className={`px-4 py-2 rounded-full text-body font-semibold transition-all duration-200 ${
             active 
                 ? 'bg-brand-primary text-black shadow-md shadow-brand-primary/20' 
                 : 'bg-brand-background text-brand-text hover:bg-brand-surface-secondary active:scale-95 border border-brand-divider'
@@ -92,7 +92,7 @@ const TagInputSection: React.FC<TagInputProps> = ({ label, items, onAdd, onRemov
     };
     return (
         <div className="p-4">
-            <label className="text-[12px] text-brand-text-secondary font-bold uppercase mb-3 block tracking-wider">{label}</label>
+            <label className="text-caption text-brand-text-secondary font-bold uppercase mb-3 block tracking-wider">{label}</label>
             {items.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-3">
                     {items.map(tag => (
@@ -100,7 +100,7 @@ const TagInputSection: React.FC<TagInputProps> = ({ label, items, onAdd, onRemov
                             key={tag}
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] font-medium bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-caption font-medium bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20"
                         >
                             <span>{tag}</span>
                             <button 
@@ -120,7 +120,7 @@ const TagInputSection: React.FC<TagInputProps> = ({ label, items, onAdd, onRemov
                     value={input} 
                     onChange={e => setInput(e.target.value)} 
                     onKeyDown={handleKeyDown} 
-                    className="w-full bg-brand-background rounded-xl px-4 py-3 text-[15px] text-brand-text placeholder-brand-text-tertiary outline-none focus:ring-2 focus:ring-brand-primary/20 transition border border-brand-divider focus:border-brand-primary/30" 
+                    className="w-full bg-brand-background rounded-xl px-4 py-3 text-body text-brand-text placeholder-brand-text-tertiary outline-none focus:ring-2 focus:ring-brand-primary/20 transition border border-brand-divider focus:border-brand-primary/30" 
                 />
                 <button 
                     onClick={handleAddClick} 
@@ -217,9 +217,9 @@ export const Settings: React.FC = () => {
         <div className="relative z-10 px-5 pt-10 pb-12">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-2xl">⚙️</span>
-            <h1 className="text-[28px] font-bold text-black">Settings</h1>
+            <h1 className="text-h1 font-bold text-black">Settings</h1>
           </div>
-          <p className="text-black/70 text-[15px]">Personalize your {APP_NAME} experience</p>
+          <p className="text-black/70 text-body">Personalize your {APP_NAME} experience</p>
         </div>
         
         {/* Curved bottom edge - matching other pages */}
@@ -246,8 +246,8 @@ export const Settings: React.FC = () => {
               
               {/* User Info */}
               <div className="flex-1">
-                <div className="font-bold text-brand-text text-[18px] mb-0.5">{userName}</div>
-                <div className="text-[13px] text-brand-text-secondary mb-2">{userEmail}</div>
+                <div className="font-bold text-brand-text text-h3 mb-0.5">{userName}</div>
+                <div className="text-caption text-brand-text-secondary mb-2">{userEmail}</div>
                 
                 {/* Profile Progress */}
                 <div className="flex items-center gap-2">
@@ -257,7 +257,7 @@ export const Settings: React.FC = () => {
                       style={{ width: `${profileComplete}%` }}
                     ></div>
                   </div>
-                  <span className="text-[11px] font-bold text-brand-primary">{profileComplete}%</span>
+                  <span className="text-caption font-bold text-brand-primary">{profileComplete}%</span>
                 </div>
               </div>
             </div>
@@ -266,14 +266,14 @@ export const Settings: React.FC = () => {
             <div className="flex gap-3">
               <button 
                 onClick={() => setShowAccountModal(true)} 
-                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-xl text-body active:scale-[0.98] transition flex items-center justify-center gap-2"
               >
                 <SettingsIcon size={16} /> 
                 Manage Account
               </button>
               <button 
                 onClick={() => setShowLogoutConfirm(true)} 
-                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-xl text-body active:scale-[0.98] transition flex items-center justify-center gap-2"
               >
                 <LogOut size={16} /> 
                 Sign Out
@@ -286,19 +286,19 @@ export const Settings: React.FC = () => {
         <Section title="Membership" icon={<Star size={14} />}>
           <div className="p-4 flex items-center justify-between">
             <div>
-              <div className="font-bold text-brand-text text-[17px] mb-0.5">
+              <div className="font-bold text-brand-text text-h3 mb-0.5">
                 {preferences.isPro ? `${APP_NAME} Pro` : "Free Tier"}
               </div>
-              <div className="text-[12px] text-brand-text-secondary">
+              <div className="text-caption text-brand-text-secondary">
                 {preferences.isPro ? "All features unlocked" : "Upgrade for unlimited recipes"}
               </div>
             </div>
             {preferences.isPro ? (
-              <div className="px-3 py-1.5 rounded-full text-[11px] font-bold bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
+              <div className="px-3 py-1.5 rounded-full text-caption font-bold bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
                 PRO
               </div>
             ) : (
-              <button className="px-4 py-2 rounded-xl text-[13px] font-bold bg-brand-button-primary text-white flex items-center gap-1.5 active:scale-95 transition">
+              <button className="px-4 py-2 rounded-xl text-caption font-bold bg-brand-button-primary text-white flex items-center gap-1.5 active:scale-95 transition">
                 <Sparkles size={14} /> Upgrade
               </button>
             )}
@@ -315,7 +315,7 @@ export const Settings: React.FC = () => {
             <div className="flex items-center justify-between p-4">
               <div className="flex items-center gap-2">
                 {isDark ? <Moon size={18} className="text-brand-primary" /> : <Sun size={18} className="text-brand-primary" />}
-                <span className="text-[15px] font-semibold text-brand-text">Theme</span>
+                <span className="text-body font-semibold text-brand-text">Theme</span>
               </div>
               <div className="bg-brand-background p-1 rounded-xl flex gap-1 border border-brand-divider">
                 {[
@@ -326,7 +326,7 @@ export const Settings: React.FC = () => {
                   <button 
                     key={option.value} 
                     onClick={() => setTheme(option.value as 'light' | 'dark' | 'system')} 
-                    className={`px-2.5 py-1.5 rounded-lg text-[12px] font-semibold transition-all flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1.5 rounded-lg text-caption font-semibold transition-all flex items-center gap-1.5 ${
                       theme === option.value 
                         ? 'bg-brand-primary text-black' 
                         : 'text-brand-text-tertiary hover:text-brand-text'
@@ -341,13 +341,13 @@ export const Settings: React.FC = () => {
 
             {/* Units */}
             <div className="flex items-center justify-between p-4">
-              <span className="text-[15px] font-semibold text-brand-text">Units</span>
+              <span className="text-body font-semibold text-brand-text">Units</span>
               <div className="bg-brand-background p-1 rounded-xl flex gap-1 border border-brand-divider">
                 {['Metric', 'Imperial'].map(u => (
                   <button 
                     key={u} 
                     onClick={() => update('measurementUnit', u)} 
-                    className={`px-3 py-1.5 rounded-lg text-[13px] font-semibold transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-caption font-semibold transition-all ${
                       preferences.measurementUnit === u 
                         ? 'bg-brand-surface-secondary text-brand-text' 
                         : 'text-brand-text-tertiary hover:text-brand-text'
@@ -361,7 +361,7 @@ export const Settings: React.FC = () => {
 
             {/* Household Size */}
             <div className="flex items-center justify-between p-4">
-              <span className="text-[15px] font-semibold text-brand-text">Household Size</span>
+              <span className="text-body font-semibold text-brand-text">Household Size</span>
               <div className="flex items-center gap-3 bg-brand-background rounded-xl px-2 py-1.5 border border-brand-divider">
                 <button 
                   className="p-1 hover:bg-brand-surface-secondary rounded-lg transition active:scale-90" 
@@ -369,7 +369,7 @@ export const Settings: React.FC = () => {
                 >
                   <Minus size={16} className="text-brand-primary" strokeWidth={2.5} />
                 </button>
-                <span className="font-bold w-6 text-center text-[15px] text-brand-text">{preferences.householdSize}</span>
+                <span className="font-bold w-6 text-center text-body text-brand-text">{preferences.householdSize}</span>
                 <button 
                   className="p-1 hover:bg-brand-surface-secondary rounded-lg transition active:scale-90" 
                   onClick={() => update('householdSize', preferences.householdSize + 1)}
@@ -382,8 +382,8 @@ export const Settings: React.FC = () => {
             {/* Cooking Skill */}
             <div className="p-4">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-[15px] font-semibold text-brand-text">Cooking Skill</span>
-                <span className="text-[13px] font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-lg">
+                <span className="text-body font-semibold text-brand-text">Cooking Skill</span>
+                <span className="text-caption font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-lg">
                   {preferences.cookingSkill}
                 </span>
               </div>
@@ -399,7 +399,7 @@ export const Settings: React.FC = () => {
                 }} 
                 className="w-full h-2 bg-brand-surface-secondary rounded-lg appearance-none cursor-pointer accent-brand-primary" 
               />
-              <div className="flex justify-between mt-2 text-[10px] text-brand-text-tertiary font-medium uppercase tracking-wide">
+              <div className="flex justify-between mt-2 text-caption text-brand-text-tertiary font-medium uppercase tracking-wide">
                 <span>Beginner</span>
                 <span>Intermediate</span>
                 <span>Advanced</span>
@@ -413,7 +413,7 @@ export const Settings: React.FC = () => {
           <div className="divide-y divide-brand-divider/50">
             {/* Diet Type */}
             <div className="p-4">
-              <label className="text-[11px] text-brand-text-secondary font-bold uppercase mb-3 block tracking-wider">Diet Type</label>
+              <label className="text-caption text-brand-text-secondary font-bold uppercase mb-3 block tracking-wider">Diet Type</label>
               <div className="flex flex-wrap gap-2">
                 {Object.values(Diet).map(d => (
                   <TogglePill key={d} label={d} active={preferences.diet === d} onClick={() => update('diet', d)} />
@@ -423,7 +423,7 @@ export const Settings: React.FC = () => {
 
             {/* Nutritional Goal */}
             <div className="p-4">
-              <label className="text-[11px] text-brand-text-secondary font-bold uppercase mb-3 block tracking-wider">Nutritional Goal</label>
+              <label className="text-caption text-brand-text-secondary font-bold uppercase mb-3 block tracking-wider">Nutritional Goal</label>
               <div className="flex flex-wrap gap-2">
                 {['Balanced', 'High Protein', 'Low Carb', 'Low Fat'].map(g => (
                   <TogglePill key={g} label={g} active={preferences.nutritionalGoal === g} onClick={() => update('nutritionalGoal', g)} />
@@ -434,8 +434,8 @@ export const Settings: React.FC = () => {
             {/* Max Calories */}
             <div className="p-4">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-[15px] font-semibold text-brand-text">Max Calories / Meal</span>
-                <span className="text-[13px] font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-lg">
+                <span className="text-body font-semibold text-brand-text">Max Calories / Meal</span>
+                <span className="text-caption font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-lg">
                   {preferences.maxCaloriesPerMeal || 800} kcal
                 </span>
               </div>
@@ -492,7 +492,7 @@ export const Settings: React.FC = () => {
                   }`}>
                     {isActive && <Check size={12} className="text-black" strokeWidth={3} />}
                   </div>
-                  <span className={`text-[13px] font-semibold ${isActive ? 'text-brand-primary' : 'text-brand-text'}`}>
+                  <span className={`text-caption font-semibold ${isActive ? 'text-brand-primary' : 'text-brand-text'}`}>
                     {appliance}
                   </span>
                 </button>
@@ -531,8 +531,8 @@ export const Settings: React.FC = () => {
                 <Bug size={16} className="text-brand-button-primary" />
               </div>
               <div className="text-left">
-                <span className="text-[15px] font-semibold text-brand-text block">Report a Bug / Feedback</span>
-                <span className="text-[11px] text-brand-text-tertiary">Help us improve {APP_NAME}</span>
+                <span className="text-body font-semibold text-brand-text block">Report a Bug / Feedback</span>
+                <span className="text-caption text-brand-text-tertiary">Help us improve {APP_NAME}</span>
               </div>
             </div>
             <ChevronRight size={16} className="text-brand-text-tertiary" />
@@ -545,20 +545,20 @@ export const Settings: React.FC = () => {
             onClick={() => openExternalLink(LINKS.privacyPolicy)} 
             className="w-full flex items-center justify-between p-4 border-b border-brand-divider/50 hover:bg-brand-background active:bg-brand-surface-secondary transition"
           >
-            <span className="text-[15px] font-semibold text-brand-text">Privacy Policy</span>
+            <span className="text-body font-semibold text-brand-text">Privacy Policy</span>
             <ChevronRight size={16} className="text-brand-text-tertiary" />
           </button>
           <button 
             onClick={() => openExternalLink(LINKS.termsOfService)} 
             className="w-full flex items-center justify-between p-4 hover:bg-brand-background active:bg-brand-surface-secondary transition"
           >
-            <span className="text-[15px] font-semibold text-brand-text">Terms of Service</span>
+            <span className="text-body font-semibold text-brand-text">Terms of Service</span>
             <ChevronRight size={16} className="text-brand-text-tertiary" />
           </button>
         </Section>
 
         {/* Version */}
-        <p className="text-center text-[11px] text-brand-text-tertiary mt-6 mb-4">{APP_NAME} v{CONFIG.version}</p>
+        <p className="text-center text-caption text-brand-text-tertiary mt-6 mb-4">{APP_NAME} v{CONFIG.version}</p>
       </div>
       
       {showFeedback && <FeedbackModal onClose={() => setShowFeedback(false)} />}
@@ -598,8 +598,8 @@ export const Settings: React.FC = () => {
                     <LogOut size={22} className="text-brand-error" strokeWidth={2} />
                   </div>
                   <div>
-                    <h3 className="text-[20px] font-bold text-brand-text">Sign Out?</h3>
-                    <p className="text-[13px] text-brand-text-secondary">Are you sure you want to sign out?</p>
+                    <h3 className="text-h2 font-bold text-brand-text">Sign Out?</h3>
+                    <p className="text-caption text-brand-text-secondary">Are you sure you want to sign out?</p>
                   </div>
                 </div>
 
@@ -607,13 +607,13 @@ export const Settings: React.FC = () => {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setShowLogoutConfirm(false)}
-                    className="flex-1 py-3.5 bg-brand-surface-secondary text-brand-text font-bold rounded-xl text-[14px] active:scale-[0.98] transition"
+                    className="flex-1 py-3.5 bg-brand-surface-secondary text-brand-text font-bold rounded-xl text-body active:scale-[0.98] transition"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleLogout}
-                    className="flex-1 py-3.5 bg-brand-error hover:bg-brand-secondary text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition shadow-lg shadow-red-500/30 flex items-center justify-center gap-2"
+                    className="flex-1 py-3.5 bg-brand-error hover:bg-brand-secondary text-white font-bold rounded-xl text-body active:scale-[0.98] transition shadow-lg shadow-red-500/30 flex items-center justify-center gap-2"
                   >
                     <LogOut size={16} strokeWidth={2.5} />
                     Sign Out

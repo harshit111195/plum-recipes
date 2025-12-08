@@ -217,7 +217,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
                     >
-                        <p className="text-black/70 text-sm font-medium mt-1">{APP_TAGLINE}</p>
+                        <p className="text-black/70 text-body font-medium mt-1">{APP_TAGLINE}</p>
                     </MotionDiv>
                 </div>
                 
@@ -238,7 +238,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                         <div className="flex gap-2 p-1 bg-brand-surface rounded-2xl mb-6">
                             <button
                                 onClick={() => { setView('login'); resetForm(); }}
-                                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${
+                                className={`flex-1 py-3 rounded-xl font-bold text-body transition-all ${
                                     view === 'login' 
                                         ? 'bg-brand-primary text-black' 
                                         : 'text-brand-text-secondary hover:text-white'
@@ -248,7 +248,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                             </button>
                             <button
                                 onClick={() => { setView('signup'); resetForm(); }}
-                                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${
+                                className={`flex-1 py-3 rounded-xl font-bold text-body transition-all ${
                                     view === 'signup' 
                                         ? 'bg-brand-primary text-black' 
                                         : 'text-brand-text-secondary hover:text-white'
@@ -283,7 +283,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                 {/* Email Form */}
                                 <form onSubmit={handleEmailAuth} className="space-y-4" aria-label="Sign in form">
                                     <div>
-                                        <label htmlFor="auth-email" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="auth-email" className="block text-brand-text-secondary text-caption font-medium mb-2 ml-1">
                                             Email Address
                                         </label>
                                         <div className="relative group">
@@ -295,7 +295,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="email" 
                                                 placeholder="you@example.com"
                                                 autoComplete="email"
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={email}
                                                 onChange={e => setEmail(e.target.value)}
                                                 required
@@ -304,7 +304,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     </div>
                                     
                                     <div>
-                                        <label htmlFor="auth-password" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="auth-password" className="block text-brand-text-secondary text-caption font-medium mb-2 ml-1">
                                             Password
                                         </label>
                                         <div className="relative group">
@@ -316,7 +316,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder={isLogin ? "Enter your password" : "Create a password (min 6 chars)"}
                                                 autoComplete={isLogin ? "current-password" : "new-password"}
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={password}
                                                 onChange={e => setPassword(e.target.value)}
                                                 required
@@ -344,7 +344,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     <div className="text-center mt-4">
                                         <button 
                                             onClick={() => setView('forgot')}
-                                            className="text-[13px] text-brand-text-secondary hover:text-brand-primary transition-colors"
+                                            className="text-caption text-brand-text-secondary hover:text-brand-primary transition-colors"
                                         >
                                             Forgot your password?
                                         </button>
@@ -353,7 +353,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
 
                                 {/* Terms text (for signup only) */}
                                 {view === 'signup' && (
-                                    <p className="text-center mt-4 text-[11px] text-brand-text-tertiary leading-relaxed">
+                                    <p className="text-center mt-4 text-caption text-brand-text-tertiary leading-relaxed">
                                         By creating an account, you agree to our{' '}
                                         <span className="text-brand-primary">Terms of Service</span> and{' '}
                                         <span className="text-brand-primary">Privacy Policy</span>
@@ -385,7 +385,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
 
                                         <form onSubmit={handleForgotPassword} className="space-y-4">
                                             <div>
-                                                <label htmlFor="reset-email" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
+                                                <label htmlFor="reset-email" className="block text-brand-text-secondary text-caption font-medium mb-2 ml-1">
                                                     Email Address
                                                 </label>
                                                 <div className="relative group">
@@ -397,7 +397,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                         type="email" 
                                                         placeholder="you@example.com"
                                                         autoComplete="email"
-                                                        className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
+                                                        className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                         value={email}
                                                         onChange={e => setEmail(e.target.value)}
                                                         required
@@ -424,11 +424,11 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                             <CheckCircle2 size={40} className="text-green-400" />
                                         </div>
                                         <h2 className="text-xl font-bold text-white mb-3">Check Your Email</h2>
-                                        <p className="text-brand-text-secondary text-sm mb-6 leading-relaxed">
+                                        <p className="text-brand-text-secondary text-body mb-6 leading-relaxed">
                                             We've sent a password reset link to<br />
                                             <span className="text-brand-primary font-medium">{email}</span>
                                         </p>
-                                        <p className="text-brand-text-tertiary text-xs mb-6">
+                                        <p className="text-brand-text-tertiary text-caption mb-6">
                                             Didn't receive the email? Check your spam folder or{' '}
                                             <button 
                                                 onClick={() => setResetEmailSent(false)}
@@ -439,7 +439,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                         </p>
                                         <button
                                             onClick={() => { setView('login'); resetForm(); }}
-                                            className="text-brand-text-secondary hover:text-white text-sm font-medium transition-colors"
+                                            className="text-brand-text-secondary hover:text-white text-body font-medium transition-colors"
                                         >
                                             Return to Sign In
                                         </button>
@@ -469,7 +469,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
 
                                 <form onSubmit={handleResetPassword} className="space-y-4">
                                     <div>
-                                        <label htmlFor="new-password" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="new-password" className="block text-brand-text-secondary text-caption font-medium mb-2 ml-1">
                                             New Password
                                         </label>
                                         <div className="relative group">
@@ -481,7 +481,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder="Enter new password"
                                                 autoComplete="new-password"
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={newPassword}
                                                 onChange={e => setNewPassword(e.target.value)}
                                                 required
@@ -491,7 +491,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="confirm-password" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="confirm-password" className="block text-brand-text-secondary text-caption font-medium mb-2 ml-1">
                                             Confirm Password
                                         </label>
                                         <div className="relative group">
@@ -503,7 +503,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder="Confirm new password"
                                                 autoComplete="new-password"
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={confirmPassword}
                                                 onChange={e => setConfirmPassword(e.target.value)}
                                                 required
@@ -511,7 +511,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                             />
                                         </div>
                                         {confirmPassword && newPassword !== confirmPassword && (
-                                            <p className="text-red-400 text-xs mt-2 ml-1">Passwords do not match</p>
+                                            <p className="text-red-400 text-caption mt-2 ml-1">Passwords do not match</p>
                                         )}
                                     </div>
 

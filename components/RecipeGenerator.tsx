@@ -213,7 +213,7 @@ export const RecipeGenerator: React.FC = () => {
                   setShowSaved(false);
                   navigate('/recipes', { replace: true });
                 }
-              }} className="text-brand-primary font-medium text-[17px]">Back</button>
+              }} className="text-brand-primary font-medium text-h3">Back</button>
             </div>
             <div className="px-4 space-y-4">
                 {/* Empty state - #A0A0A0 muted */}
@@ -263,10 +263,10 @@ export const RecipeGenerator: React.FC = () => {
                   setShowHistory(false);
                   navigate('/recipes', { replace: true });
                 }
-              }} className="text-brand-primary font-medium text-[17px]">Back</button>
+              }} className="text-brand-primary font-medium text-h3">Back</button>
             </div>
             {history.length > 0 && (
-                 <div className="px-4 mb-4 text-xs text-brand-text-tertiary font-medium uppercase tracking-wide">
+                 <div className="px-4 mb-4 text-caption text-brand-text-tertiary font-medium uppercase tracking-wide">
                     Showing {preferences.isPro ? '30' : '15'} Days History {preferences.isPro ? '(Pro)' : '(Free)'}
                  </div>
             )}
@@ -287,8 +287,8 @@ export const RecipeGenerator: React.FC = () => {
                             <h3 className="font-bold text-brand-text line-clamp-1">{r.title}</h3>
                             <p className="text-sm text-brand-text-secondary line-clamp-2">{r.description}</p>
                             <div className="flex items-center gap-2 mt-1">
-                                <span className="inline-block px-2 py-0.5 bg-brand-surface-secondary text-brand-text-tertiary text-[10px] rounded-md font-medium uppercase">Cooked</span>
-                                {r.lastCooked && <span className="text-[10px] text-brand-text-tertiary">{new Date(r.lastCooked).toLocaleDateString()}</span>}
+                                <span className="inline-block px-2 py-0.5 bg-brand-surface-secondary text-brand-text-tertiary text-caption rounded-md font-medium uppercase">Cooked</span>
+                                {r.lastCooked && <span className="text-caption text-brand-text-tertiary">{new Date(r.lastCooked).toLocaleDateString()}</span>}
                             </div>
                         </button>
                     </div>
@@ -309,7 +309,7 @@ export const RecipeGenerator: React.FC = () => {
                     <span className="text-4xl">👨‍🍳</span>
                     <h1 className="text-[32px] font-bold text-black tracking-tight">Cook</h1>
                   </div>
-                  <p className="text-black/70 text-[16px] font-medium">What's on the menu today?</p>
+                  <p className="text-black/70 text-h3 font-medium">What's on the menu today?</p>
                 </div>
                 {/* Saved button - white circle with red heart */}
                 <button onClick={() => setShowSaved(true)} aria-label="View saved recipes" className="w-11 h-11 bg-white rounded-full flex items-center justify-center text-brand-secondary shadow-md active:scale-95 transition">
@@ -331,7 +331,7 @@ export const RecipeGenerator: React.FC = () => {
                         <button 
                           key={type} 
                           onClick={() => setMealType(type)} 
-                          className={`flex-1 py-2.5 px-1 rounded-2xl text-[13px] font-bold transition-all whitespace-nowrap ${
+                          className={`flex-1 py-2.5 px-1 rounded-2xl text-caption font-bold transition-all whitespace-nowrap ${
                             mealType === type 
                               ? 'bg-brand-primary text-brand-background shadow-lg' 
                               : 'bg-transparent text-brand-text-secondary hover:bg-brand-background'
@@ -353,14 +353,14 @@ export const RecipeGenerator: React.FC = () => {
                       className="flex-1 h-2 bg-brand-background rounded-lg appearance-none cursor-pointer accent-brand-primary" 
                       onChange={(e) => setTimeAvailable(`${e.target.value} mins`)} 
                     />
-                    <span className="text-[15px] font-bold text-brand-text min-w-[70px] text-right">{timeAvailable}</span>
+                    <span className="text-body font-bold text-brand-text min-w-[70px] text-right">{timeAvailable}</span>
                 </div>
 
                 {/* Customize Toggle */}
                 <button 
                     id="tour-customize"
                     onClick={() => setShowFilters(!showFilters)}
-                    className="w-full flex items-center justify-center gap-2 py-2.5 text-brand-primary text-[13px] font-medium border-t border-brand-background mt-1 active:bg-brand-background/50 rounded-b-[20px] transition"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 text-brand-primary text-caption font-medium border-t border-brand-background mt-1 active:bg-brand-background/50 rounded-b-[20px] transition"
                 >
                     <SlidersHorizontal size={14} /> 
                     {showFilters ? 'Tap to collapse' : 'Tap to customize'}
@@ -382,13 +382,13 @@ export const RecipeGenerator: React.FC = () => {
                                 <div className="flex items-center justify-between p-3 bg-brand-background rounded-xl">
                                     <div className="flex items-center gap-2 text-brand-text-secondary">
                                       <Users size={16} />
-                                      <span className="text-[13px] font-bold uppercase">Servings</span>
+                                      <span className="text-caption font-bold uppercase">Servings</span>
                                     </div>
                                     <div className="flex items-center gap-4 bg-brand-surface-secondary rounded-lg px-2 py-1">
                                         <button className="p-1 active:opacity-50 text-brand-primary" onClick={() => setServings(Math.max(1, servings - 1))}>
                                           <Minus size={16} />
                                         </button>
-                                        <span className="font-bold w-6 text-center text-[15px] text-brand-text">{servings}</span>
+                                        <span className="font-bold w-6 text-center text-body text-brand-text">{servings}</span>
                                         <button className="p-1 active:opacity-50 text-brand-primary" onClick={() => setServings(servings + 1)}>
                                           <Plus size={16} />
                                         </button>
@@ -398,10 +398,10 @@ export const RecipeGenerator: React.FC = () => {
                                 {/* Cuisine & Hero Ingredient */}
                                 <div className="grid grid-cols-2 gap-3">
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-brand-primary uppercase ml-1">Cuisine</label>
+                                        <label className="text-caption font-bold text-brand-primary uppercase ml-1">Cuisine</label>
                                         <div className="relative">
                                             <select 
-                                              className="w-full bg-brand-background text-brand-text text-[15px] font-medium p-3 rounded-xl appearance-none outline-none border border-brand-divider" 
+                                              className="w-full bg-brand-background text-brand-text text-body font-medium p-3 rounded-xl appearance-none outline-none border border-brand-divider" 
                                               value={cuisine} 
                                               onChange={(e) => setCuisine(e.target.value)}
                                             >
@@ -412,10 +412,10 @@ export const RecipeGenerator: React.FC = () => {
                                         </div>
                                     </div>
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-brand-primary uppercase ml-1">Hero Item</label>
+                                        <label className="text-caption font-bold text-brand-primary uppercase ml-1">Hero Item</label>
                                          <div className="relative">
                                             <select 
-                                              className="w-full bg-brand-background text-brand-text text-[15px] font-medium p-3 rounded-xl appearance-none outline-none border border-brand-divider" 
+                                              className="w-full bg-brand-background text-brand-text text-body font-medium p-3 rounded-xl appearance-none outline-none border border-brand-divider" 
                                               value={heroIngredient} 
                                               onChange={(e) => setHeroIngredient(e.target.value)}
                                             >
@@ -434,8 +434,8 @@ export const RecipeGenerator: React.FC = () => {
                                           <Leaf size={16} />
                                         </div>
                                         <div>
-                                          <div className="text-[15px] font-bold text-brand-text">Prioritize Expiring</div>
-                                          <div className="text-[11px] text-brand-text-secondary">Use oldest items first</div>
+                                          <div className="text-body font-bold text-brand-text">Prioritize Expiring</div>
+                                          <div className="text-caption text-brand-text-secondary">Use oldest items first</div>
                                         </div>
                                     </div>
                                     <button 
@@ -453,8 +453,8 @@ export const RecipeGenerator: React.FC = () => {
                                           <Home size={16} />
                                         </div>
                                         <div>
-                                          <div className="text-[15px] font-bold text-brand-text">Household Staples</div>
-                                          <div className="text-[11px] text-brand-text-secondary">Simple everyday meals</div>
+                                          <div className="text-body font-bold text-brand-text">Household Staples</div>
+                                          <div className="text-caption text-brand-text-secondary">Simple everyday meals</div>
                                         </div>
                                     </div>
                                     <button 
@@ -475,14 +475,14 @@ export const RecipeGenerator: React.FC = () => {
               id="tour-cook-btn"
               onClick={() => handleGenerate(false)}
               disabled={loading}
-              className="w-full mt-4 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-[17px] py-4 rounded-2xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:active:scale-100"
+              className="w-full mt-4 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-h3 py-4 rounded-2xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:active:scale-100"
             >
                 {loading ? <span className="flex items-center gap-2"><Loader2 className="animate-spin" /> Thinking...</span> : "Let's Cook"}
             </button>
           </div>
 
           {/* Error message - red theme */}
-          {error && <div className="mx-4 mb-6 p-4 bg-red-50 text-red-600 rounded-2xl text-center text-sm font-medium border border-red-100">{error}</div>}
+          {error && <div className="mx-4 mb-6 p-4 bg-red-50 text-red-600 rounded-2xl text-center text-body font-medium border border-red-100">{error}</div>}
 
           {/* ========== RECIPE CARDS ========== */}
           <div className="space-y-6 px-4 pb-12">
@@ -510,12 +510,12 @@ export const RecipeGenerator: React.FC = () => {
                     <div className="absolute top-4 right-4 flex flex-col items-end gap-2">
                         {/* Pantry Ready - #10B981 emerald / Missing - #F97316 orange */}
                         {isReady 
-                          ? <span className="px-3 py-1.5 bg-brand-button-secondary text-white text-[11px] font-bold uppercase tracking-wider rounded-full shadow-lg border border-white/20">Pantry Ready</span> 
-                          : <span className="px-3 py-1.5 bg-[#F97316] text-white text-[11px] font-bold uppercase tracking-wider rounded-full shadow-lg border border-white/20">{missingCount} Missing</span>
+                          ? <span className="px-3 py-1.5 bg-brand-button-secondary text-white text-caption font-bold uppercase tracking-wider rounded-full shadow-lg border border-white/20">Pantry Ready</span> 
+                          : <span className="px-3 py-1.5 bg-[#F97316] text-white text-caption font-bold uppercase tracking-wider rounded-full shadow-lg border border-white/20">{missingCount} Missing</span>
                         }
                         {/* Saves Waste - #F43F5E rose */}
                         {recipe.usesExpiringIngredients && (
-                          <span className="px-3 py-1.5 bg-[#F43F5E] text-white text-[11px] font-bold uppercase tracking-wider rounded-full shadow-lg border border-white/20 flex items-center gap-1">
+                          <span className="px-3 py-1.5 bg-[#F43F5E] text-white text-caption font-bold uppercase tracking-wider rounded-full shadow-lg border border-white/20 flex items-center gap-1">
                             <Leaf size={10} fill="currentColor" /> Saves Waste
                           </span>
                         )}
@@ -525,7 +525,7 @@ export const RecipeGenerator: React.FC = () => {
                     <div className="absolute bottom-4 left-4 right-4">
                         <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-lg">
                             <h3 className="text-white text-[22px] font-bold leading-tight mb-2 text-shadow-sm line-clamp-2">{recipe.title}</h3>
-                            <div className="flex items-center gap-3 text-white/90 text-[13px] font-semibold">
+                            <div className="flex items-center gap-3 text-white/90 text-caption font-semibold">
                                 <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-lg"><Clock size={14} /> {recipe.totalTimeMinutes}m</span>
                                 <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-lg"><Flame size={14} /> {recipe.caloriesApprox} kcal</span>
                                 <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-lg"><Sparkles size={14} /> {recipe.difficulty}</span>
@@ -542,7 +542,7 @@ export const RecipeGenerator: React.FC = () => {
               <button 
                 onClick={handleLoadMore} 
                 disabled={loading} 
-                className="w-full py-4 bg-brand-surface border border-black/5 text-brand-primary font-bold text-[17px] rounded-2xl shadow-sm active:bg-brand-surface-secondary transition flex items-center justify-center gap-2"
+                className="w-full py-4 bg-brand-surface border border-black/5 text-brand-primary font-bold text-h3 rounded-2xl shadow-sm active:bg-brand-surface-secondary transition flex items-center justify-center gap-2"
               >
                 {loading ? <Loader2 className="animate-spin" /> : <ArrowDown size={20} />} Generate More
               </button>

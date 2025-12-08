@@ -54,7 +54,7 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
 
         {/* Items list - scrollable */}
         <div className="px-3 py-2 flex-1 overflow-y-auto">
-            <p className="text-[10px] font-semibold text-brand-text-tertiary uppercase tracking-wider mb-2">Ingredients Used</p>
+            <p className="text-caption font-semibold text-brand-text-tertiary uppercase tracking-wider mb-2">Ingredients Used</p>
             <div className="bg-brand-surface rounded-xl overflow-hidden border border-brand-divider">
                 {matchedItems.length === 0 ? (
                     <div className="p-3 text-center text-brand-text-tertiary text-sm italic">
@@ -78,11 +78,11 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
                                     {selectedIds.includes(pantryItem.id) && <Check size={12} strokeWidth={3} />}
                                 </div>
                                 <div>
-                                    <div className="text-[14px] text-brand-text leading-tight">{pantryItem.name}</div>
-                                    <div className="text-[11px] text-brand-text-tertiary">{pantryItem.quantity} {pantryItem.unit}</div>
+                                    <div className="text-body text-brand-text leading-tight">{pantryItem.name}</div>
+                                    <div className="text-caption text-brand-text-tertiary">{pantryItem.quantity} {pantryItem.unit}</div>
                                 </div>
                             </div>
-                            <div className="text-[13px] font-bold text-brand-secondary">-{amount}</div>
+                            <div className="text-caption font-bold text-brand-secondary">-{amount}</div>
                         </div>
                     ))
                 )}
@@ -93,13 +93,13 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
         <div className="p-3 flex gap-2 bg-brand-background">
             <button 
                 onClick={onCancel} 
-                className="flex-1 py-2.5 bg-brand-surface border border-brand-divider text-brand-text-secondary font-semibold text-[14px] rounded-xl active:bg-brand-surface-secondary transition"
+                className="flex-1 py-2.5 bg-brand-surface border border-brand-divider text-brand-text-secondary font-semibold text-body rounded-xl active:bg-brand-surface-secondary transition"
             >
                 Skip
             </button>
             <button 
                 onClick={handleConfirm} 
-                className="flex-1 py-2.5 bg-brand-primary hover:bg-brand-primary-dark text-black font-semibold text-[14px] rounded-xl active:scale-[0.98] transition"
+                className="flex-1 py-2.5 bg-brand-primary hover:bg-brand-primary-dark text-black font-semibold text-body rounded-xl active:scale-[0.98] transition"
             >
                 Update Pantry
             </button>

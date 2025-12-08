@@ -27,7 +27,7 @@ const NavItem: React.FC<{ to: string; icon: React.ReactNode; label: string; id?:
           
           <div className={`relative z-10 flex flex-col items-center space-y-1 transition-all duration-200 ${navIsActive ? 'text-brand-primary scale-105' : 'text-brand-text-secondary'}`}>
               {icon}
-              <span className={`text-[10px] font-semibold tracking-wide ${navIsActive ? 'opacity-100' : 'opacity-70'}`}>{label}</span>
+              <span className={`text-caption font-semibold tracking-wide ${navIsActive ? 'opacity-100' : 'opacity-70'}`}>{label}</span>
           </div>
         </>
       )}

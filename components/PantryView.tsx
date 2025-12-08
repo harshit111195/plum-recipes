@@ -56,10 +56,10 @@ const PantryItemRow = React.memo(({
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-0.5">
           {/* Text: #FFFFFF (white) */}
-          <h3 className="text-[17px] font-semibold text-brand-text">{item.name}</h3>
+          <h3 className="text-h3 font-semibold text-brand-text">{item.name}</h3>
 {/* Expiry badge: Expired=red | Warning=orange | Normal: #0D0D0D bg, #A0A0A0 text */}
           {isValidDate && daysLeft !== null && (
-            <span className={`text-[11px] font-bold px-1.5 py-0.5 rounded-md uppercase ${
+            <span className={`text-caption font-bold px-1.5 py-0.5 rounded-md uppercase ${
               isExpired ? 'bg-red-100 text-red-600' : daysLeft <= 3 ? 'bg-orange-100 text-orange-600' : 'bg-brand-background text-brand-text-secondary'
             }`}>
               {isExpired ? 'Expired' : `${daysLeft}d left`}
@@ -67,7 +67,7 @@ const PantryItemRow = React.memo(({
           )}
         </div>
         {/* Text Secondary: #A0A0A0 (muted white) */}
-        <p className="text-[15px] text-brand-text-secondary">{item.quantity} {item.unit}</p>
+        <p className="text-body text-brand-text-secondary">{item.quantity} {item.unit}</p>
       </div>
       <div className="flex items-center gap-1">
         {/* Edit button: #0D0D0D bg | Icon: #FFC244 (yellow) | Active: #2A2A2A */}
@@ -499,10 +499,10 @@ export const PantryView: React.FC = () => {
               {/* Icon + Title */}
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-3xl">🥬</span>
-                <h1 className="text-[28px] font-bold text-black tracking-tight">Your Pantry</h1>
+                <h1 className="text-h1 font-bold text-black tracking-tight">Your Pantry</h1>
               </div>
               {/* Stats summary */}
-              <p className="text-black/70 text-[15px] font-medium">
+              <p className="text-black/70 text-body font-medium">
                 {pantry.length} items{expiringCount > 0 && <span className="text-brand-secondary font-semibold"> · {expiringCount} expiring soon</span>}
               </p>
             </div>
@@ -514,7 +514,7 @@ export const PantryView: React.FC = () => {
             <input 
               type="text" 
               placeholder="Search pantry..." 
-              className="w-full bg-white text-black pl-10 pr-4 py-2.5 rounded-xl text-[16px] placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm"
+              className="w-full bg-white text-black pl-10 pr-4 py-2.5 rounded-xl text-h3 placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm"
               value={searchQuery} 
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -584,10 +584,10 @@ export const PantryView: React.FC = () => {
                             {/* Voice text box: #0D0D0D bg | Border: #333333 */}
                             <div className="w-full min-h-[60px] max-h-[120px] overflow-y-auto mb-8 bg-brand-background rounded-xl p-3 border border-brand-divider">
                                 {/* Text: #FFFFFF | Placeholder: #A0A0A0 */}
-                                {voiceText ? <p className="text-brand-text text-lg font-medium leading-relaxed">"{voiceText}"</p> : <p className="text-brand-text-secondary italic">Speak your list (e.g. "Bought 6 eggs, milk, and bread")</p>}
+                                {voiceText ? <p className="text-brand-text text-h2 font-medium leading-relaxed">"{voiceText}"</p> : <p className="text-brand-text-secondary italic">Speak your list (e.g. "Bought 6 eggs, milk, and bread")</p>}
                             </div>
                             {/* Cancel: red text/bg | Done: #7C3AED purple */}
-                            <div className="flex gap-4 w-full"><button onClick={cancelVoice} className="flex-1 py-3 text-red-500 font-bold bg-red-900/20 rounded-xl text-sm active:bg-red-900/30 transition">Cancel</button><button onClick={stopAndProcessVoice} disabled={!voiceText} className="flex-1 py-3 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-xl text-sm shadow-lg shadow-purple-500/30 active:scale-95 transition disabled:opacity-50 disabled:shadow-none">Done</button></div>
+                            <div className="flex gap-4 w-full"><button onClick={cancelVoice} className="flex-1 py-3 text-red-500 font-bold bg-red-900/20 rounded-xl text-body active:bg-red-900/30 transition">Cancel</button><button onClick={stopAndProcessVoice} disabled={!voiceText} className="flex-1 py-3 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-xl text-body shadow-lg shadow-purple-500/30 active:scale-95 transition disabled:opacity-50 disabled:shadow-none">Done</button></div>
                         </div>
                     )}
                     {/* Review snap section */}
@@ -597,18 +597,18 @@ export const PantryView: React.FC = () => {
                             <div className="flex justify-between items-center mb-1"><h3 className="text-[19px] font-bold text-brand-text">Did I get this right?</h3><span className="text-xs text-brand-text-secondary">{snappedItems.length} found</span></div>
                             <div className="max-h-[50vh] overflow-y-auto space-y-3 -mx-2 px-2">
                                 {/* Empty state: #A0A0A0 */}
-                                {snappedItems.length === 0 && <p className="text-center text-sm text-brand-text-secondary py-4">No items detected.</p>}
+                                {snappedItems.length === 0 && <p className="text-center text-body text-brand-text-secondary py-4">No items detected.</p>}
 {/* Snapped items cards: #1A1A1A surface | Border: #333333 */}
                                 {snappedItems.map((item, idx) => (
                                     <div key={idx} className="bg-brand-surface p-3 rounded-xl flex flex-col gap-2 relative shadow-sm border border-brand-divider">
                                             <button onClick={() => removeSnapItem(idx)} className="absolute top-2 right-2 text-gray-400 hover:text-red-500"><X size={16}/></button>
                                             {/* Name input: transparent bg | Text: #FFFFFF */}
-                                            <input className="bg-transparent font-semibold text-[17px] outline-none w-[90%] text-brand-text" value={item.name} onChange={e => handleSnapItemChange(idx, 'name', e.target.value)} placeholder="Name" />
+                                            <input className="bg-transparent font-semibold text-h3 outline-none w-[90%] text-brand-text" value={item.name} onChange={e => handleSnapItemChange(idx, 'name', e.target.value)} placeholder="Name" />
                                             <div className="flex gap-2">
                                                 {/* Inputs: #0D0D0D bg | Text: #FFFFFF */}
-                                                <input className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 w-20 text-sm font-medium" value={item.quantity} onChange={e => handleSnapItemChange(idx, 'quantity', e.target.value)} placeholder="Qty" />
-                                                <select value={item.unit} onChange={e => handleSnapItemChange(idx, 'unit', e.target.value)} className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 text-sm font-medium outline-none">{UNITS.map(u => <option key={u} value={u}>{u}</option>)}</select>
-                                                <select value={getDisplayCategory(item.category)} onChange={e => handleSnapItemChange(idx, 'category', e.target.value)} className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 flex-1 text-sm font-medium outline-none">{PANTRY_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}</select>
+                                                <input className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 w-20 text-body font-medium" value={item.quantity} onChange={e => handleSnapItemChange(idx, 'quantity', e.target.value)} placeholder="Qty" />
+                                                <select value={item.unit} onChange={e => handleSnapItemChange(idx, 'unit', e.target.value)} className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 text-body font-medium outline-none">{UNITS.map(u => <option key={u} value={u}>{u}</option>)}</select>
+                                                <select value={getDisplayCategory(item.category)} onChange={e => handleSnapItemChange(idx, 'category', e.target.value)} className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 flex-1 text-body font-medium outline-none">{PANTRY_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}</select>
                                             </div>
                                     </div>
                                 ))}
@@ -633,15 +633,15 @@ export const PantryView: React.FC = () => {
                             {/* Form fields */}
                             <div className="space-y-5">
                                 {/* Name field: Label #A0A0A0 | Input: #1A1A1A bg, #FFFFFF text, placeholder #6B6B6B, focus border #FFC244/30 */}
-                                <div><label className="block text-[13px] font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Name</label><div className="relative"><input type="text" className="w-full bg-brand-surface p-4 rounded-2xl text-[19px] outline-none text-brand-text font-bold shadow-sm border border-transparent focus:border-brand-primary/30 transition-all placeholder-brand-text-tertiary" placeholder="e.g. Avocado" value={newItemName} onChange={e => setNewItemName(e.target.value)} /></div></div>
+                                <div><label className="block text-caption font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Name</label><div className="relative"><input type="text" className="w-full bg-brand-surface p-4 rounded-2xl text-[19px] outline-none text-brand-text font-bold shadow-sm border border-transparent focus:border-brand-primary/30 transition-all placeholder-brand-text-tertiary" placeholder="e.g. Avocado" value={newItemName} onChange={e => setNewItemName(e.target.value)} /></div></div>
                                 <div className="flex gap-3">
                                     {/* Qty field: Label #A0A0A0 | Input: #1A1A1A bg, #FFFFFF text */}
-                                    <div className="flex-1"><label className="block text-[13px] font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Qty</label><div className="flex gap-2"><input type="text" className="w-full bg-brand-surface p-4 rounded-2xl text-[19px] outline-none text-brand-text font-bold shadow-sm" placeholder="1" value={newItemQty} onChange={e => setNewItemQty(e.target.value)} /><select className="bg-brand-surface text-brand-text p-4 rounded-2xl text-[17px] outline-none font-medium shadow-sm" value={newItemUnit} onChange={e => setNewItemUnit(e.target.value)}>{UNITS.map(u => <option key={u} value={u}>{u}</option>)}</select></div></div>
+                                    <div className="flex-1"><label className="block text-caption font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Qty</label><div className="flex gap-2"><input type="text" className="w-full bg-brand-surface p-4 rounded-2xl text-[19px] outline-none text-brand-text font-bold shadow-sm" placeholder="1" value={newItemQty} onChange={e => setNewItemQty(e.target.value)} /><select className="bg-brand-surface text-brand-text p-4 rounded-2xl text-h3 outline-none font-medium shadow-sm" value={newItemUnit} onChange={e => setNewItemUnit(e.target.value)}>{UNITS.map(u => <option key={u} value={u}>{u}</option>)}</select></div></div>
                                     {/* Category field: Label #A0A0A0 | Select: #1A1A1A bg, #FFFFFF text */}
-                                    <div className="flex-1"><label className="block text-[13px] font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Category</label><select className="w-full bg-brand-surface text-brand-text p-4 rounded-2xl text-[17px] outline-none font-medium appearance-none shadow-sm" value={newItemCategory} onChange={e => setNewItemCategory(e.target.value)}>{PANTRY_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
+                                    <div className="flex-1"><label className="block text-caption font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Category</label><select className="w-full bg-brand-surface text-brand-text p-4 rounded-2xl text-h3 outline-none font-medium appearance-none shadow-sm" value={newItemCategory} onChange={e => setNewItemCategory(e.target.value)}>{PANTRY_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
                                 </div>
                                 {/* Expiry field: Label #A0A0A0 | Input: #1A1A1A bg, #FFFFFF text */}
-                                <div><label className="block text-[13px] font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Expiry Date (Optional)</label><input type="date" className="w-full bg-brand-surface text-brand-text p-4 rounded-2xl text-[17px] outline-none font-medium shadow-sm" value={newItemExpiry} onChange={e => setNewItemExpiry(e.target.value)} /></div>
+                                <div><label className="block text-caption font-bold text-brand-text-secondary uppercase mb-1.5 ml-1">Expiry Date (Optional)</label><input type="date" className="w-full bg-brand-surface text-brand-text p-4 rounded-2xl text-h3 outline-none font-medium shadow-sm" value={newItemExpiry} onChange={e => setNewItemExpiry(e.target.value)} /></div>
                                 {/* Submit button: #7C3AED purple | Hover: #6D28D9 | Text: white */}
                                 <button type="submit" className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-[19px] py-4 rounded-2xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition mt-4">{editingId ? 'Save Changes' : 'Add to Pantry'}</button>
                             </div>
@@ -702,8 +702,8 @@ export const PantryView: React.FC = () => {
                     {/* Category header with emoji */}
                     <div className="flex items-center gap-2 mb-3 ml-1">
                       <span className="text-xl">{CATEGORY_ICONS[rowData.category] || '📦'}</span>
-                      <h2 className="text-[18px] font-bold text-brand-text">{rowData.category}</h2>
-                      <span className="text-[13px] text-brand-text-secondary font-medium">({groupedItems[rowData.category]?.length || 0})</span>
+                      <h2 className="text-h3 font-bold text-brand-text">{rowData.category}</h2>
+                      <span className="text-caption text-brand-text-secondary font-medium">({groupedItems[rowData.category]?.length || 0})</span>
                     </div>
                   </div>
                 );

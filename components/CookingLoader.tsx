@@ -254,12 +254,12 @@ export const CookingLoader: React.FC<Props> = ({ onCancel }) => {
             {onCancel && (
                 <button 
                     onClick={onCancel}
-                    className="text-white/40 hover:text-white/90 text-[11px] font-bold tracking-widest uppercase transition-all active:scale-95"
+                    className="text-white/40 hover:text-white/90 text-caption font-bold tracking-widest uppercase transition-all active:scale-95"
                 >
                     Cancel
                 </button>
             )}
-            <div className="text-white/30 text-[10px] font-bold tracking-[0.2em] uppercase pointer-events-none">
+            <div className="text-white/30 text-caption font-bold tracking-[0.2em] uppercase pointer-events-none">
                 Plum Intelligence
             </div>
         </div>

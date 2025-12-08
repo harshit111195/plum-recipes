@@ -26,7 +26,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({ type = 'banner' }) => {
       if (type === 'card') {
           return (
             <div className="bg-brand-surface/80 backdrop-blur-md rounded-[24px] overflow-hidden p-6 flex flex-col items-center justify-center text-center border border-brand-divider/50 min-h-[300px] relative group shadow-lg">
-                <div className="absolute top-2 right-2 text-[10px] text-brand-text-tertiary bg-brand-surface-secondary px-2 py-0.5 rounded-full">ADVERTISEMENT</div>
+                <div className="absolute top-2 right-2 text-caption text-brand-text-tertiary bg-brand-surface-secondary px-2 py-0.5 rounded-full">ADVERTISEMENT</div>
                 <div className="w-16 h-16 bg-brand-button-primary/20 rounded-full flex items-center justify-center mb-4 text-brand-button-primary"><Sparkles size={32} fill="currentColor" /></div>
                 <h3 className="text-lg font-bold text-brand-text mb-2">Cook without limits.</h3>
                 <p className="text-brand-text-secondary text-sm mb-6 max-w-[200px]">Support the developers and remove these ads forever.</p>
