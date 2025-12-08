@@ -262,7 +262,7 @@ export const ShoppingList: React.FC = () => {
                             key={`suggest-${item.id}`} 
                             className="flex items-center justify-between bg-brand-surface p-2.5 rounded-xl border border-brand-button-primary/20"
                           >
-                            <span className="text-[15px] font-medium text-white">{item.name}</span>
+                            <span className="text-[15px] font-medium text-brand-text">{item.name}</span>
                             <button 
                               onClick={() => addToShoppingList([item.name])} 
                               className="w-7 h-7 flex items-center justify-center bg-brand-button-primary text-white rounded-full hover:bg-brand-button-primary-hover active:scale-90 transition"
