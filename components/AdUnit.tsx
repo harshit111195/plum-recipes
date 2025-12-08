@@ -25,7 +25,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({ type = 'banner' }) => {
 
       if (type === 'card') {
           return (
-            <div className="bg-brand-surface rounded-[24px] overflow-hidden p-6 flex flex-col items-center justify-center text-center border border-brand-divider min-h-[300px] relative group">
+            <div className="bg-brand-surface/80 backdrop-blur-md rounded-[24px] overflow-hidden p-6 flex flex-col items-center justify-center text-center border border-brand-divider/50 min-h-[300px] relative group shadow-lg">
                 <div className="absolute top-2 right-2 text-[10px] text-brand-text-tertiary bg-brand-surface-secondary px-2 py-0.5 rounded-full">ADVERTISEMENT</div>
                 <div className="w-16 h-16 bg-brand-button-primary/20 rounded-full flex items-center justify-center mb-4 text-brand-button-primary"><Sparkles size={32} fill="currentColor" /></div>
                 <h3 className="text-lg font-bold text-brand-text mb-2">Cook without limits.</h3>
@@ -35,7 +35,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({ type = 'banner' }) => {
           );
       }
       return (
-        <div className="bg-brand-surface p-4 rounded-2xl flex items-center justify-between border border-brand-divider relative overflow-hidden">
+        <div className="bg-brand-surface/80 backdrop-blur-md p-4 rounded-2xl flex items-center justify-between border border-brand-divider/50 relative overflow-hidden shadow-lg">
             <span className="absolute top-0 right-2 text-[8px] text-brand-text-tertiary font-bold tracking-widest">AD</span>
             <div><div className="font-bold text-brand-text text-sm">Remove Ads?</div><div className="text-xs text-brand-text-secondary">Join {APP_NAME} Pro today.</div></div>
             <button onClick={handleUpgrade} className="bg-brand-button-primary hover:bg-brand-button-primary-hover text-white text-xs font-bold px-4 py-2 rounded-xl shadow-lg active:scale-95 transition">Upgrade</button>
@@ -62,7 +62,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({ type = 'banner' }) => {
   const slotId = type === 'banner' ? CONFIG.ads.slots.banner : CONFIG.ads.slots.card;
 
   return (
-    <div className={`overflow-hidden flex items-center justify-center bg-brand-surface border border-brand-divider ${type === 'card' ? 'rounded-[24px] min-h-[300px]' : 'rounded-2xl min-h-[90px]'}`}>
+    <div className={`overflow-hidden flex items-center justify-center bg-brand-surface/80 backdrop-blur-md border border-brand-divider/50 shadow-lg ${type === 'card' ? 'rounded-[24px] min-h-[300px]' : 'rounded-2xl min-h-[90px]'}`}>
         <div className="text-center w-full">
             
             <ins className="adsbygoogle"
