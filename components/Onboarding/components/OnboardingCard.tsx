@@ -55,7 +55,7 @@ export const OnboardingCard: React.FC<OnboardingCardProps> = ({
           <div 
             className={`
               flex items-center justify-center rounded-2xl
-              ${isCompact ? 'w-10 h-10 text-xl' : 'w-14 h-14 text-2xl'}
+              ${isCompact ? 'w-10 h-10 text-h1' : 'w-14 h-14 text-2xl'}
             `}
             style={{ 
               backgroundColor: selected ? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,0.05)' 
@@ -67,11 +67,11 @@ export const OnboardingCard: React.FC<OnboardingCardProps> = ({
         
         {/* Text content */}
         <div className="flex-1 min-w-0">
-          <p className={`font-bold text-black ${isCompact ? 'text-base' : 'text-lg'}`}>
+          <p className={`font-bold text-black ${isCompact ? 'text-body' : 'text-h2'}`}>
             {title}
           </p>
           {subtitle && (
-            <p className="text-black/60 text-sm mt-0.5 truncate">
+            <p className="text-black/60 text-body mt-0.5 truncate">
               {subtitle}
             </p>
           )}

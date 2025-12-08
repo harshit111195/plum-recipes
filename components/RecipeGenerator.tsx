@@ -232,7 +232,7 @@ export const RecipeGenerator: React.FC = () => {
                                 {/* Recipe title - #FFFFFF white */}
                                 <h3 className="font-bold text-brand-text line-clamp-1">{r.title}</h3>
                                 {/* Description - #A0A0A0 muted */}
-                                <p className="text-sm text-brand-text-secondary line-clamp-2">{r.description}</p>
+                                <p className="text-body text-brand-text-secondary line-clamp-2">{r.description}</p>
                             </div>
                         </button>
                         {/* Delete button */}
@@ -285,7 +285,7 @@ export const RecipeGenerator: React.FC = () => {
                         </button>
                         <button className="flex-1 min-w-0 text-left" onClick={() => setSelectedRecipe(r)}>
                             <h3 className="font-bold text-brand-text line-clamp-1">{r.title}</h3>
-                            <p className="text-sm text-brand-text-secondary line-clamp-2">{r.description}</p>
+                            <p className="text-body text-brand-text-secondary line-clamp-2">{r.description}</p>
                             <div className="flex items-center gap-2 mt-1">
                                 <span className="inline-block px-2 py-0.5 bg-brand-surface-secondary text-brand-text-tertiary text-caption rounded-md font-medium uppercase">Cooked</span>
                                 {r.lastCooked && <span className="text-caption text-brand-text-tertiary">{new Date(r.lastCooked).toLocaleDateString()}</span>}

@@ -58,7 +58,7 @@ export const AllergiesScreen: React.FC<AllergiesScreenProps> = ({
             <ShieldAlert size={24} className="text-black" />
           </div>
           <div>
-            <p className="text-black/60 text-sm font-medium">Safety First</p>
+            <p className="text-black/60 text-body font-medium">Safety First</p>
             <h2 className="text-2xl font-bold text-black">Any allergies?</h2>
           </div>
         </motion.div>
@@ -67,7 +67,7 @@ export const AllergiesScreen: React.FC<AllergiesScreenProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-black/70 text-base leading-relaxed"
+          className="text-black/70 text-body leading-relaxed"
         >
           We'll make sure these ingredients never sneak into your recipes.
         </motion.p>
@@ -92,7 +92,7 @@ export const AllergiesScreen: React.FC<AllergiesScreenProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="text-black/50 text-sm mt-6 text-center"
+          className="text-black/50 text-body mt-6 text-center"
         >
           Select all that apply, or "None" if you're allergy-free
         </motion.p>

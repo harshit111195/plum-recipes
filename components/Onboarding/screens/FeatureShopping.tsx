@@ -33,7 +33,7 @@ export const FeatureShopping: React.FC<FeatureShoppingProps> = ({ onNext }) => {
             <ShoppingCart size={24} className="text-white" />
           </div>
           <div>
-            <p className="text-white/60 text-sm font-medium">Feature</p>
+            <p className="text-white/60 text-body font-medium">Feature</p>
             <h2 className="text-2xl font-bold text-white">Smart Shopping</h2>
           </div>
         </motion.div>
@@ -42,7 +42,7 @@ export const FeatureShopping: React.FC<FeatureShoppingProps> = ({ onNext }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-white/70 text-base leading-relaxed"
+          className="text-white/70 text-body leading-relaxed"
         >
           Add missing ingredients from recipes with one tap. Check items off as you shop and share lists with family.
         </motion.p>
@@ -62,10 +62,10 @@ export const FeatureShopping: React.FC<FeatureShoppingProps> = ({ onNext }) => {
         >
           {/* List header */}
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-white text-lg">Shopping List</h3>
+            <h3 className="font-bold text-white text-h2">Shopping List</h3>
             <div className="flex items-center gap-2">
               <div 
-                className="px-2 py-1 rounded-full text-xs font-medium"
+                className="px-2 py-1 rounded-full text-caption font-medium"
                 style={{ backgroundColor: 'rgba(255,255,255,0.2)', color: 'white' }}
               >
                 5 items
@@ -126,7 +126,7 @@ export const FeatureShopping: React.FC<FeatureShoppingProps> = ({ onNext }) => {
           className="flex justify-center gap-4 mt-6"
         >
           <div 
-            className="px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2"
+            className="px-4 py-2 rounded-full text-body font-medium flex items-center gap-2"
             style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}
           >
             <Plus size={14} className="text-white" />

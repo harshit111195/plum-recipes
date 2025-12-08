@@ -47,8 +47,8 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
                 <Check size={20} strokeWidth={3} />
             </div>
             <div>
-                <h2 className="text-lg font-bold text-brand-text">Recipe Complete! 🎉</h2>
-                <p className="text-brand-text-secondary text-xs">Update your inventory</p>
+                <h2 className="text-h2 font-bold text-brand-text">Recipe Complete! 🎉</h2>
+                <p className="text-brand-text-secondary text-caption">Update your inventory</p>
             </div>
         </div>
 
@@ -57,7 +57,7 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
             <p className="text-caption font-semibold text-brand-text-tertiary uppercase tracking-wider mb-2">Ingredients Used</p>
             <div className="bg-brand-surface rounded-2xl overflow-hidden border border-brand-divider">
                 {matchedItems.length === 0 ? (
-                    <div className="p-3 text-center text-brand-text-tertiary text-sm italic">
+                    <div className="p-3 text-center text-brand-text-tertiary text-body italic">
                         No pantry items matched.
                     </div>
                 ) : (

@@ -76,7 +76,7 @@ export const HeroScreen: React.FC<HeroScreenProps> = ({ onNext, onSkip }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-xl text-black/80 text-center leading-relaxed max-w-xs"
+          className="text-h1 text-black/80 text-center leading-relaxed max-w-xs"
         >
           The "what's for dinner?" panic stops here.
         </motion.p>
@@ -105,7 +105,7 @@ export const HeroScreen: React.FC<HeroScreenProps> = ({ onNext, onSkip }) => {
         
         <button 
           onClick={onSkip}
-          className="w-full py-3 text-black/60 text-sm font-medium"
+          className="w-full py-3 text-black/60 text-body font-medium"
         >
           Skip setup
         </button>

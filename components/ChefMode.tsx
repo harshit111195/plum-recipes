@@ -23,7 +23,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
     return (
       <div className="fixed inset-0 z-[100] bg-brand-background flex flex-col items-center justify-center p-6 text-center">
         <div className="text-brand-text mb-4">
-          <h2 className="text-xl font-bold mb-2">Invalid Recipe</h2>
+          <h2 className="text-h1 font-bold mb-2">Invalid Recipe</h2>
           <p className="text-brand-text-secondary">This recipe doesn't have cooking instructions.</p>
         </div>
         <button 
@@ -243,7 +243,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
             <div className="flex justify-between items-center">
                 {/* Step badge - Yellow accent */}
                 <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-black uppercase tracking-widest bg-brand-primary px-3 py-1.5 rounded-full shadow-lg shadow-brand-primary/20">
+                    <span className="text-caption font-bold text-black uppercase tracking-widest bg-brand-primary px-3 py-1.5 rounded-full shadow-lg shadow-brand-primary/20">
                         Step {safeActiveStep + 1} of {recipe.instructions.length}
                     </span>
                 </div>
@@ -309,7 +309,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                                 exit={{ opacity: 0, height: 0 }}
                                 className="bg-brand-background border border-brand-primary/30 p-4 rounded-2xl mt-6 overflow-hidden shrink-0 text-left"
                             >
-                                <div className="flex items-center gap-2 text-brand-primary font-bold text-xs uppercase tracking-wider mb-2">
+                                <div className="flex items-center gap-2 text-brand-primary font-bold text-caption uppercase tracking-wider mb-2">
                                     <Sparkles size={12} fill="currentColor" /> Chef's Note
                                 </div>
                                 <p className="text-brand-text-secondary text-body leading-relaxed">{aiTip}</p>
@@ -333,7 +333,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                             <button 
                                 onClick={handleStepAiHelp}
                                 disabled={loadingTip || hasAskedCurrentStep}
-                                className="flex-1 py-3 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-full text-sm flex items-center justify-center gap-2 active:scale-95 transition disabled:opacity-70 shadow-lg shadow-purple-500/30"
+                                className="flex-1 py-3 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-full text-body flex items-center justify-center gap-2 active:scale-95 transition disabled:opacity-70 shadow-lg shadow-purple-500/30"
                             >
                                 {loadingTip ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}
                                 {hasAskedCurrentStep ? 'Explained ✓' : aiTip ? 'Chef\'s Note' : 'Explain this step'}
@@ -362,7 +362,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                 <button 
                     onClick={onFinish}
                     aria-label="Finish cooking"
-                    className="pointer-events-auto px-8 py-4 bg-brand-accent hover:bg-brand-accent text-white font-bold text-lg rounded-full shadow-lg shadow-brand-accent/30 active:scale-95 transition flex items-center gap-2 animate-in zoom-in"
+                    className="pointer-events-auto px-8 py-4 bg-brand-accent hover:bg-brand-accent text-white font-bold text-h2 rounded-full shadow-lg shadow-brand-accent/30 active:scale-95 transition flex items-center gap-2 animate-in zoom-in"
                 >
                     Done Cooking! <Check size={20} />
                 </button>

@@ -538,8 +538,8 @@ export const PantryView: React.FC = () => {
             }`}
           >
             <span className="text-base">📦</span>
-            <span className="text-sm font-medium">All</span>
-            <span className={`text-xs ${selectedCategory === null ? 'text-black/60' : 'text-brand-text-secondary'}`}>({pantry.length})</span>
+            <span className="text-body font-medium">All</span>
+            <span className={`text-caption ${selectedCategory === null ? 'text-black/60' : 'text-brand-text-secondary'}`}>({pantry.length})</span>
           </button>
           {/* Category buttons - use allCategories to keep all visible */}
           {allCategories.map(category => (
@@ -553,8 +553,8 @@ export const PantryView: React.FC = () => {
               }`}
             >
               <span className="text-base">{CATEGORY_ICONS[category] || '📦'}</span>
-              <span className="text-sm font-medium">{category}</span>
-              <span className={`text-xs ${selectedCategory === category ? 'text-black/60' : 'text-brand-text-secondary'}`}>({allGroupedItems[category]?.length || 0})</span>
+              <span className="text-body font-medium">{category}</span>
+              <span className={`text-caption ${selectedCategory === category ? 'text-black/60' : 'text-brand-text-secondary'}`}>({allGroupedItems[category]?.length || 0})</span>
             </button>
           ))}
         </div>
@@ -573,7 +573,7 @@ export const PantryView: React.FC = () => {
                     <button onClick={() => { setIsAdding(false); resetForm(); }} aria-label="Close add item panel" className="absolute top-0 right-4 p-2 bg-brand-surface-secondary rounded-full text-brand-text-secondary active:opacity-70 z-20"><X size={20} /></button>
                     <div className="pb-8">
                     {/* Analyzing overlay: #1A1A1A/80 bg | Loader: #FFC244 (yellow) | Text: #FFFFFF */}
-                    {isAnalyzing && <div className="absolute inset-0 bg-brand-surface rounded-2xl"><Loader2 size={32} className="text-brand-primary animate-spin mb-2" /><span className="text-sm font-semibold text-brand-text">Analyzing vibes...</span></div>}
+                    {isAnalyzing && <div className="absolute inset-0 bg-brand-surface rounded-2xl"><Loader2 size={32} className="text-brand-primary animate-spin mb-2" /><span className="text-body font-semibold text-brand-text">Analyzing vibes...</span></div>}
                     {/* Voice listening overlay */}
 {/* Voice listening overlay: #1A1A1A/95 (surface with opacity) */}
                     {isListening && (
@@ -594,7 +594,7 @@ export const PantryView: React.FC = () => {
                     {isReviewingSnap ? (
                         <div className="space-y-4 pt-2">
                             {/* Title: #FFFFFF | Count: #A0A0A0 */}
-                            <div className="flex justify-between items-center mb-1"><h3 className="text-[19px] font-bold text-brand-text">Did I get this right?</h3><span className="text-xs text-brand-text-secondary">{snappedItems.length} found</span></div>
+                            <div className="flex justify-between items-center mb-1"><h3 className="text-h2 font-bold text-brand-text">Did I get this right?</h3><span className="text-caption text-brand-text-secondary">{snappedItems.length} found</span></div>
                             <div className="max-h-[50vh] overflow-y-auto space-y-3 -mx-2 px-2">
                                 {/* Empty state: #A0A0A0 */}
                                 {snappedItems.length === 0 && <p className="text-center text-body text-brand-text-secondary py-4">No items detected.</p>}
@@ -624,9 +624,9 @@ export const PantryView: React.FC = () => {
                             {!editingId && (
                                 <div className="flex gap-3 mb-8 overflow-x-auto no-scrollbar">
                                     {/* Snap button: #1A1A1A bg | Icon: #FFC244 yellow | Active: #0D0D0D | Border: #333333 */}
-                                    <button type="button" onClick={handleCameraClick} className="flex-1 min-w-[100px] py-4 bg-brand-surface text-brand-primary rounded-2xl font-bold flex flex-col items-center justify-center gap-1.5 active:bg-brand-background shadow-sm border border-brand-divider"><Camera size={26} /> <span className="text-xs uppercase tracking-wide">Snap</span></button>
+                                    <button type="button" onClick={handleCameraClick} className="flex-1 min-w-[100px] py-4 bg-brand-surface text-brand-primary rounded-2xl font-bold flex flex-col items-center justify-center gap-1.5 active:bg-brand-background shadow-sm border border-brand-divider"><Camera size={26} /> <span className="text-caption uppercase tracking-wide">Snap</span></button>
                                     {/* Voice button: #1A1A1A bg | Icon: #FFC244 yellow | Active: #0D0D0D | Border: #333333 */}
-                                    <button type="button" onClick={startListening} className="flex-1 min-w-[100px] py-4 bg-brand-surface text-brand-primary rounded-2xl font-bold flex flex-col items-center justify-center gap-1.5 active:bg-brand-background shadow-sm border border-brand-divider"><Mic size={26} /> <span className="text-xs uppercase tracking-wide">Voice</span></button>
+                                    <button type="button" onClick={startListening} className="flex-1 min-w-[100px] py-4 bg-brand-surface text-brand-primary rounded-2xl font-bold flex flex-col items-center justify-center gap-1.5 active:bg-brand-background shadow-sm border border-brand-divider"><Mic size={26} /> <span className="text-caption uppercase tracking-wide">Voice</span></button>
                                     <input type="file" ref={fileInputRef} accept="image/jpeg,image/png,image/webp,image/*" capture="environment" className="hidden" onChange={handleFileChange} />
                                 </div>
                             )}
@@ -754,7 +754,7 @@ export const PantryView: React.FC = () => {
               <ScanBarcode size={32} className="text-brand-text-secondary" />
             </div>
             {/* Title: #FFFFFF | Subtitle: #A0A0A0 */}
-            <h3 className="text-xl font-bold text-brand-text">This pantry is giving empty.</h3>
+            <h3 className="text-h1 font-bold text-brand-text">This pantry is giving empty.</h3>
             <p className="text-brand-text-secondary">Tap + to fix that.</p>
           </div>
         </div>

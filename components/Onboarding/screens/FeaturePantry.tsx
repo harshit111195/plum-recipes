@@ -32,7 +32,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
             <Camera size={24} className="text-white" />
           </div>
           <div>
-            <p className="text-white/60 text-sm font-medium">Feature</p>
+            <p className="text-white/60 text-body font-medium">Feature</p>
             <h2 className="text-2xl font-bold text-white">Snap & Add</h2>
           </div>
         </motion.div>
@@ -41,7 +41,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-white/70 text-base leading-relaxed"
+          className="text-white/70 text-body leading-relaxed"
         >
           Point your camera at groceries or speak out loud. We'll add everything to your pantry instantly.
         </motion.p>
@@ -86,7 +86,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
                   style={{ backgroundColor: 'rgba(255,255,255,0.9)' }}
                 >
                   <span>{item.emoji}</span>
-                  <span className="text-sm font-medium" style={{ color: COLORS.text }}>
+                  <span className="text-body font-medium" style={{ color: COLORS.text }}>
                     {item.name}
                   </span>
                   <Plus size={12} style={{ color: COLORS.primary }} />
@@ -110,7 +110,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
             >
               <Camera size={24} className="text-white" />
             </div>
-            <span className="text-white/60 text-xs">Camera</span>
+            <span className="text-white/60 text-caption">Camera</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div 
@@ -119,7 +119,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
             >
               <Mic size={24} className="text-white" />
             </div>
-            <span className="text-white/60 text-xs">Voice</span>
+            <span className="text-white/60 text-caption">Voice</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div 
@@ -128,7 +128,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
             >
               <Plus size={24} className="text-white" />
             </div>
-            <span className="text-white/60 text-xs">Manual</span>
+            <span className="text-white/60 text-caption">Manual</span>
           </div>
         </motion.div>
       </div>

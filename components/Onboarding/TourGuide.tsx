@@ -95,8 +95,8 @@ export const TourGuide: React.FC = () => {
                 className="bg-brand-surface p-5 rounded-2xl shadow-xl max-w-sm w-full relative"
             >
                 <button onClick={endTour} className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"><X size={16} /></button>
-                <h3 className="font-bold text-lg text-brand-text mb-2">{currentTourStep.title}</h3>
-                <p className="text-brand-text-secondary text-sm mb-6 leading-relaxed">{currentTourStep.content}</p>
+                <h3 className="font-bold text-h2 text-brand-text mb-2">{currentTourStep.title}</h3>
+                <p className="text-brand-text-secondary text-body mb-6 leading-relaxed">{currentTourStep.content}</p>
                 <div className="flex justify-between items-center">
                     <div className="flex gap-1">
                         {tourSteps.map((_, i) => (
@@ -105,7 +105,7 @@ export const TourGuide: React.FC = () => {
                     </div>
                     <button 
                         onClick={nextStep}
-                        className="bg-brand-text text-white px-5 py-2.5 rounded-2xl text-sm font-bold active:scale-95 transition"
+                        className="bg-brand-text text-white px-5 py-2.5 rounded-2xl text-body font-bold active:scale-95 transition"
                     >
                         {currentStep === tourSteps.length - 1 ? 'Finish' : 'Next'}
                     </button>

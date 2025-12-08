@@ -29,7 +29,7 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
       
       {/* Step indicator text */}
       <div className="flex justify-between items-center mt-2">
-        <span className="text-white/60 text-xs font-medium">
+        <span className="text-white/60 text-caption font-medium">
           {currentStep + 1} of {totalSteps}
         </span>
       </div>

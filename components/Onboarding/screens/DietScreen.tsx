@@ -65,7 +65,7 @@ export const DietScreen: React.FC<DietScreenProps> = ({
             <UtensilsCrossed size={24} className="text-black" />
           </div>
           <div>
-            <p className="text-black/60 text-sm font-medium">Personalize</p>
+            <p className="text-black/60 text-body font-medium">Personalize</p>
             <h2 className="text-2xl font-bold text-black">What's your vibe?</h2>
           </div>
         </motion.div>
@@ -74,7 +74,7 @@ export const DietScreen: React.FC<DietScreenProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-black/70 text-base leading-relaxed"
+          className="text-black/70 text-body leading-relaxed"
         >
           Pick your eating style. We'll filter out recipes that don't match.
         </motion.p>

@@ -266,7 +266,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                             className="flex items-center gap-2 text-brand-text-secondary hover:text-white mb-6 transition-colors"
                         >
                             <ArrowLeft size={18} />
-                            <span className="text-sm font-medium">Back to Sign In</span>
+                            <span className="text-body font-medium">Back to Sign In</span>
                         </button>
                     )}
 
@@ -377,8 +377,8 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                             <div className="w-16 h-16 bg-brand-surface rounded-full flex items-center justify-center mx-auto mb-4">
                                                 <KeyRound size={28} className="text-brand-primary" />
                                             </div>
-                                            <h2 className="text-xl font-bold text-white mb-2">Reset Password</h2>
-                                            <p className="text-brand-text-secondary text-sm">
+                                            <h2 className="text-h1 font-bold text-white mb-2">Reset Password</h2>
+                                            <p className="text-brand-text-secondary text-body">
                                                 Enter your email and we'll send you a link to reset your password.
                                             </p>
                                         </div>
@@ -423,7 +423,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                         <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                                             <CheckCircle2 size={40} className="text-green-400" />
                                         </div>
-                                        <h2 className="text-xl font-bold text-white mb-3">Check Your Email</h2>
+                                        <h2 className="text-h1 font-bold text-white mb-3">Check Your Email</h2>
                                         <p className="text-brand-text-secondary text-body mb-6 leading-relaxed">
                                             We've sent a password reset link to<br />
                                             <span className="text-brand-primary font-medium">{email}</span>
@@ -461,8 +461,8 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     <div className="w-16 h-16 bg-brand-surface rounded-full flex items-center justify-center mx-auto mb-4">
                                         <Lock size={28} className="text-brand-primary" />
                                     </div>
-                                    <h2 className="text-xl font-bold text-white mb-2">Create New Password</h2>
-                                    <p className="text-brand-text-secondary text-sm">
+                                    <h2 className="text-h1 font-bold text-white mb-2">Create New Password</h2>
+                                    <p className="text-brand-text-secondary text-body">
                                         Your new password must be at least 6 characters.
                                     </p>
                                 </div>
@@ -536,7 +536,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
             {/* Footer (only for login/signup views) */}
             {(view === 'login' || view === 'signup') && (
                 <div className="pb-safe px-6 py-4 text-center">
-                    <p className="text-brand-text-tertiary text-xs">
+                    <p className="text-brand-text-tertiary text-caption">
                         {view === 'login' ? (
                             <>New to {APP_NAME}? <button onClick={() => { setView('signup'); resetForm(); }} className="text-brand-primary font-bold">Create an account</button></>
                         ) : (

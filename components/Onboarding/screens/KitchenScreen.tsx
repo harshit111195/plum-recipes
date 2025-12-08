@@ -63,7 +63,7 @@ export const KitchenScreen: React.FC<KitchenScreenProps> = ({
             <ChefHat size={24} className="text-white" />
           </div>
           <div>
-            <p className="text-white/60 text-sm font-medium">Almost Done</p>
+            <p className="text-white/60 text-body font-medium">Almost Done</p>
             <h2 className="text-2xl font-bold text-white">Your Kitchen</h2>
           </div>
         </motion.div>
@@ -76,7 +76,7 @@ export const KitchenScreen: React.FC<KitchenScreenProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <p className="text-white/70 text-sm font-medium mb-3">
+          <p className="text-white/70 text-body font-medium mb-3">
             What appliances do you have?
           </p>
           <div className="grid grid-cols-4 gap-2">
@@ -99,7 +99,7 @@ export const KitchenScreen: React.FC<KitchenScreenProps> = ({
                   }}
                 >
                   <span className="text-2xl mb-1">{appliance.emoji}</span>
-                  <span className="text-white text-xs font-medium text-center leading-tight">
+                  <span className="text-white text-caption font-medium text-center leading-tight">
                     {appliance.label}
                   </span>
                   {isSelected && (
@@ -123,7 +123,7 @@ export const KitchenScreen: React.FC<KitchenScreenProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-white/70 text-sm font-medium mb-3 flex items-center gap-2">
+          <p className="text-white/70 text-body font-medium mb-3 flex items-center gap-2">
             <Users size={16} />
             How many are you cooking for?
           </p>
@@ -148,7 +148,7 @@ export const KitchenScreen: React.FC<KitchenScreenProps> = ({
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="text-2xl mb-1">{size.emoji}</span>
-                  <span className="text-white text-xs font-medium text-center">
+                  <span className="text-white text-caption font-medium text-center">
                     {size.label}
                   </span>
                 </motion.button>

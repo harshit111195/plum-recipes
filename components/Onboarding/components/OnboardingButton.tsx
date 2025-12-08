@@ -25,7 +25,7 @@ export const OnboardingButton: React.FC<OnboardingButtonProps> = ({
     }
   };
 
-  const baseStyles = "w-full py-4 px-6 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 transition-all";
+  const baseStyles = "w-full py-4 px-6 rounded-2xl font-bold text-h2 flex items-center justify-center gap-2 transition-all";
   
   const variants = {
     primary: {

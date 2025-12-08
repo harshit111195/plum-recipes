@@ -47,7 +47,7 @@ export const ChipSelect: React.FC<ChipSelectProps> = ({
             key={option.id}
             onClick={() => handleSelect(option.id)}
             className={`
-              px-4 py-2.5 rounded-full font-medium text-sm
+              px-4 py-2.5 rounded-full font-medium text-body
               flex items-center gap-2 transition-all
               ${isSelected 
                 ? 'ring-2 ring-black/30' 
@@ -61,7 +61,7 @@ export const ChipSelect: React.FC<ChipSelectProps> = ({
             whileTap={{ scale: 0.95 }}
             layout
           >
-            {option.emoji && <span className="text-base">{option.emoji}</span>}
+            {option.emoji && <span className="text-body">{option.emoji}</span>}
             <span>{option.label}</span>
             {isSelected && (
               <motion.span

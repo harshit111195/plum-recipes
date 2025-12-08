@@ -74,7 +74,7 @@ export class ErrorBoundary extends Component<Props, State> {
             </button>
           </div>
           
-          <p className="mt-8 text-xs text-brand-text-secondary font-mono bg-gray-100 p-2 rounded-2xl max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
+          <p className="mt-8 text-caption text-brand-text-secondary font-mono bg-gray-100 p-2 rounded-2xl max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
               Error: {this.state.error?.message}
           </p>
         </div>

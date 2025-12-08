@@ -105,7 +105,7 @@ export const SplashScreen: React.FC = () => {
             duration: 0.6,
             ease: "easeOut"
           }}
-          className="text-white/95 text-base font-medium tracking-wide text-center px-8 drop-shadow-md max-w-xs"
+          className="text-white/95 text-body font-medium tracking-wide text-center px-8 drop-shadow-md max-w-xs"
         >
           {APP_TAGLINE}
         </MotionP>
