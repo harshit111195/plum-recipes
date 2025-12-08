@@ -206,7 +206,7 @@ const RecipeCarousel: React.FC<{
               {/* Recipe title */}
               <h3 className="text-h3 text-white mb-1 drop-shadow-lg line-clamp-2 text-left">
                 {recipe.title}
-              </h2>
+              </h3>
               
               {/* CTA for inspiration cards */}
               {isInspiration && (
