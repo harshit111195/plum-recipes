@@ -534,7 +534,7 @@ export const PantryView: React.FC = () => {
             className={`flex items-center gap-1.5 px-3 py-2 rounded-full border shrink-0 transition-all active:scale-95 ${
               selectedCategory === null 
                 ? 'bg-brand-primary border-brand-primary text-black' 
-                : 'bg-brand-surface border-brand-divider text-white'
+                : 'bg-brand-surface border-brand-divider text-brand-text'
             }`}
           >
             <span className="text-base">📦</span>
@@ -549,7 +549,7 @@ export const PantryView: React.FC = () => {
               className={`flex items-center gap-1.5 px-3 py-2 rounded-full border shrink-0 transition-all active:scale-95 ${
                 selectedCategory === category 
                   ? 'bg-brand-primary border-brand-primary text-black' 
-                  : 'bg-brand-surface border-brand-divider text-white'
+                  : 'bg-brand-surface border-brand-divider text-brand-text'
               }`}
             >
               <span className="text-base">{CATEGORY_ICONS[category] || '📦'}</span>
