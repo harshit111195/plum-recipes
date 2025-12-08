@@ -28,7 +28,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({ type = 'banner' }) => {
             <div className="bg-brand-surface rounded-[28px] overflow-hidden p-6 flex flex-col items-center justify-center text-center border border-brand-divider min-h-[300px] relative group">
                 <div className="absolute top-2 right-2 text-[10px] text-brand-text-tertiary bg-brand-surface-secondary px-2 py-0.5 rounded-full">ADVERTISEMENT</div>
                 <div className="w-16 h-16 bg-brand-button-primary/20 rounded-full flex items-center justify-center mb-4 text-brand-button-primary"><Sparkles size={32} fill="currentColor" /></div>
-                <h3 className="text-lg font-bold text-white mb-2">Cook without limits.</h3>
+                <h3 className="text-lg font-bold text-brand-text mb-2">Cook without limits.</h3>
                 <p className="text-brand-text-secondary text-sm mb-6 max-w-[200px]">Support the developers and remove these ads forever.</p>
                 <button onClick={handleUpgrade} className="bg-brand-button-primary hover:bg-brand-button-primary-hover text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg active:scale-95 transition">Upgrade to Pro</button>
             </div>
@@ -37,7 +37,7 @@ export const AdUnit: React.FC<AdUnitProps> = ({ type = 'banner' }) => {
       return (
         <div className="bg-brand-surface p-4 rounded-[22px] flex items-center justify-between border border-brand-divider relative overflow-hidden">
             <span className="absolute top-0 right-2 text-[8px] text-brand-text-tertiary font-bold tracking-widest">AD</span>
-            <div><div className="font-bold text-white text-sm">Remove Ads?</div><div className="text-xs text-brand-text-secondary">Join {APP_NAME} Pro today.</div></div>
+            <div><div className="font-bold text-brand-text text-sm">Remove Ads?</div><div className="text-xs text-brand-text-secondary">Join {APP_NAME} Pro today.</div></div>
             <button onClick={handleUpgrade} className="bg-brand-button-primary hover:bg-brand-button-primary-hover text-white text-xs font-bold px-4 py-2 rounded-xl shadow-lg active:scale-95 transition">Upgrade</button>
         </div>
       );
