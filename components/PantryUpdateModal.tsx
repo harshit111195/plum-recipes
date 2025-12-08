@@ -47,7 +47,7 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
                 <Check size={20} strokeWidth={3} />
             </div>
             <div>
-                <h2 className="text-lg font-bold text-white">Recipe Complete! 🎉</h2>
+                <h2 className="text-lg font-bold text-brand-text">Recipe Complete! 🎉</h2>
                 <p className="text-brand-text-secondary text-xs">Update your inventory</p>
             </div>
         </div>
@@ -78,7 +78,7 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
                                     {selectedIds.includes(pantryItem.id) && <Check size={12} strokeWidth={3} />}
                                 </div>
                                 <div>
-                                    <div className="text-[14px] text-white leading-tight">{pantryItem.name}</div>
+                                    <div className="text-[14px] text-brand-text leading-tight">{pantryItem.name}</div>
                                     <div className="text-[11px] text-brand-text-tertiary">{pantryItem.quantity} {pantryItem.unit}</div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
             </button>
             <button 
                 onClick={handleConfirm} 
-                className="flex-1 py-2.5 bg-brand-primary hover:bg-[#E5AD3D] text-black font-semibold text-[14px] rounded-xl active:scale-[0.98] transition"
+                className="flex-1 py-2.5 bg-brand-primary hover:bg-brand-primary-dark text-black font-semibold text-[14px] rounded-xl active:scale-[0.98] transition"
             >
                 Update Pantry
             </button>
