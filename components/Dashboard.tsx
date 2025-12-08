@@ -259,7 +259,7 @@ const PantryStatsGrid: React.FC<{ stats: { emoji: string; count: number; label: 
       <button
         key={index}
         onClick={stat.onClick}
-        className={`${stat.bg} rounded-2xl p-3 flex items-center gap-3 active:scale-[0.98] transition`}
+        className={`${stat.bg}/85 backdrop-blur-sm rounded-2xl p-3 flex items-center gap-3 active:scale-[0.98] transition border border-white/10 shadow-lg`}
       >
         <span className="text-2xl">{stat.emoji}</span>
         <div className="text-left">
@@ -598,10 +598,10 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
               ) : (
                 <PantryStatsGrid 
                   stats={[
-                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", bg: "bg-brand-primary", onClick: () => setShowExpiring(true) },
-                    { emoji: "📉", count: lowStockItems.length, label: "Low on stock", bg: "bg-brand-button-primary", onClick: () => setShowLowStock(true) },
-                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", bg: "bg-brand-secondary", onClick: () => setShowOutOfStock(true) },
-                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", bg: "bg-brand-accent", onClick: () => navigate('/shopping') },
+                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", bg: "bg-brand-primary/85", onClick: () => setShowExpiring(true) },
+                    { emoji: "📉", count: lowStockItems.length, label: "Low on stock", bg: "bg-brand-button-primary/85", onClick: () => setShowLowStock(true) },
+                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", bg: "bg-brand-secondary/85", onClick: () => setShowOutOfStock(true) },
+                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", bg: "bg-brand-accent/85", onClick: () => navigate('/shopping') },
                   ]}
                 />
               )}
