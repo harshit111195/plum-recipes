@@ -324,14 +324,14 @@ export const RecipeGenerator: React.FC = () => {
 
           {/* ========== FILTERS CARD (Original Position) ========== */}
           <div className="px-4 pt-2 mb-4 relative z-10">
-            <div className="bg-brand-surface rounded-[24px] p-2 shadow-sm border border-black/5">
+            <div className="bg-brand-surface rounded-2xl p-2 shadow-sm border border-black/5">
                 {/* Meal Type Tabs */}
                 <div className="flex gap-2 p-1 overflow-x-auto no-scrollbar">
                     {['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Dessert'].map(type => (
                         <button 
                           key={type} 
                           onClick={() => setMealType(type)} 
-                          className={`flex-1 py-2.5 px-1 rounded-[18px] text-[13px] font-bold transition-all whitespace-nowrap ${
+                          className={`flex-1 py-2.5 px-1 rounded-2xl text-[13px] font-bold transition-all whitespace-nowrap ${
                             mealType === type 
                               ? 'bg-brand-primary text-brand-background shadow-lg' 
                               : 'bg-transparent text-brand-text-secondary hover:bg-brand-background'
@@ -475,7 +475,7 @@ export const RecipeGenerator: React.FC = () => {
               id="tour-cook-btn"
               onClick={() => handleGenerate(false)}
               disabled={loading}
-              className="w-full mt-4 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-[17px] py-4 rounded-[20px] shadow-lg shadow-purple-500/30 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:active:scale-100"
+              className="w-full mt-4 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-[17px] py-4 rounded-2xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:active:scale-100"
             >
                 {loading ? <span className="flex items-center gap-2"><Loader2 className="animate-spin" /> Thinking...</span> : "Let's Cook"}
             </button>
@@ -495,7 +495,7 @@ export const RecipeGenerator: React.FC = () => {
                 {/* Recipe card - #1A1A1A surface with image */}
                 <button 
                   onClick={() => setSelectedRecipe(recipe)} 
-                  className="group relative h-[320px] w-full text-left rounded-[28px] overflow-hidden bg-brand-surface shadow-xl shadow-black/20 cursor-pointer active:scale-[0.98] transition-all focus:outline-none focus:ring-4 focus:ring-brand-primary/20"
+                  className="group relative h-[320px] w-full text-left rounded-[24px] overflow-hidden bg-brand-surface shadow-xl shadow-black/20 cursor-pointer active:scale-[0.98] transition-all focus:outline-none focus:ring-4 focus:ring-brand-primary/20"
                 >
                     <img 
                         src={getOptimizedImageUrl(recipe.generatedImage, 600) || `https://picsum.photos/seed/${recipe.id}/600/400`} 
@@ -523,7 +523,7 @@ export const RecipeGenerator: React.FC = () => {
                     
                     {/* Recipe info overlay */}
                     <div className="absolute bottom-4 left-4 right-4">
-                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-[20px] shadow-lg">
+                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-lg">
                             <h3 className="text-white text-[22px] font-bold leading-tight mb-2 text-shadow-sm line-clamp-2">{recipe.title}</h3>
                             <div className="flex items-center gap-3 text-white/90 text-[13px] font-semibold">
                                 <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-lg"><Clock size={14} /> {recipe.totalTimeMinutes}m</span>
@@ -542,7 +542,7 @@ export const RecipeGenerator: React.FC = () => {
               <button 
                 onClick={handleLoadMore} 
                 disabled={loading} 
-                className="w-full py-4 bg-brand-surface border border-black/5 text-brand-primary font-bold text-[17px] rounded-[20px] shadow-sm active:bg-brand-surface-secondary transition flex items-center justify-center gap-2"
+                className="w-full py-4 bg-brand-surface border border-black/5 text-brand-primary font-bold text-[17px] rounded-2xl shadow-sm active:bg-brand-surface-secondary transition flex items-center justify-center gap-2"
               >
                 {loading ? <Loader2 className="animate-spin" /> : <ArrowDown size={20} />} Generate More
               </button>

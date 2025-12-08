@@ -46,7 +46,7 @@ const Section: React.FC<{ title: string; children: React.ReactNode; icon?: React
             </div>
             {hint && <span className="text-[11px] text-brand-text-tertiary">{hint}</span>}
         </div>
-        <div className="bg-brand-surface rounded-[20px] overflow-hidden shadow-sm border border-brand-divider">{children}</div>
+        <div className="bg-brand-surface rounded-2xl overflow-hidden shadow-sm border border-brand-divider">{children}</div>
     </div>
 );
 
@@ -231,7 +231,7 @@ export const Settings: React.FC = () => {
         <GroupHeader title="Profile" emoji="👤" />
 
         {/* Account Hero Card */}
-        <div className="mb-5 bg-brand-surface rounded-[20px] overflow-hidden border border-brand-divider">
+        <div className="mb-5 bg-brand-surface rounded-2xl overflow-hidden border border-brand-divider">
           <div className="p-5">
             <div className="flex items-center gap-4 mb-5">
               {/* Large Avatar */}
@@ -580,7 +580,7 @@ export const Settings: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-brand-surface w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl relative border border-brand-divider"
+              className="bg-brand-surface w-full max-w-sm rounded-[24px] overflow-hidden shadow-2xl relative border border-brand-divider"
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               {/* Close Button */}

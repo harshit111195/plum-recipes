@@ -285,7 +285,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                     className={`
                         absolute left-4 right-4 mx-auto
                         shadow-2xl flex flex-col overflow-hidden
-                        bg-brand-surface/95 backdrop-blur-xl border border-brand-divider rounded-[32px]
+                        bg-brand-surface/95 backdrop-blur-xl border border-brand-divider rounded-[24px]
                         transform-gpu will-change-transform
                         ${aiTip ? 'h-[85%]' : 'h-[75%] max-h-[600px]'} 
                     `}

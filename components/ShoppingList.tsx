@@ -233,7 +233,7 @@ export const ShoppingList: React.FC = () => {
         {/* ========== SMART RESTOCK SUGGESTIONS (Collapsible) ========== */}
         {/* Uses brand purple theme */}
         {restockSuggestions.length > 0 && (
-            <div className="bg-brand-button-primary/30 rounded-[16px] border border-brand-button-primary/50 overflow-hidden">
+            <div className="bg-brand-button-primary/30 rounded-2xl border border-brand-button-primary/50 overflow-hidden">
                 <button 
                   onClick={() => setShowRestock(!showRestock)}
                   className="w-full flex items-center justify-between p-3 active:bg-brand-button-primary/5 transition"
@@ -289,7 +289,7 @@ export const ShoppingList: React.FC = () => {
               <div 
                 key={item.id} 
                 /* Item card - #1A1A1A surface */
-                className="group bg-brand-surface rounded-[18px] p-4 shadow-sm border border-black/5 flex items-center justify-between" 
+                className="group bg-brand-surface rounded-2xl p-4 shadow-sm border border-black/5 flex items-center justify-between" 
                 role="listitem"
               >
                 <button 
@@ -340,7 +340,7 @@ export const ShoppingList: React.FC = () => {
                 </div>
                 {/* Completed items container - #1A1A1A/50 semi-transparent */}
                 {showCompleted && (
-                  <div className="bg-brand-surface/50 rounded-[20px] overflow-hidden border border-black/5 backdrop-blur-sm">
+                  <div className="bg-brand-surface/50 rounded-2xl overflow-hidden border border-black/5 backdrop-blur-sm">
                     <AnimatePresence initial={false}>
                       {completedItems.map((item, idx) => (
                         <MotionDiv 

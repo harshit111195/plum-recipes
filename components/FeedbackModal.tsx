@@ -87,7 +87,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-brand-surface w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl relative border border-brand-divider"
+          className="bg-brand-surface w-full max-w-sm rounded-[24px] overflow-hidden shadow-2xl relative border border-brand-divider"
           onClick={(e: React.MouseEvent) => e.stopPropagation()}
         >
           {/* Close Button: #0D0D0D bg | #A0A0A0 icon */}

@@ -39,7 +39,7 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
 
   return (
     <div className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
-      <div className="bg-brand-background w-full max-w-md rounded-t-[20px] sm:rounded-[20px] overflow-hidden animate-in slide-in-from-bottom-full duration-300 shadow-2xl border border-brand-divider max-h-[85vh] flex flex-col">
+      <div className="bg-brand-background w-full max-w-md rounded-t-[20px] sm:rounded-2xl overflow-hidden animate-in slide-in-from-bottom-full duration-300 shadow-2xl border border-brand-divider max-h-[85vh] flex flex-col">
         
         {/* Header - compact */}
         <div className="p-4 bg-brand-surface flex items-center gap-3">
