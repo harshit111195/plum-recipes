@@ -262,7 +262,7 @@ const PantryStatsGrid: React.FC<{ stats: { emoji: string; count: number; label: 
         className={`${stat.bg} rounded-2xl p-3 flex items-center gap-3 active:scale-[0.98] transition shadow-md relative overflow-hidden`}
       >
         {/* Subtle dark overlay for better hierarchy */}
-        <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
         <span className="text-2xl relative z-10">{stat.emoji}</span>
         <div className="text-left relative z-10">
           <span className="text-white font-bold text-base block">{stat.count}</span>
