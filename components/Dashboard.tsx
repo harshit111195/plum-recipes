@@ -253,21 +253,19 @@ const RecipeCarousel: React.FC<{
 };
 
 // Compact Stats Strip Component
-// Pantry stats grid - compact 2x2 with emojis and brand colors
-const PantryStatsGrid: React.FC<{ stats: { emoji: string; count: number; label: string; bg: string; onClick: () => void }[] }> = ({ stats }) => (
+// Pantry stats grid - glassmorphism style for subtle hierarchy
+const PantryStatsGrid: React.FC<{ stats: { emoji: string; count: number; label: string; onClick: () => void }[] }> = ({ stats }) => (
   <div className="grid grid-cols-2 gap-3">
     {stats.map((stat, index) => (
       <button
         key={index}
         onClick={stat.onClick}
-        className={`${stat.bg} rounded-2xl p-3 flex items-center gap-3 active:scale-[0.98] transition shadow-md relative overflow-hidden`}
+        className="bg-brand-surface/80 backdrop-blur-md rounded-2xl p-3 flex items-center gap-3 active:scale-[0.98] transition shadow-lg border border-brand-divider/50"
       >
-        {/* Subtle dark overlay for better hierarchy */}
-        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-        <span className="text-2xl relative z-10">{stat.emoji}</span>
-        <div className="text-left relative z-10">
-          <span className="text-white font-bold text-base block">{stat.count}</span>
-          <span className="text-white/90 text-[15px] font-semibold">{stat.label}</span>
+        <span className="text-2xl">{stat.emoji}</span>
+        <div className="text-left">
+          <span className="text-brand-text font-bold text-base block">{stat.count}</span>
+          <span className="text-brand-text-secondary text-[13px] font-medium">{stat.label}</span>
         </div>
       </button>
     ))}
@@ -623,10 +621,10 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
               ) : (
                 <PantryStatsGrid 
                   stats={[
-                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", bg: "bg-brand-primary", onClick: () => setShowExpiring(true) },
-                    { emoji: "📉", count: lowStockItems.length, label: "Low on stock", bg: "bg-brand-button-primary", onClick: () => setShowLowStock(true) },
-                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", bg: "bg-brand-secondary", onClick: () => setShowOutOfStock(true) },
-                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", bg: "bg-brand-accent", onClick: () => navigate('/shopping') },
+                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", onClick: () => setShowExpiring(true) },
+                    { emoji: "📉", count: lowStockItems.length, label: "Low stock", onClick: () => setShowLowStock(true) },
+                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", onClick: () => setShowOutOfStock(true) },
+                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", onClick: () => navigate('/shopping') },
                   ]}
                 />
               )}
