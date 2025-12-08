@@ -432,8 +432,8 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
     >
         {/* Large colorful emoji icon */}
         <span className="text-[42px] group-active:scale-90 transition-transform drop-shadow-lg">{emoji}</span>
-        {/* White label */}
-        <span className="text-[12px] font-semibold text-white">{label}</span>
+        {/* Theme-aware label */}
+        <span className="text-[12px] font-semibold text-brand-text">{label}</span>
     </button>
   );
 
