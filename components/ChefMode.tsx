@@ -214,8 +214,8 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
             className="w-full h-full object-cover opacity-40 blur-md scale-105"
             alt=""
          />
-         {/* Theme-aware gradient overlay */}
-         <div className="absolute inset-0 bg-gradient-to-b from-brand-background/60 via-brand-background/40 to-brand-background/80" />
+         {/* Theme-aware gradient overlay - darker in light mode for better contrast */}
+         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 dark:from-black/60 dark:via-black/40 dark:to-black/80" />
       </MotionDiv>
 
       {/* Main Content Fade-In Wrapper */}
