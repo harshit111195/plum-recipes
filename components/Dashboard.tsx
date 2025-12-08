@@ -204,7 +204,7 @@ const RecipeCarousel: React.FC<{
               )}
               
               {/* Recipe title */}
-              <h2 className="text-white text-[18px] font-bold leading-tight mb-1 drop-shadow-lg line-clamp-2 text-left">
+              <h3 className="text-h3 text-white mb-1 drop-shadow-lg line-clamp-2 text-left">
                 {recipe.title}
               </h2>
               
@@ -264,8 +264,8 @@ const PantryStatsGrid: React.FC<{ stats: { emoji: string; count: number; label: 
       >
         <span className="text-2xl">{stat.emoji}</span>
         <div className="text-left">
-          <span className="text-brand-text font-bold text-base block">{stat.count}</span>
-          <span className="text-brand-text-secondary text-[13px] font-medium">{stat.label}</span>
+          <span className="text-h2 text-brand-text block">{stat.count}</span>
+          <span className="text-caption text-brand-text-secondary">{stat.label}</span>
         </div>
       </button>
     ))}
@@ -435,8 +435,8 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
         <div className={`w-14 h-14 ${bgColor} rounded-2xl flex items-center justify-center group-active:scale-90 transition-transform shadow-lg`}>
           {icon}
         </div>
-        {/* Theme-aware label */}
-        <span className="text-[12px] font-semibold text-brand-text">{label}</span>
+        {/* Theme-aware label - using caption size */}
+        <span className="text-caption font-medium text-brand-text">{label}</span>
     </button>
   );
 
@@ -485,17 +485,17 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
             <div className="flex items-start justify-between gap-4">
               {/* Left: Greeting */}
               <div className="flex-1">
-                <h1 className="text-[24px] font-bold text-black tracking-tight leading-tight">
+                <h1 className="text-h1 text-black">
                   {userName ? `Hey ${userName}! 👋` : 'Hey there! 👋'}
                 </h1>
-                <p className="text-black/70 text-[14px] font-medium mt-0.5">
+                <p className="text-body text-black/70 mt-0.5">
                   {timeContext.greeting.replace('?', '')} — let's cook!
                 </p>
                 
                 {/* Pantry status badge */}
                 <Link 
                   to="/pantry"
-                  className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 bg-black/10 hover:bg-black/15 rounded-full text-[13px] transition"
+                  className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 bg-black/10 hover:bg-black/15 rounded-full text-caption transition"
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                   <span className="text-black/80 font-semibold">{pantry.length} items</span>
@@ -557,9 +557,9 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
             {/* SECTION: Recent Recipes */}
             <div>
               <div className="px-5 flex items-center justify-between mb-3">
-                <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider">Cook Again</h2>
+                <h2 className="text-caption font-semibold text-brand-text-secondary uppercase tracking-wider">Cook Again</h2>
                 {carouselRecipes.length > 0 && (
-                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-brand-primary text-[13px] font-semibold">See All</button>
+                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-brand-primary text-caption font-medium">See All</button>
                 )}
               </div>
               <div className="pl-5">
@@ -580,7 +580,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
             
             {/* SECTION: Quick Actions */}
             <div className="px-5">
-                <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-4">Quick Actions</h2>
+                <h2 className="text-caption font-semibold text-brand-text-secondary uppercase tracking-wider mb-4">Quick Actions</h2>
                 <div className="flex justify-between items-start">
                     <QuickAction 
                       icon={<Camera size={26} strokeWidth={2} className="text-white" />} 
@@ -611,7 +611,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
             
             {/* SECTION: Pantry Status */}
             <div className="px-5">
-              <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-3">Pantry Status</h2>
+              <h2 className="text-caption font-semibold text-brand-text-secondary uppercase tracking-wider mb-3">Pantry Status</h2>
               {isLoading ? (
                 <div className="flex gap-2">
                   <Skeleton className="w-32 h-12 rounded-full" />
@@ -635,7 +635,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
             {/* SECTION: Quick Meal Idea */}
             {quickMealSuggestion && (
               <div className="px-5">
-                <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-3">Quick Meal Idea</h2>
+                <h2 className="text-caption font-semibold text-brand-text-secondary uppercase tracking-wider mb-3">Quick Meal Idea</h2>
                 <button 
                   onClick={() => navigate('/recipes', { state: { recipeToOpen: quickMealSuggestion, fromDashboard: true } })}
                   className="w-full h-[180px] rounded-2xl overflow-hidden relative group focus:outline-none shadow-lg active:scale-[0.98] transition-all"
@@ -667,7 +667,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
                     </div>
                     
                     {/* Recipe title */}
-                    <h2 className="text-white text-[18px] font-bold leading-tight mb-1 drop-shadow-lg line-clamp-2 text-left">
+                    <h3 className="text-h3 text-white mb-1 drop-shadow-lg line-clamp-2 text-left">
                       {quickMealSuggestion.title}
                     </h2>
                     
@@ -683,7 +683,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
             
             {/* SECTION: Today's Tip */}
             <div className="px-5">
-              <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-3">Today's Tip</h2>
+              <h2 className="text-caption font-semibold text-brand-text-secondary uppercase tracking-wider mb-3">Today's Tip</h2>
               <div className="relative animate-[float_3s_ease-in-out_infinite]">
                 {/* Card */}
                 <div className="relative bg-[#E8E8E8] rounded-2xl p-5 text-center overflow-hidden shadow-xl">
@@ -699,7 +699,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
                   <span className="text-5xl block mb-3 drop-shadow-lg">{todaysTip.emoji}</span>
                   
                   {/* Tip text */}
-                  <p className="text-brand-text-on-light text-[15px] leading-relaxed font-medium italic">
+                  <p className="text-body text-brand-text-on-light italic">
                     "{todaysTip.tip}"
                   </p>
                   
@@ -717,7 +717,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
               <div className="pb-4">
                 <div className="px-5 flex items-center justify-between mb-3">
                   <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider">More Recipes</h2>
-                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-brand-primary text-[13px] font-semibold">See All</button>
+                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-brand-primary text-caption font-medium">See All</button>
                 </div>
                 
                 <div className="flex overflow-x-auto px-5 gap-3 no-scrollbar pb-4 snap-x">
@@ -726,7 +726,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
                             <img src={getOptimizedImageUrl(recipe.generatedImage, 400) || `https://picsum.photos/seed/${recipe.id}/400/300`} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" alt={recipe.title} />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                             <div className="absolute bottom-3 left-3 right-3">
-                              <h4 className="text-white font-bold text-sm leading-tight line-clamp-2">{recipe.title}</h4>
+                              <h3 className="text-h3 text-white leading-tight line-clamp-2">{recipe.title}</h3>
                             </div>
                         </button>
                     ))}
@@ -742,11 +742,11 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
                   <div className="w-14 h-14 rounded-full bg-brand-background flex items-center justify-center mx-auto mb-3">
                     <ChefHat size={28} className="text-brand-text-secondary" />
                   </div>
-                  <h4 className="text-[16px] font-bold text-brand-text mb-1">Ready to start cooking?</h4>
-                  <p className="text-[13px] text-brand-text-secondary mb-4">Add ingredients to your pantry and discover recipes</p>
+                  <h3 className="text-h3 text-brand-text mb-1">Ready to start cooking?</h3>
+                  <p className="text-caption text-brand-text-secondary mb-4">Add ingredients to your pantry and discover recipes</p>
                   <button 
                     onClick={() => navigate('/recipes')}
-                    className="px-5 py-2.5 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-sm rounded-full active:scale-95 transition"
+                    className="px-5 py-2.5 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-semibold text-body rounded-full active:scale-95 transition"
                   >
                     Find Recipes
                   </button>

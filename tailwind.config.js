@@ -31,6 +31,15 @@ export default {
         sans: ['SF Pro Rounded', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
       },
       
+      // ========== TYPOGRAPHY SCALE ==========
+      fontSize: {
+        'h1': ['28px', { lineHeight: '1.4', fontWeight: '600' }],      // H1: 28px semibold
+        'h2': ['20px', { lineHeight: '1.4', fontWeight: '600' }],      // H2: 20px semibold
+        'h3': ['17px', { lineHeight: '1.5', fontWeight: '500' }],      // H3: 17px medium
+        'body': ['15px', { lineHeight: '1.5', fontWeight: '400' }],    // Body: 15px regular
+        'caption': ['13px', { lineHeight: '1.5', fontWeight: '400' }], // Caption: 13px regular
+      },
+      
       // ========== BRAND COLORS (CSS Variables) ==========
       colors: {
         brand: {
