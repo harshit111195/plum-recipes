@@ -38,7 +38,7 @@ const NavItem: React.FC<{ to: string; icon: React.ReactNode; label: string; id?:
 export const Navigation: React.FC = () => {
   return (
     <nav 
-      className="fixed bottom-0 left-0 right-0 z-40 h-[85px] bg-brand-surface/90 backdrop-blur-xl rounded-t-[24px] pb-[20px] border-t-2 border-brand-divider/50 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] dark:shadow-[0_-4px_20px_rgba(0,0,0,0.4)]"
+      className="fixed bottom-0 left-0 right-0 z-40 h-[85px] bg-brand-surface/90 backdrop-blur-xl rounded-t-[24px] pb-[20px] border-t-2 border-brand-divider/50 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_20px_rgba(0,0,0,0.4)]"
       role="navigation"
       aria-label="Main navigation"
     >
