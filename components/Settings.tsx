@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 import { Diet, CUISINES } from '../types';
-import { Plus, Minus, X, Check, Flame, ChefHat, Tag, Star, Bug, FileText, ChevronRight, HelpCircle, User, LogOut, Settings as SettingsIcon, Sparkles } from 'lucide-react';
+import { Plus, Minus, X, Check, Flame, ChefHat, Tag, Star, Bug, FileText, ChevronRight, HelpCircle, User, LogOut, Settings as SettingsIcon, Sparkles, Sun, Moon, Monitor } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 import { FeedbackModal } from './FeedbackModal';
 import { ManageAccountModal } from './ManageAccountModal';
 import { CONFIG } from '../config';
@@ -134,6 +135,7 @@ const TagInputSection: React.FC<TagInputProps> = ({ label, items, onAdd, onRemov
 
 export const Settings: React.FC = () => {
   const { preferences, updatePreferences } = useUser();
+  const { theme, setTheme, isDark } = useTheme();
   const [showFeedback, setShowFeedback] = useState(false);
   const [showAccountModal, setShowAccountModal] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -309,6 +311,34 @@ export const Settings: React.FC = () => {
         {/* General Settings */}
         <Section title="General" icon={<ChefHat size={14} />} hint="Tap to adjust">
           <div className="divide-y divide-brand-divider/50">
+            {/* Theme */}
+            <div className="flex items-center justify-between p-4">
+              <div className="flex items-center gap-2">
+                {isDark ? <Moon size={18} className="text-brand-primary" /> : <Sun size={18} className="text-brand-primary" />}
+                <span className="text-[15px] font-semibold text-brand-text">Theme</span>
+              </div>
+              <div className="bg-brand-background p-1 rounded-xl flex gap-1 border border-brand-divider">
+                {[
+                  { value: 'light', icon: <Sun size={14} />, label: 'Light' },
+                  { value: 'dark', icon: <Moon size={14} />, label: 'Dark' },
+                  { value: 'system', icon: <Monitor size={14} />, label: 'Auto' },
+                ].map(option => (
+                  <button 
+                    key={option.value} 
+                    onClick={() => setTheme(option.value as 'light' | 'dark' | 'system')} 
+                    className={`px-2.5 py-1.5 rounded-lg text-[12px] font-semibold transition-all flex items-center gap-1.5 ${
+                      theme === option.value 
+                        ? 'bg-brand-primary text-black' 
+                        : 'text-brand-text-tertiary hover:text-brand-text'
+                    }`}
+                  >
+                    {option.icon}
+                    <span className="hidden sm:inline">{option.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Units */}
             <div className="flex items-center justify-between p-4">
               <span className="text-[15px] font-semibold text-brand-text">Units</span>

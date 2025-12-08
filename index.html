@@ -10,11 +10,29 @@
     <meta name="application-name" content="Plum" />
     <meta name="apple-mobile-web-app-title" content="Plum" />
     
-    <!-- Theme Colors - Sync with brand.ts COLORS -->
-    <meta name="theme-color" content="#0D0D0D" />
+    <!-- Theme Colors - Dynamically set based on theme -->
+    <meta name="theme-color" content="#0D0D0D" id="theme-color-meta" />
     <meta name="msapplication-navbutton-color" content="#0D0D0D" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Theme initialization - Prevents flash of wrong theme -->
+    <script>
+      (function() {
+        // Check for saved theme preference or default to dark
+        const theme = localStorage.getItem('plum-theme') || 'dark';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (theme === 'system' && prefersDark);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          document.getElementById('theme-color-meta')?.setAttribute('content', '#0D0D0D');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.getElementById('theme-color-meta')?.setAttribute('content', '#F5F5F5');
+        }
+      })();
+    </script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     
     <!-- Security - Content Security Policy -->

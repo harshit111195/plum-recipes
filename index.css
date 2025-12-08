@@ -3,31 +3,72 @@
 /**
  * 🍑 PLUM BRAND CSS VARIABLES
  * ============================================
- * Dark mode only design with Purple/Green buttons
+ * Light/Dark mode theming with Purple/Green buttons
  * 
  * For JavaScript/TypeScript access, see brand.ts
  * Keep these in sync with brand.ts COLORS object.
+ * 
+ * Theme switching: Add/remove 'dark' class on <html> element
  */
 
-/* ========== DARK MODE (Only) ========== */
+/* ========== LIGHT MODE (Default) ========== */
 :root {
-  /* Primary Brand Colors (Yellow - for hero cards, accents) */
+  /* Primary Brand Colors (Yellow - same in both modes) */
   --brand-primary: #FFC244;           /* Yellow - Main brand color */
   --brand-primary-light: #FFD470;     /* Lighter yellow */
   --brand-primary-lighter: #FFE4A0;   /* Even lighter */
   --brand-primary-dark: #E5A830;      /* Darker for hover states */
   
-  /* Button Colors - SYNCED with brand.ts and components */
+  /* Button Colors (same in both modes) */
   --brand-button-primary: #7C3AED;    /* Purple - Primary buttons */
   --brand-button-primary-hover: #6D28D9; /* Darker purple for hover */
   --brand-button-secondary: #10B981;  /* Emerald Green - Secondary buttons */
   --brand-button-secondary-hover: #059669; /* Darker green for hover */
   
-  /* Secondary/Accent Colors */
+  /* Secondary/Accent Colors (same in both modes) */
   --brand-secondary: #E84142;         /* Tomato Red */
   --brand-accent: #00A67E;            /* Green accent */
   
-  /* Dark Background Colors */
+  /* Light Mode Background Colors */
+  --brand-background: #F5F5F5;        /* Light gray page background */
+  --brand-surface: #FFFFFF;           /* White cards/surfaces */
+  --brand-surface-secondary: #F0F0F0; /* Slightly darker for inputs */
+  
+  /* Light Mode Text Colors */
+  --brand-text: #1A1A1A;              /* Near black text */
+  --brand-text-secondary: #6B6B6B;    /* Medium gray */
+  --brand-text-tertiary: #9CA3AF;     /* Light gray */
+  
+  /* Semantic Colors (same in both modes) */
+  --brand-success: #10B981;           /* Emerald green */
+  --brand-warning: #F59E0B;           /* Amber */
+  --brand-error: #EF4444;             /* Red */
+  --brand-info: #3B82F6;              /* Blue */
+  
+  /* Light Mode UI Colors */
+  --brand-divider: #E5E5E5;           /* Light divider */
+  --brand-overlay: rgba(0,0,0,0.5);   /* Modal overlay */
+  
+  /* Contrast surface (for cards needing contrast) */
+  --brand-surface-light: #FFFFFF;     /* Same as surface in light mode */
+  --brand-text-on-light: #1A1A1A;     /* Dark text */
+  
+  /* Light Mode Shadows (traditional shadows) */
+  --shadow-primary: 0 4px 14px -2px rgba(124, 58, 237, 0.2);
+  --shadow-secondary: 0 4px 14px -2px rgba(16, 185, 129, 0.15);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.12);
+  
+  /* Color scheme for browser UI */
+  color-scheme: light;
+  
+  /* Color consistency across screens */
+  color-interpolation: sRGB;
+}
+
+/* ========== DARK MODE ========== */
+:root.dark {
+  /* Background Colors */
   --brand-background: #0D0D0D;        /* Near black background */
   --brand-surface: #1A1A1A;           /* Dark surface */
   --brand-surface-secondary: #2A2A2A; /* Slightly lighter surface */
@@ -37,31 +78,34 @@
   --brand-text-secondary: #A0A0A0;    /* Muted white */
   --brand-text-tertiary: #6B6B6B;     /* Even more muted */
   
-  /* Semantic Colors - SYNCED with brand.ts */
-  --brand-success: #10B981;           /* Emerald green (was #34D399) */
-  --brand-warning: #F59E0B;           /* Amber (matches brand.ts) */
-  --brand-error: #EF4444;             /* Red (matches brand.ts) */
-  --brand-info: #3B82F6;              /* Blue (matches brand.ts) */
-  
   /* UI Colors */
   --brand-divider: #333333;           /* Dark divider */
-  --brand-overlay: rgba(0,0,0,0.7);   /* Dark overlay */
+  --brand-overlay: rgba(0,0,0,0.7);   /* Darker overlay */
   
-  /* Light surface (for cards that need light bg in dark mode) */
+  /* Contrast surface (light cards in dark mode) */
   --brand-surface-light: #FAFAFA;     /* Light card backgrounds */
   --brand-text-on-light: #1A1A1A;     /* Dark text for light surfaces */
   
-  /* Shadows (glow effect) - SYNCED with button colors */
-  --shadow-primary: 0 4px 14px -2px rgba(124, 58, 237, 0.3);   /* #7C3AED */
-  --shadow-secondary: 0 4px 14px -2px rgba(16, 185, 129, 0.25); /* #10B981 */
+  /* Dark Mode Shadows (glow effects) */
+  --shadow-primary: 0 4px 14px -2px rgba(124, 58, 237, 0.3);
+  --shadow-secondary: 0 4px 14px -2px rgba(16, 185, 129, 0.25);
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.5);
   
   /* Color scheme for browser UI */
   color-scheme: dark;
-  
-  /* Color consistency across screens */
-  color-interpolation: sRGB;
+}
+
+/* ========== THEME TRANSITIONS ========== */
+/* Smooth color transitions when switching themes */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Disable transitions on initial load */
+html.no-transitions,
+html.no-transitions * {
+  transition: none !important;
 }
 
 /* ========== COLOR CONSISTENCY ========== */
@@ -72,8 +116,9 @@
 }
 
 /* Display P3 colors for vibrant screens (iPhones, newer Macs) */
+/* Brand colors are the same in both light and dark mode */
 @supports (color: color(display-p3 1 0 0)) {
-  :root {
+  :root, :root.dark {
     --brand-primary: color(display-p3 1 0.76 0.27);      /* Vibrant yellow #FFC244 */
     --brand-secondary: color(display-p3 0.91 0.25 0.26); /* Vibrant tomato red #E84142 */
     --brand-accent: color(display-p3 0 0.65 0.49);       /* Vibrant green #00A67E */
