@@ -7,7 +7,8 @@ import {
   Coffee, Sun, Moon, X,
   Check, History, ChefHat, Plus, RefreshCw,
   Clock, ChevronRight, Utensils,
-  AlertCircle, BatteryWarning, Archive, Sparkles, Trash2
+  AlertCircle, BatteryWarning, Archive, Sparkles, Trash2,
+  Camera, Heart, Recycle
 } from 'lucide-react';
 import { formatDistanceToNow, isThisWeek, startOfWeek, format } from 'date-fns';
 import { AdUnit } from './AdUnit';
@@ -425,15 +426,17 @@ export const Dashboard: React.FC = () => {
     toast.success(`Added ${itemName} to shopping list`, { icon: '🛒' });
   };
 
-  // Quick action button component - emoji style for visual appeal
-const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void }> = ({ emoji, label, onClick }) => (
+  // Quick action button component - consistent Lucide icon style
+const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () => void; bgColor: string }> = ({ icon, label, onClick, bgColor }) => (
     <button 
       onClick={onClick} 
       aria-label={label}
       className="flex flex-col items-center gap-2 group focus:outline-none"
     >
-        {/* Large colorful emoji icon */}
-        <span className="text-[42px] group-active:scale-90 transition-transform drop-shadow-lg">{emoji}</span>
+        {/* Consistent icon in colored circle */}
+        <div className={`w-14 h-14 ${bgColor} rounded-2xl flex items-center justify-center group-active:scale-90 transition-transform shadow-lg`}>
+          {icon}
+        </div>
         {/* Theme-aware label */}
         <span className="text-[12px] font-semibold text-brand-text">{label}</span>
     </button>
@@ -581,10 +584,30 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             <div className="px-5">
                 <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-4">Quick Actions</h2>
                 <div className="flex justify-between items-start">
-                    <QuickAction emoji="📸" label="Snap to add" onClick={() => navigate('/pantry?action=snap')} />
-                    <QuickAction emoji="✨" label="Surprise me" onClick={() => navigate('/recipes', { state: { triggerSurprise: true } })} />
-                    <QuickAction emoji="♻️" label="Clean pantry" onClick={() => setShowCleanUp(true)} />
-                    <QuickAction emoji="❤️" label="My likes" onClick={() => navigate('/recipes?view=saved', { state: { fromDashboard: true } })} />
+                    <QuickAction 
+                      icon={<Camera size={26} strokeWidth={2} className="text-white" />} 
+                      label="Snap to add" 
+                      bgColor="bg-brand-primary"
+                      onClick={() => navigate('/pantry?action=snap')} 
+                    />
+                    <QuickAction 
+                      icon={<Sparkles size={26} strokeWidth={2} className="text-white" />} 
+                      label="Surprise me" 
+                      bgColor="bg-brand-button-primary"
+                      onClick={() => navigate('/recipes', { state: { triggerSurprise: true } })} 
+                    />
+                    <QuickAction 
+                      icon={<Recycle size={26} strokeWidth={2} className="text-white" />} 
+                      label="Clean pantry" 
+                      bgColor="bg-brand-accent"
+                      onClick={() => setShowCleanUp(true)} 
+                    />
+                    <QuickAction 
+                      icon={<Heart size={26} strokeWidth={2} className="text-white" />} 
+                      label="My likes" 
+                      bgColor="bg-brand-secondary"
+                      onClick={() => navigate('/recipes?view=saved', { state: { fromDashboard: true } })} 
+                    />
                 </div>
             </div>
             
