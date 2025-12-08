@@ -22,7 +22,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
   if (!recipe || !recipe.instructions || !Array.isArray(recipe.instructions) || recipe.instructions.length === 0) {
     return (
       <div className="fixed inset-0 z-[100] bg-brand-background flex flex-col items-center justify-center p-6 text-center">
-        <div className="text-white mb-4">
+        <div className="text-brand-text mb-4">
           <h2 className="text-xl font-bold mb-2">Invalid Recipe</h2>
           <p className="text-brand-text-secondary">This recipe doesn't have cooking instructions.</p>
         </div>
@@ -214,8 +214,8 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
             className="w-full h-full object-cover opacity-40 blur-md scale-105"
             alt=""
          />
-         {/* Dark gradient overlay */}
-         <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80" />
+         {/* Theme-aware gradient overlay */}
+         <div className="absolute inset-0 bg-gradient-to-b from-brand-background/60 via-brand-background/40 to-brand-background/80" />
       </MotionDiv>
 
       {/* Main Content Fade-In Wrapper */}
@@ -352,7 +352,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                 onClick={prevStep}
                 disabled={safeActiveStep === 0}
                 aria-label="Previous step"
-                className={`w-14 h-14 rounded-full flex items-center justify-center text-white transition pointer-events-auto ${safeActiveStep === 0 ? 'opacity-0' : 'bg-brand-surface border border-brand-divider active:bg-brand-surface-secondary'}`}
+                className={`w-14 h-14 rounded-full flex items-center justify-center text-brand-text transition pointer-events-auto ${safeActiveStep === 0 ? 'opacity-0' : 'bg-brand-surface border border-brand-divider active:bg-brand-surface-secondary'}`}
             >
                 <ChevronLeft size={28} />
             </button>
@@ -373,7 +373,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                 onClick={nextStep}
                 disabled={safeActiveStep === recipe.instructions.length - 1}
                 aria-label="Next step"
-                className={`w-14 h-14 rounded-full flex items-center justify-center text-white transition pointer-events-auto ${safeActiveStep === recipe.instructions.length - 1 ? 'opacity-0' : 'bg-brand-surface border border-brand-divider active:bg-brand-surface-secondary'}`}
+                className={`w-14 h-14 rounded-full flex items-center justify-center text-brand-text transition pointer-events-auto ${safeActiveStep === recipe.instructions.length - 1 ? 'opacity-0' : 'bg-brand-surface border border-brand-divider active:bg-brand-surface-secondary'}`}
             >
                 <ChevronRight size={28} />
             </button>
