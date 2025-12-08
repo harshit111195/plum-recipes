@@ -261,13 +261,20 @@ export const Settings: React.FC = () => {
             </div>
             
             {/* Action Buttons */}
-            <div className="flex flex-col gap-3">
+            <div className="flex gap-3">
               <button 
                 onClick={() => setShowAccountModal(true)} 
-                className="w-full py-3 bg-[#7C3AED] text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-[#7C3AED] text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition flex items-center justify-center gap-2"
               >
                 <SettingsIcon size={16} /> 
                 Manage Account
+              </button>
+              <button 
+                onClick={() => setShowLogoutConfirm(true)} 
+                className="flex-1 py-3 bg-[#7C3AED] text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition flex items-center justify-center gap-2"
+              >
+                <LogOut size={16} /> 
+                Sign Out
               </button>
             </div>
           </div>
@@ -516,28 +523,6 @@ export const Settings: React.FC = () => {
             className="w-full flex items-center justify-between p-4 hover:bg-[#0D0D0D] active:bg-[#2A2A2A] transition"
           >
             <span className="text-[15px] font-semibold text-[#FFFFFF]">Terms of Service</span>
-            <ChevronRight size={16} className="text-[#6B6B6B]" />
-          </button>
-        </Section>
-
-        {/* ========== ACCOUNT GROUP ========== */}
-        <GroupHeader title="Account" emoji="🔐" />
-
-        {/* Sign Out */}
-        <Section title="Sign Out" icon={<LogOut size={14} />}>
-          <button 
-            onClick={() => setShowLogoutConfirm(true)} 
-            className="w-full flex items-center justify-between p-4 hover:bg-[#0D0D0D] active:bg-[#2A2A2A] transition"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#F87171]/20 rounded-xl flex items-center justify-center">
-                <LogOut size={16} className="text-[#F87171]" />
-              </div>
-              <div className="text-left">
-                <span className="text-[15px] font-semibold text-[#F87171] block">Sign Out</span>
-                <span className="text-[11px] text-[#6B6B6B]">Sign out of your account</span>
-              </div>
-            </div>
             <ChevronRight size={16} className="text-[#6B6B6B]" />
           </button>
         </Section>
