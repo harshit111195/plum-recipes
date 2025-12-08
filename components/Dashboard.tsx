@@ -259,10 +259,12 @@ const PantryStatsGrid: React.FC<{ stats: { emoji: string; count: number; label: 
       <button
         key={index}
         onClick={stat.onClick}
-        className={`${stat.bg} backdrop-blur-sm rounded-2xl p-3 flex items-center gap-3 active:scale-[0.98] transition border border-white/10 shadow-lg`}
+        className={`${stat.bg} rounded-2xl p-3 flex items-center gap-3 active:scale-[0.98] transition shadow-md relative overflow-hidden`}
       >
-        <span className="text-2xl">{stat.emoji}</span>
-        <div className="text-left">
+        {/* Subtle dark overlay for better hierarchy */}
+        <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+        <span className="text-2xl relative z-10">{stat.emoji}</span>
+        <div className="text-left relative z-10">
           <span className="text-white font-bold text-base block">{stat.count}</span>
           <span className="text-white/90 text-[15px] font-semibold">{stat.label}</span>
         </div>
@@ -598,10 +600,10 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
               ) : (
                 <PantryStatsGrid 
                   stats={[
-                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", bg: "bg-brand-primary/95", onClick: () => setShowExpiring(true) },
-                    { emoji: "📉", count: lowStockItems.length, label: "Low on stock", bg: "bg-brand-button-primary/95", onClick: () => setShowLowStock(true) },
-                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", bg: "bg-brand-secondary/95", onClick: () => setShowOutOfStock(true) },
-                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", bg: "bg-brand-accent/95", onClick: () => navigate('/shopping') },
+                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", bg: "bg-brand-primary", onClick: () => setShowExpiring(true) },
+                    { emoji: "📉", count: lowStockItems.length, label: "Low on stock", bg: "bg-brand-button-primary", onClick: () => setShowLowStock(true) },
+                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", bg: "bg-brand-secondary", onClick: () => setShowOutOfStock(true) },
+                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", bg: "bg-brand-accent", onClick: () => navigate('/shopping') },
                   ]}
                 />
               )}
