@@ -501,27 +501,48 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
               </div>
               
               {/* Right: Weekly Achievement Card - Premium Badge */}
-              {weeklyStats.count > 0 && (
-                <div className="relative flex-shrink-0 animate-[float_3s_ease-in-out_infinite]">
-                  {/* Card with intense shadow */}
-                  <div className="relative bg-gradient-to-br from-white via-white to-amber-50 rounded-2xl px-3 py-2.5 shadow-2xl shadow-black/40 border border-amber-200/50 overflow-hidden">
-                    {/* Shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_3s_infinite]" />
-                    {/* Top row: Trophy + Count + Label */}
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">🏆</span>
-                      <span className="text-2xl font-black text-black leading-none">{weeklyStats.count}</span>
-                      <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wide">
-                        {weeklyStats.count === 1 ? 'meal' : 'meals'}<br/>cooked
-                      </span>
-                    </div>
-                    {/* Bottom: Motivational text */}
-                    <div className="text-[11px] font-semibold text-gray-500 mt-1 text-center">
-                      🔥 Keep it up!
-                    </div>
-                  </div>
+              <div className="relative flex-shrink-0 animate-[float_3s_ease-in-out_infinite]">
+                {/* Card with intense shadow */}
+                <div className={`relative rounded-2xl px-3 py-2.5 shadow-2xl shadow-black/40 border overflow-hidden ${
+                  weeklyStats.count > 0 
+                    ? 'bg-gradient-to-br from-white via-white to-amber-50 border-amber-200/50' 
+                    : 'bg-gradient-to-br from-white via-white to-purple-50 border-purple-200/50'
+                }`}>
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_3s_infinite]" />
+                  
+                  {weeklyStats.count > 0 ? (
+                    <>
+                      {/* Top row: Trophy + Count + Label */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">🏆</span>
+                        <span className="text-2xl font-black text-black leading-none">{weeklyStats.count}</span>
+                        <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wide">
+                          {weeklyStats.count === 1 ? 'meal' : 'meals'}<br/>cooked
+                        </span>
+                      </div>
+                      {/* Bottom: Motivational text */}
+                      <div className="text-[11px] font-semibold text-gray-500 mt-1 text-center">
+                        🔥 Keep it up!
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Motivational state for 0 meals */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl">👨‍🍳</span>
+                        <span className="text-[11px] font-bold text-[#7C3AED] uppercase tracking-wide">
+                          Let's cook<br/>this week!
+                        </span>
+                      </div>
+                      {/* Bottom: CTA text */}
+                      <div className="text-[11px] font-semibold text-gray-500 mt-1 text-center">
+                        ✨ Start your streak
+                      </div>
+                    </>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
           </div>
           
