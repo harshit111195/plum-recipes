@@ -220,11 +220,11 @@ export const RecipeGenerator: React.FC = () => {
                 {bookmarkedRecipes.length === 0 && <div className="text-center text-brand-text-secondary mt-10">No saved recipes yet.</div>}
                 {bookmarkedRecipes.map((r, index) => (
                     /* Saved recipe card - #1A1A1A surface */
-                    <div key={`${r.id}-${index}`} className="group relative w-full bg-brand-surface rounded-xl flex border border-black/5 shadow-sm overflow-hidden transition-all">
+                    <div key={`${r.id}-${index}`} className="group relative w-full bg-brand-surface rounded-2xl flex border border-black/5 shadow-sm overflow-hidden transition-all">
                         <button onClick={() => setSelectedRecipe(r)} className="flex-1 text-left p-4 flex gap-4 focus:outline-none">
                             <img 
                                 src={getOptimizedImageUrl(r.generatedImage, 300) || `https://picsum.photos/seed/${r.id}/300/300`} 
-                                className="w-20 h-20 rounded-lg object-cover bg-gray-100" 
+                                className="w-20 h-20 rounded-2xl object-cover bg-gray-100" 
                                 loading={index < 2 ? "eager" : "lazy"}
                                 decoding="async" 
                             />
@@ -274,11 +274,11 @@ export const RecipeGenerator: React.FC = () => {
                 {history.length === 0 && <div className="text-center text-brand-text-secondary mt-10">No cooking history recently.</div>}
                 {history.map((r, index) => (
                     /* History card - #1A1A1A surface */
-                    <div key={`${r.id}-${index}`} className="bg-brand-surface p-4 rounded-xl flex gap-4 border border-black/5 shadow-sm">
-                        <button className="relative w-20 h-20 shrink-0 rounded-lg" onClick={() => setSelectedRecipe(r)}>
+                    <div key={`${r.id}-${index}`} className="bg-brand-surface rounded-2xl flex gap-4 border border-black/5 shadow-sm">
+                        <button className="relative w-20 h-20 shrink-0 rounded-2xl" onClick={() => setSelectedRecipe(r)}>
                            <img 
                                 src={getOptimizedImageUrl(r.generatedImage, 300) || `https://picsum.photos/seed/${r.id}/300/300`} 
-                                className="w-full h-full rounded-lg object-cover bg-gray-100" 
+                                className="w-full h-full rounded-2xl object-cover bg-gray-100" 
                                 loading={index < 2 ? "eager" : "lazy"}
                                 decoding="async" 
                            />
@@ -350,7 +350,7 @@ export const RecipeGenerator: React.FC = () => {
                       min="15" 
                       max="120" 
                       step="15" 
-                      className="flex-1 h-2 bg-brand-background rounded-lg appearance-none cursor-pointer accent-brand-primary" 
+                      className="flex-1 h-2 bg-brand-background rounded-2xl appearance-none cursor-pointer accent-brand-primary" 
                       onChange={(e) => setTimeAvailable(`${e.target.value} mins`)} 
                     />
                     <span className="text-body font-bold text-brand-text min-w-[70px] text-right">{timeAvailable}</span>
@@ -379,12 +379,12 @@ export const RecipeGenerator: React.FC = () => {
                         >
                             <div className="px-3 pb-3 pt-1 space-y-3">
                                 {/* Servings */}
-                                <div className="flex items-center justify-between p-3 bg-brand-background rounded-xl">
+                                <div className="flex items-center justify-between p-3 bg-brand-background rounded-2xl">
                                     <div className="flex items-center gap-2 text-brand-text-secondary">
                                       <Users size={16} />
                                       <span className="text-caption font-bold uppercase">Servings</span>
                                     </div>
-                                    <div className="flex items-center gap-4 bg-brand-surface-secondary rounded-lg px-2 py-1">
+                                    <div className="flex items-center gap-4 bg-brand-surface-secondary rounded-2xl px-2 py-1">
                                         <button className="p-1 active:opacity-50 text-brand-primary" onClick={() => setServings(Math.max(1, servings - 1))}>
                                           <Minus size={16} />
                                         </button>
@@ -401,7 +401,7 @@ export const RecipeGenerator: React.FC = () => {
                                         <label className="text-caption font-bold text-brand-primary uppercase ml-1">Cuisine</label>
                                         <div className="relative">
                                             <select 
-                                              className="w-full bg-brand-background text-brand-text text-body font-medium p-3 rounded-xl appearance-none outline-none border border-brand-divider" 
+                                              className="w-full bg-brand-background rounded-2xl appearance-none outline-none border border-brand-divider" 
                                               value={cuisine} 
                                               onChange={(e) => setCuisine(e.target.value)}
                                             >
@@ -415,7 +415,7 @@ export const RecipeGenerator: React.FC = () => {
                                         <label className="text-caption font-bold text-brand-primary uppercase ml-1">Hero Item</label>
                                          <div className="relative">
                                             <select 
-                                              className="w-full bg-brand-background text-brand-text text-body font-medium p-3 rounded-xl appearance-none outline-none border border-brand-divider" 
+                                              className="w-full bg-brand-background rounded-2xl appearance-none outline-none border border-brand-divider" 
                                               value={heroIngredient} 
                                               onChange={(e) => setHeroIngredient(e.target.value)}
                                             >
@@ -428,7 +428,7 @@ export const RecipeGenerator: React.FC = () => {
                                 </div>
 
                                 {/* Prioritize Expiring */}
-                                <div className="flex items-center justify-between bg-brand-background p-3 rounded-xl border border-brand-divider">
+                                <div className="flex items-center justify-between bg-brand-background rounded-2xl border border-brand-divider">
                                     <div className="flex items-center gap-3">
                                         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${prioritizeExpiring ? 'bg-brand-primary/20 text-brand-primary' : 'bg-brand-surface-secondary text-brand-text-tertiary'}`}>
                                           <Leaf size={16} />
@@ -447,7 +447,7 @@ export const RecipeGenerator: React.FC = () => {
                                 </div>
 
                                 {/* Home Style */}
-                                <div className="flex items-center justify-between bg-brand-background p-3 rounded-xl border border-brand-divider">
+                                <div className="flex items-center justify-between bg-brand-background rounded-2xl border border-brand-divider">
                                     <div className="flex items-center gap-3">
                                         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${homeStyle ? 'bg-brand-primary/20 text-brand-primary' : 'bg-brand-surface-secondary text-brand-text-tertiary'}`}>
                                           <Home size={16} />
@@ -526,9 +526,9 @@ export const RecipeGenerator: React.FC = () => {
                         <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-lg">
                             <h3 className="text-white text-[22px] font-bold leading-tight mb-2 text-shadow-sm line-clamp-2">{recipe.title}</h3>
                             <div className="flex items-center gap-3 text-white/90 text-caption font-semibold">
-                                <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-lg"><Clock size={14} /> {recipe.totalTimeMinutes}m</span>
-                                <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-lg"><Flame size={14} /> {recipe.caloriesApprox} kcal</span>
-                                <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-lg"><Sparkles size={14} /> {recipe.difficulty}</span>
+                                <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-2xl"><Clock size={14} /> {recipe.totalTimeMinutes}m</span>
+                                <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-2xl"><Flame size={14} /> {recipe.caloriesApprox} kcal</span>
+                                <span className="flex items-center gap-1.5 bg-black/20 px-2 py-1 rounded-2xl"><Sparkles size={14} /> {recipe.difficulty}</span>
                             </div>
                         </div>
                     </div>

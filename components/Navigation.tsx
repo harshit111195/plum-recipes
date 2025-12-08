@@ -20,7 +20,7 @@ const NavItem: React.FC<{ to: string; icon: React.ReactNode; label: string; id?:
           {navIsActive && (
             <MotionDiv
               layoutId="nav-pill"
-              className="absolute -top-0.5 w-14 h-14 bg-brand-primary/20 rounded-xl"
+              className="absolute -top-0.5 w-14 h-14 bg-brand-primary/20 rounded-2xl"
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           )}

@@ -55,7 +55,7 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
         {/* Items list - scrollable */}
         <div className="px-3 py-2 flex-1 overflow-y-auto">
             <p className="text-caption font-semibold text-brand-text-tertiary uppercase tracking-wider mb-2">Ingredients Used</p>
-            <div className="bg-brand-surface rounded-xl overflow-hidden border border-brand-divider">
+            <div className="bg-brand-surface rounded-2xl overflow-hidden border border-brand-divider">
                 {matchedItems.length === 0 ? (
                     <div className="p-3 text-center text-brand-text-tertiary text-sm italic">
                         No pantry items matched.
@@ -93,13 +93,13 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
         <div className="p-3 flex gap-2 bg-brand-background">
             <button 
                 onClick={onCancel} 
-                className="flex-1 py-2.5 bg-brand-surface border border-brand-divider text-brand-text-secondary font-semibold text-body rounded-xl active:bg-brand-surface-secondary transition"
+                className="flex-1 py-2.5 bg-brand-surface border border-brand-divider text-brand-text-secondary font-semibold text-body rounded-2xl active:bg-brand-surface-secondary transition"
             >
                 Skip
             </button>
             <button 
                 onClick={handleConfirm} 
-                className="flex-1 py-2.5 bg-brand-primary hover:bg-brand-primary-dark text-black font-semibold text-body rounded-xl active:scale-[0.98] transition"
+                className="flex-1 py-2.5 bg-brand-primary hover:bg-brand-primary-dark text-black font-semibold text-body rounded-2xl active:scale-[0.98] transition"
             >
                 Update Pantry
             </button>

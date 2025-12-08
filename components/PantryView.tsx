@@ -514,7 +514,7 @@ export const PantryView: React.FC = () => {
             <input 
               type="text" 
               placeholder="Search pantry..." 
-              className="w-full bg-white text-black pl-10 pr-4 py-2.5 rounded-xl text-h3 placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm"
+              className="w-full bg-white text-black pl-10 pr-4 py-2.5 rounded-2xl text-h3 placeholder-black/40 focus:outline-none focus:ring-2 focus:ring-black/10 shadow-sm"
               value={searchQuery} 
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -573,21 +573,21 @@ export const PantryView: React.FC = () => {
                     <button onClick={() => { setIsAdding(false); resetForm(); }} aria-label="Close add item panel" className="absolute top-0 right-4 p-2 bg-brand-surface-secondary rounded-full text-brand-text-secondary active:opacity-70 z-20"><X size={20} /></button>
                     <div className="pb-8">
                     {/* Analyzing overlay: #1A1A1A/80 bg | Loader: #FFC244 (yellow) | Text: #FFFFFF */}
-                    {isAnalyzing && <div className="absolute inset-0 bg-brand-surface/80 backdrop-blur-sm z-30 flex flex-col items-center justify-center rounded-xl"><Loader2 size={32} className="text-brand-primary animate-spin mb-2" /><span className="text-sm font-semibold text-brand-text">Analyzing vibes...</span></div>}
+                    {isAnalyzing && <div className="absolute inset-0 bg-brand-surface rounded-2xl"><Loader2 size={32} className="text-brand-primary animate-spin mb-2" /><span className="text-sm font-semibold text-brand-text">Analyzing vibes...</span></div>}
                     {/* Voice listening overlay */}
 {/* Voice listening overlay: #1A1A1A/95 (surface with opacity) */}
                     {isListening && (
-                        <div className="absolute inset-0 bg-brand-surface/95 backdrop-blur-sm z-30 flex flex-col items-center justify-center animate-in fade-in p-6 text-center rounded-xl">
+                        <div className="absolute inset-0 bg-brand-surface rounded-2xl">
                             <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mb-6 pulse-ring relative"><Mic size={32} className="text-white relative z-10" /></div>
                             {/* Text: #FFFFFF (white) */}
                             <span className="text-[22px] font-bold text-brand-text mb-2">I'm listening...</span>
                             {/* Voice text box: #0D0D0D bg | Border: #333333 */}
-                            <div className="w-full min-h-[60px] max-h-[120px] overflow-y-auto mb-8 bg-brand-background rounded-xl p-3 border border-brand-divider">
+                            <div className="w-full min-h-[60px] max-h-[120px] overflow-y-auto mb-8 bg-brand-background rounded-2xl p-3 border border-brand-divider">
                                 {/* Text: #FFFFFF | Placeholder: #A0A0A0 */}
                                 {voiceText ? <p className="text-brand-text text-h2 font-medium leading-relaxed">"{voiceText}"</p> : <p className="text-brand-text-secondary italic">Speak your list (e.g. "Bought 6 eggs, milk, and bread")</p>}
                             </div>
                             {/* Cancel: red text/bg | Done: #7C3AED purple */}
-                            <div className="flex gap-4 w-full"><button onClick={cancelVoice} className="flex-1 py-3 text-red-500 font-bold bg-red-900/20 rounded-xl text-body active:bg-red-900/30 transition">Cancel</button><button onClick={stopAndProcessVoice} disabled={!voiceText} className="flex-1 py-3 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-xl text-body shadow-lg shadow-purple-500/30 active:scale-95 transition disabled:opacity-50 disabled:shadow-none">Done</button></div>
+                            <div className="flex gap-4 w-full"><button onClick={cancelVoice} className="flex-1 py-3 text-red-500 font-bold bg-red-900/20 rounded-2xl text-body active:bg-red-900/30 transition">Cancel</button><button onClick={stopAndProcessVoice} disabled={!voiceText} className="flex-1 py-3 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-2xl text-body shadow-lg shadow-purple-500/30 active:scale-95 transition disabled:opacity-50 disabled:shadow-none">Done</button></div>
                         </div>
                     )}
                     {/* Review snap section */}
@@ -600,15 +600,15 @@ export const PantryView: React.FC = () => {
                                 {snappedItems.length === 0 && <p className="text-center text-body text-brand-text-secondary py-4">No items detected.</p>}
 {/* Snapped items cards: #1A1A1A surface | Border: #333333 */}
                                 {snappedItems.map((item, idx) => (
-                                    <div key={idx} className="bg-brand-surface p-3 rounded-xl flex flex-col gap-2 relative shadow-sm border border-brand-divider">
+                                    <div key={idx} className="bg-brand-surface rounded-2xl flex flex-col gap-2 relative shadow-sm border border-brand-divider">
                                             <button onClick={() => removeSnapItem(idx)} className="absolute top-2 right-2 text-gray-400 hover:text-red-500"><X size={16}/></button>
                                             {/* Name input: transparent bg | Text: #FFFFFF */}
                                             <input className="bg-transparent font-semibold text-h3 outline-none w-[90%] text-brand-text" value={item.name} onChange={e => handleSnapItemChange(idx, 'name', e.target.value)} placeholder="Name" />
                                             <div className="flex gap-2">
                                                 {/* Inputs: #0D0D0D bg | Text: #FFFFFF */}
-                                                <input className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 w-20 text-body font-medium" value={item.quantity} onChange={e => handleSnapItemChange(idx, 'quantity', e.target.value)} placeholder="Qty" />
-                                                <select value={item.unit} onChange={e => handleSnapItemChange(idx, 'unit', e.target.value)} className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 text-body font-medium outline-none">{UNITS.map(u => <option key={u} value={u}>{u}</option>)}</select>
-                                                <select value={getDisplayCategory(item.category)} onChange={e => handleSnapItemChange(idx, 'category', e.target.value)} className="bg-brand-background text-brand-text rounded-lg px-2 py-1.5 flex-1 text-body font-medium outline-none">{PANTRY_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}</select>
+                                                <input className="bg-brand-background text-brand-text rounded-2xl px-2 py-1.5 w-20 text-body font-medium" value={item.quantity} onChange={e => handleSnapItemChange(idx, 'quantity', e.target.value)} placeholder="Qty" />
+                                                <select value={item.unit} onChange={e => handleSnapItemChange(idx, 'unit', e.target.value)} className="bg-brand-background text-brand-text rounded-2xl px-2 py-1.5 text-body font-medium outline-none">{UNITS.map(u => <option key={u} value={u}>{u}</option>)}</select>
+                                                <select value={getDisplayCategory(item.category)} onChange={e => handleSnapItemChange(idx, 'category', e.target.value)} className="bg-brand-background text-brand-text rounded-2xl px-2 py-1.5 flex-1 text-body font-medium outline-none">{PANTRY_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}</select>
                                             </div>
                                     </div>
                                 ))}

@@ -63,7 +63,7 @@ export const FeatureAIChef: React.FC<FeatureAIChefProps> = ({ onNext }) => {
           >
             {/* Emoji/Image */}
             <div 
-              className="w-16 h-16 rounded-xl flex items-center justify-center text-3xl"
+              className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl"
               style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
             >
               {card.emoji}

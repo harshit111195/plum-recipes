@@ -53,7 +53,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3 }}
-          className="relative rounded-3xl overflow-hidden aspect-[4/3]"
+          className="relative rounded-2xl overflow-hidden aspect-[4/3]"
           style={{ 
             backgroundColor: 'rgba(0,0,0,0.3)',
             border: '3px solid rgba(255,255,255,0.2)',
@@ -82,7 +82,7 @@ export const FeaturePantry: React.FC<FeaturePantryProps> = ({ onNext }) => {
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: item.delay, type: 'spring' }}
-                  className="px-3 py-2 rounded-xl flex items-center gap-2"
+                  className="px-3 py-2 rounded-2xl flex items-center gap-2"
                   style={{ backgroundColor: 'rgba(255,255,255,0.9)' }}
                 >
                   <span>{item.emoji}</span>

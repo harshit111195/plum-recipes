@@ -38,7 +38,7 @@ export const HeroScreen: React.FC<HeroScreenProps> = ({ onNext, onSkip }) => {
           
           {/* Logo container */}
           <div 
-            className="relative w-28 h-28 rounded-3xl flex items-center justify-center shadow-2xl"
+            className="relative w-28 h-28 rounded-2xl flex items-center justify-center shadow-2xl"
             style={{ backgroundColor: COLORS.surface }}
           >
             <ChefHat size={56} style={{ color: COLORS.primary }} />

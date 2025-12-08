@@ -183,7 +183,7 @@ export const RecipeDetail: React.FC<Props> = ({ recipe, onBack }) => {
                   <span className="text-caption text-brand-text-tertiary">Tap to mark as prepped</span>
                 </div>
                 {available.map((ing, i) => (
-                  <div key={i} onClick={() => togglePrep(ing.name)} className="flex items-center p-3 hover:bg-brand-surface-secondary transition cursor-pointer rounded-xl group">
+                  <div key={i} onClick={() => togglePrep(ing.name)} className="flex items-center p-3 hover:bg-brand-surface rounded-2xl group">
                     <div className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 transition ${prepList.includes(ing.name) ? 'bg-brand-accent border-brand-accent' : 'border-brand-text-tertiary'}`}>
                       {prepList.includes(ing.name) && <Check size={12} className="text-white" strokeWidth={3} />}
                     </div>
@@ -202,10 +202,10 @@ export const RecipeDetail: React.FC<Props> = ({ recipe, onBack }) => {
                   <div className="flex flex-wrap justify-between items-center gap-y-2 mb-1">
                     <span className="text-caption font-bold text-brand-secondary uppercase tracking-wider">Missing Ingredients</span>
                     <div className="flex gap-3 flex-wrap justify-end">
-                      <button onClick={handleFindSubstitutions} className="text-brand-secondary flex items-center gap-1 active:opacity-50 text-caption font-bold border border-brand-secondary/30 bg-brand-background/50 px-2 py-1 rounded-lg shadow-sm">
+                      <button onClick={handleFindSubstitutions} className="text-brand-secondary flex items-center gap-1 active:opacity-50 text-caption font-bold border border-brand-secondary/30 bg-brand-background/50 px-2 py-1 rounded-2xl shadow-sm">
                         {isLoadingSubst ? <Loader2 size={12} className="animate-spin" /> : <Sparkles size={12} />} Substitutions
                       </button>
-                      <button onClick={handleAddToShop} className="text-brand-primary text-caption font-bold flex items-center gap-1 active:opacity-50 border border-brand-primary/30 bg-brand-background/50 px-2 py-1 rounded-lg shadow-sm">
+                      <button onClick={handleAddToShop} className="text-brand-primary text-caption font-bold flex items-center gap-1 active:opacity-50 border border-brand-primary/30 bg-brand-background/50 px-2 py-1 rounded-2xl shadow-sm">
                         <ShoppingBag size={12} /> Add All To Cart
                       </button>
                     </div>
@@ -213,14 +213,14 @@ export const RecipeDetail: React.FC<Props> = ({ recipe, onBack }) => {
                   <span className="text-caption text-brand-secondary/60">Get AI substitutions or add to your shopping list</span>
                 </div>
                 {substResult && (
-                  <div className="mx-3 mb-2 p-3 bg-brand-surface-secondary rounded-xl text-body text-brand-text border border-brand-divider relative animate-in zoom-in-95">
+                  <div className="mx-3 mb-2 p-3 bg-brand-surface rounded-2xl text-body text-brand-text border border-brand-divider relative animate-in zoom-in-95">
                     <button onClick={() => setSubstResult(null)} className="absolute right-2 top-2 opacity-50 hover:opacity-100 text-brand-text-secondary"><X size={14} /></button>
                     <div className="flex items-center gap-1.5 font-bold text-brand-primary mb-1 text-caption uppercase"><Sparkles size={10} fill="currentColor" /> AI Suggestion</div>
                     <p className="leading-relaxed text-brand-text-secondary">{substResult}</p>
                   </div>
                 )}
                 {missing.map((ing, i) => (
-                  <div key={i} className="flex items-center p-3 rounded-xl">
+                  <div key={i} className="flex items-center p-3 rounded-2xl">
                     <div className="w-5 h-5 rounded-full border-2 border-brand-secondary mr-3 flex items-center justify-center bg-brand-background text-brand-secondary"><Plus size={12} strokeWidth={3} /></div>
                     <div className="flex-1">
                       <span className="text-h3 text-brand-text font-medium">{ing.name}</span>
@@ -247,7 +247,7 @@ export const RecipeDetail: React.FC<Props> = ({ recipe, onBack }) => {
             ))}
             {currentRecipe.instructions.length > 3 && (
               <div className="pt-2 border-t border-brand-divider">
-                <button onClick={startCooking} onTouchEnd={startCooking} className="w-full py-3 text-brand-primary font-medium text-body bg-brand-background rounded-xl cursor-pointer touch-manipulation flex flex-col items-center gap-1">
+                <button onClick={startCooking} onTouchEnd={startCooking} className="w-full py-3 text-brand-primary font-medium text-body bg-brand-background rounded-2xl cursor-pointer touch-manipulation flex flex-col items-center gap-1">
                   <span>Tap to view all {currentRecipe.instructions.length} steps</span>
                   <span className="text-caption text-brand-text-tertiary font-normal">Opens hands-free Chef Mode with timers & voice</span>
                 </button>

@@ -238,7 +238,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                         <div className="flex gap-2 p-1 bg-brand-surface rounded-2xl mb-6">
                             <button
                                 onClick={() => { setView('login'); resetForm(); }}
-                                className={`flex-1 py-3 rounded-xl font-bold text-body transition-all ${
+                                className={`flex-1 py-3 rounded-2xl font-bold text-body transition-all ${
                                     view === 'login' 
                                         ? 'bg-brand-primary text-black' 
                                         : 'text-brand-text-secondary hover:text-white'
@@ -248,7 +248,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                             </button>
                             <button
                                 onClick={() => { setView('signup'); resetForm(); }}
-                                className={`flex-1 py-3 rounded-xl font-bold text-body transition-all ${
+                                className={`flex-1 py-3 rounded-2xl font-bold text-body transition-all ${
                                     view === 'signup' 
                                         ? 'bg-brand-primary text-black' 
                                         : 'text-brand-text-secondary hover:text-white'
@@ -295,7 +295,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="email" 
                                                 placeholder="you@example.com"
                                                 autoComplete="email"
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
+                                                className="w-full bg-brand-surface text-white rounded-2xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={email}
                                                 onChange={e => setEmail(e.target.value)}
                                                 required
@@ -316,7 +316,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder={isLogin ? "Enter your password" : "Create a password (min 6 chars)"}
                                                 autoComplete={isLogin ? "current-password" : "new-password"}
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
+                                                className="w-full bg-brand-surface text-white rounded-2xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={password}
                                                 onChange={e => setPassword(e.target.value)}
                                                 required
@@ -329,7 +329,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     <button 
                                         type="submit" 
                                         disabled={loading}
-                                        className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2"
+                                        className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-2xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2"
                                     >
                                         {loading ? <Loader2 className="animate-spin" size={20} /> : (
                                             <>
@@ -397,7 +397,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                         type="email" 
                                                         placeholder="you@example.com"
                                                         autoComplete="email"
-                                                        className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
+                                                        className="w-full bg-brand-surface text-white rounded-2xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                         value={email}
                                                         onChange={e => setEmail(e.target.value)}
                                                         required
@@ -408,7 +408,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                             <button 
                                                 type="submit" 
                                                 disabled={loading}
-                                                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                                                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-2xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                                             >
                                                 {loading ? <Loader2 className="animate-spin" size={20} /> : (
                                                     <>
@@ -481,7 +481,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder="Enter new password"
                                                 autoComplete="new-password"
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
+                                                className="w-full bg-brand-surface text-white rounded-2xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={newPassword}
                                                 onChange={e => setNewPassword(e.target.value)}
                                                 required
@@ -503,7 +503,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder="Confirm new password"
                                                 autoComplete="new-password"
-                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
+                                                className="w-full bg-brand-surface text-white rounded-2xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-body"
                                                 value={confirmPassword}
                                                 onChange={e => setConfirmPassword(e.target.value)}
                                                 required
@@ -518,7 +518,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     <button 
                                         type="submit" 
                                         disabled={loading || (confirmPassword !== '' && newPassword !== confirmPassword)}
-                                        className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-2xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {loading ? <Loader2 className="animate-spin" size={20} /> : (
                                             <>

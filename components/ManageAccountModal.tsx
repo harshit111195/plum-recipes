@@ -232,7 +232,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                     type="text" 
                     value={fullName} 
                     onChange={(e) => setFullName(e.target.value)} 
-                    className="w-full bg-brand-surface p-4 pl-12 rounded-xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
+                    className="w-full bg-brand-surface p-4 pl-12 rounded-2xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
                     placeholder="Your Name" 
                   />
                 </div>
@@ -247,7 +247,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                     type="email" 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
-                    className="w-full bg-brand-surface p-4 pl-12 rounded-xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
+                    className="w-full bg-brand-surface p-4 pl-12 rounded-2xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
                   />
                 </div>
               </div>
@@ -261,7 +261,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                     type="tel" 
                     value={phone} 
                     onChange={(e) => setPhone(e.target.value)} 
-                    className="w-full bg-brand-surface p-4 pl-12 rounded-xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
+                    className="w-full bg-brand-surface p-4 pl-12 rounded-2xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
                     placeholder="+1 234 567 8900" 
                   />
                 </div>
@@ -271,7 +271,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               <button 
                 type="submit" 
                 disabled={isLoading} 
-                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-h3 py-4 rounded-xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-h3 py-4 rounded-2xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isLoading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Save Changes</>}
               </button>
@@ -282,7 +282,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
           {activeTab === 'security' && (
             <form onSubmit={handleUpdatePassword} className="space-y-5 animate-in fade-in slide-in-from-bottom-4">
               {/* Info Banner */}
-              <div className="bg-brand-button-primary/10 p-4 rounded-xl border border-brand-button-primary/20">
+              <div className="bg-brand-button-primary/10 p-4 rounded-2xl border border-brand-button-primary/20">
                 <div className="flex gap-3">
                   <Lock size={20} className="text-brand-button-primary shrink-0 mt-0.5" />
                   <div>
@@ -299,7 +299,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                   type="password" 
                   value={newPassword} 
                   onChange={(e) => setNewPassword(e.target.value)} 
-                  className="w-full bg-brand-surface p-4 rounded-xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-button-primary/30 border border-brand-divider focus:border-brand-button-primary/50 transition placeholder-brand-text-tertiary" 
+                  className="w-full bg-brand-surface p-4 rounded-2xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-button-primary/30 border border-brand-divider focus:border-brand-button-primary/50 transition placeholder-brand-text-tertiary" 
                   placeholder="••••••••" 
                 />
               </div>
@@ -311,7 +311,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                   type="password" 
                   value={confirmPassword} 
                   onChange={(e) => setConfirmPassword(e.target.value)} 
-                  className="w-full bg-brand-surface p-4 rounded-xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-button-primary/30 border border-brand-divider focus:border-brand-button-primary/50 transition placeholder-brand-text-tertiary" 
+                  className="w-full bg-brand-surface p-4 rounded-2xl text-h3 text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-button-primary/30 border border-brand-divider focus:border-brand-button-primary/50 transition placeholder-brand-text-tertiary" 
                   placeholder="••••••••" 
                 />
                 {newPassword && confirmPassword && newPassword === confirmPassword && (
@@ -325,7 +325,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               <button 
                 type="submit" 
                 disabled={isLoading || !newPassword || newPassword !== confirmPassword} 
-                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-h3 py-4 rounded-xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-h3 py-4 rounded-2xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isLoading ? <Loader2 className="animate-spin" size={20} /> : "Update Password"}
               </button>
@@ -370,7 +370,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                   <h3 className="font-bold text-brand-text text-h3">Upgrade to Pro</h3>
                   
                   {/* Pro Features */}
-                  <div className="bg-brand-surface rounded-xl border border-brand-divider p-4 space-y-3">
+                  <div className="bg-brand-surface rounded-2xl border border-brand-divider p-4 space-y-3">
                     {[
                       'Unlimited AI recipe generation',
                       'No advertisements',
@@ -387,7 +387,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                   </div>
                   
                   {/* Coming Soon */}
-                  <div className="bg-brand-button-primary/10 p-4 rounded-xl border border-brand-button-primary/20">
+                  <div className="bg-brand-button-primary/10 p-4 rounded-2xl border border-brand-button-primary/20">
                     <p className="text-caption text-brand-text-secondary">
                       <span className="text-brand-button-primary font-bold">Pro membership</span> billing integration coming soon. Contact support for early access.
                     </p>
@@ -395,7 +395,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                   
                   <button 
                     disabled 
-                    className="w-full p-4 rounded-xl flex items-center justify-between bg-brand-surface-secondary border border-brand-divider opacity-60 cursor-not-allowed"
+                    className="w-full p-4 rounded-2xl flex items-center justify-between bg-brand-surface-secondary border border-brand-divider opacity-60 cursor-not-allowed"
                   >
                     <div className="text-left flex items-center gap-3">
                       <Sparkles size={20} className="text-brand-primary" />
@@ -415,7 +415,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
           {activeTab === 'danger' && (
             <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4">
               {/* Warning Banner */}
-              <div className="bg-brand-secondary/10 p-5 rounded-xl border border-brand-secondary/20">
+              <div className="bg-brand-secondary/10 p-5 rounded-2xl border border-brand-secondary/20">
                 <div className="flex gap-3 mb-4">
                   <ShieldAlert size={24} className="text-brand-secondary shrink-0" />
                   <div>
@@ -430,7 +430,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                   <button 
                     onClick={startDeleteProcess} 
                     disabled={isLoading} 
-                    className="w-full bg-brand-surface text-brand-secondary font-bold py-3.5 rounded-xl border border-brand-secondary/30 hover:bg-brand-secondary/10 active:scale-[0.98] transition"
+                    className="w-full bg-brand-surface text-brand-secondary font-bold py-3.5 rounded-2xl border border-brand-secondary/30 hover:bg-brand-secondary/10 active:scale-[0.98] transition"
                   >
                     Delete My Account
                   </button>
@@ -444,19 +444,19 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                       value={deleteInput}
                       onChange={(e) => setDeleteInput(e.target.value)}
                       placeholder="DELETE"
-                      className="w-full p-3.5 rounded-xl bg-brand-background border border-brand-secondary/30 text-brand-text placeholder-brand-text-tertiary outline-none focus:ring-2 focus:ring-brand-secondary/30 font-bold tracking-wider"
+                      className="w-full p-3.5 rounded-2xl bg-brand-background border border-brand-secondary/30 text-brand-text placeholder-brand-text-tertiary outline-none focus:ring-2 focus:ring-brand-secondary/30 font-bold tracking-wider"
                     />
                     <div className="flex gap-3">
                       <button 
                         onClick={cancelDelete}
-                        className="flex-1 bg-brand-surface-secondary text-brand-text font-bold py-3.5 rounded-xl border border-brand-divider hover:bg-brand-divider transition"
+                        className="flex-1 bg-brand-surface-secondary text-brand-text font-bold py-3.5 rounded-2xl border border-brand-divider hover:bg-brand-divider transition"
                       >
                         Cancel
                       </button>
                       <button 
                         onClick={confirmDelete} 
                         disabled={deleteInput !== 'DELETE' || isLoading} 
-                        className="flex-1 bg-brand-secondary text-white font-bold py-3.5 rounded-xl shadow-lg shadow-brand-secondary/30 active:scale-[0.98] transition disabled:opacity-50 disabled:shadow-none flex items-center justify-center"
+                        className="flex-1 bg-brand-secondary text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-brand-secondary/30 active:scale-[0.98] transition disabled:opacity-50 disabled:shadow-none flex items-center justify-center"
                       >
                         {isLoading ? <Loader2 className="animate-spin" size={20} /> : "Confirm Delete"}
                       </button>
@@ -466,7 +466,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               </div>
               
               {/* Additional Info */}
-              <div className="bg-brand-surface p-4 rounded-xl border border-brand-divider">
+              <div className="bg-brand-surface p-4 rounded-2xl border border-brand-divider">
                 <h4 className="font-bold text-brand-text text-body mb-2">What gets deleted?</h4>
                 <ul className="space-y-2 text-caption text-brand-text-secondary">
                   <li className="flex items-center gap-2">

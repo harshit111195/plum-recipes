@@ -178,7 +178,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     placeholder="Found a bug? Have a feature idea? Let us know..."
-                    className="w-full bg-brand-background rounded-xl p-4 h-32 text-brand-text text-body outline-none focus:ring-2 focus:ring-brand-primary/20 transition mb-4 resize-none border border-brand-divider focus:border-brand-primary/50 placeholder-brand-text-tertiary"
+                    className="w-full bg-brand-background rounded-2xl p-4 h-32 text-brand-text text-body outline-none focus:ring-2 focus:ring-brand-primary/20 transition mb-4 resize-none border border-brand-divider focus:border-brand-primary/50 placeholder-brand-text-tertiary"
                   />
 
                   {/* Submit button: #7C3AED (purple) */}
@@ -186,7 +186,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                     type="submit"
                     disabled={isSubmitting || (rating === 0 && !feedback.trim())}
                     whileTap={{ scale: isSubmitting || (rating === 0 && !feedback.trim()) ? 1 : 0.98 }}
-                    className="w-full py-4 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+                    className="w-full py-4 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-2xl transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
                   >
                     {isSubmitting ? (
                       <>

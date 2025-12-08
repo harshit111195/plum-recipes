@@ -106,7 +106,7 @@ const AnimatedNumber: React.FC<{ value: number; className?: string }> = ({ value
 // Skeleton loader component
 // Skeleton: #2A2A2A (surface secondary for dark mode)
 const Skeleton: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`animate-pulse bg-brand-surface-secondary rounded-lg ${className}`} />
+  <div className={`animate-pulse bg-brand-surface-secondary rounded-2xl ${className}`} />
 );
 
 // Stat card skeleton

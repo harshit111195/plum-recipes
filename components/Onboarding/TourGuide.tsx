@@ -105,7 +105,7 @@ export const TourGuide: React.FC = () => {
                     </div>
                     <button 
                         onClick={nextStep}
-                        className="bg-brand-text text-white px-5 py-2.5 rounded-xl text-sm font-bold active:scale-95 transition"
+                        className="bg-brand-text text-white px-5 py-2.5 rounded-2xl text-sm font-bold active:scale-95 transition"
                     >
                         {currentStep === tourSteps.length - 1 ? 'Finish' : 'Next'}
                     </button>

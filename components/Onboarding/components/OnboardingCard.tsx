@@ -54,7 +54,7 @@ export const OnboardingCard: React.FC<OnboardingCardProps> = ({
         {(icon || emoji) && (
           <div 
             className={`
-              flex items-center justify-center rounded-xl
+              flex items-center justify-center rounded-2xl
               ${isCompact ? 'w-10 h-10 text-xl' : 'w-14 h-14 text-2xl'}
             `}
             style={{ 

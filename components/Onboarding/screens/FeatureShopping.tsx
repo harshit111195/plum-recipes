@@ -54,7 +54,7 @@ export const FeatureShopping: React.FC<FeatureShoppingProps> = ({ onNext }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="rounded-3xl p-5 space-y-3"
+          className="rounded-2xl p-5 space-y-3"
           style={{ 
             backgroundColor: 'rgba(255,255,255,0.1)',
             backdropFilter: 'blur(10px)',

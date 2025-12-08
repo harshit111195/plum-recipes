@@ -100,7 +100,7 @@ const TagInputSection: React.FC<TagInputProps> = ({ label, items, onAdd, onRemov
                             key={tag}
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-caption font-medium bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-caption font-medium bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20"
                         >
                             <span>{tag}</span>
                             <button 
@@ -120,11 +120,11 @@ const TagInputSection: React.FC<TagInputProps> = ({ label, items, onAdd, onRemov
                     value={input} 
                     onChange={e => setInput(e.target.value)} 
                     onKeyDown={handleKeyDown} 
-                    className="w-full bg-brand-background rounded-xl px-4 py-3 text-body text-brand-text placeholder-brand-text-tertiary outline-none focus:ring-2 focus:ring-brand-primary/20 transition border border-brand-divider focus:border-brand-primary/30" 
+                    className="w-full bg-brand-background rounded-2xl px-4 py-3 text-body text-brand-text placeholder-brand-text-tertiary outline-none focus:ring-2 focus:ring-brand-primary/20 transition border border-brand-divider focus:border-brand-primary/30" 
                 />
                 <button 
                     onClick={handleAddClick} 
-                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-brand-button-primary text-white rounded-lg hover:bg-brand-button-primary-hover active:scale-90 transition"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-brand-button-primary text-white rounded-2xl hover:bg-brand-button-primary-hover active:scale-90 transition"
                 >
                     <Plus size={16} strokeWidth={2.5} />
                 </button>
@@ -266,14 +266,14 @@ export const Settings: React.FC = () => {
             <div className="flex gap-3">
               <button 
                 onClick={() => setShowAccountModal(true)} 
-                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-xl text-body active:scale-[0.98] transition flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-2xl text-body active:scale-[0.98] transition flex items-center justify-center gap-2"
               >
                 <SettingsIcon size={16} /> 
                 Manage Account
               </button>
               <button 
                 onClick={() => setShowLogoutConfirm(true)} 
-                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-xl text-body active:scale-[0.98] transition flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-brand-button-primary text-white font-bold rounded-2xl text-body active:scale-[0.98] transition flex items-center justify-center gap-2"
               >
                 <LogOut size={16} /> 
                 Sign Out
@@ -298,7 +298,7 @@ export const Settings: React.FC = () => {
                 PRO
               </div>
             ) : (
-              <button className="px-4 py-2 rounded-xl text-caption font-bold bg-brand-button-primary text-white flex items-center gap-1.5 active:scale-95 transition">
+              <button className="px-4 py-2 rounded-2xl text-caption font-bold bg-brand-button-primary text-white flex items-center gap-1.5 active:scale-95 transition">
                 <Sparkles size={14} /> Upgrade
               </button>
             )}
@@ -317,7 +317,7 @@ export const Settings: React.FC = () => {
                 {isDark ? <Moon size={18} className="text-brand-primary" /> : <Sun size={18} className="text-brand-primary" />}
                 <span className="text-body font-semibold text-brand-text">Theme</span>
               </div>
-              <div className="bg-brand-background p-1 rounded-xl flex gap-1 border border-brand-divider">
+              <div className="bg-brand-background rounded-2xl flex gap-1 border border-brand-divider">
                 {[
                   { value: 'light', icon: <Sun size={14} />, label: 'Light' },
                   { value: 'dark', icon: <Moon size={14} />, label: 'Dark' },
@@ -326,7 +326,7 @@ export const Settings: React.FC = () => {
                   <button 
                     key={option.value} 
                     onClick={() => setTheme(option.value as 'light' | 'dark' | 'system')} 
-                    className={`px-2.5 py-1.5 rounded-lg text-caption font-semibold transition-all flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1.5 rounded-2xl text-caption font-semibold transition-all flex items-center gap-1.5 ${
                       theme === option.value 
                         ? 'bg-brand-primary text-black' 
                         : 'text-brand-text-tertiary hover:text-brand-text'
@@ -342,12 +342,12 @@ export const Settings: React.FC = () => {
             {/* Units */}
             <div className="flex items-center justify-between p-4">
               <span className="text-body font-semibold text-brand-text">Units</span>
-              <div className="bg-brand-background p-1 rounded-xl flex gap-1 border border-brand-divider">
+              <div className="bg-brand-background rounded-2xl flex gap-1 border border-brand-divider">
                 {['Metric', 'Imperial'].map(u => (
                   <button 
                     key={u} 
                     onClick={() => update('measurementUnit', u)} 
-                    className={`px-3 py-1.5 rounded-lg text-caption font-semibold transition-all ${
+                    className={`px-3 py-1.5 rounded-2xl text-caption font-semibold transition-all ${
                       preferences.measurementUnit === u 
                         ? 'bg-brand-surface-secondary text-brand-text' 
                         : 'text-brand-text-tertiary hover:text-brand-text'
@@ -362,16 +362,16 @@ export const Settings: React.FC = () => {
             {/* Household Size */}
             <div className="flex items-center justify-between p-4">
               <span className="text-body font-semibold text-brand-text">Household Size</span>
-              <div className="flex items-center gap-3 bg-brand-background rounded-xl px-2 py-1.5 border border-brand-divider">
+              <div className="flex items-center gap-3 bg-brand-background rounded-2xl px-2 py-1.5 border border-brand-divider">
                 <button 
-                  className="p-1 hover:bg-brand-surface-secondary rounded-lg transition active:scale-90" 
+                  className="p-1 hover:bg-brand-surface-secondary rounded-2xl transition active:scale-90" 
                   onClick={() => update('householdSize', Math.max(1, preferences.householdSize - 1))}
                 >
                   <Minus size={16} className="text-brand-primary" strokeWidth={2.5} />
                 </button>
                 <span className="font-bold w-6 text-center text-body text-brand-text">{preferences.householdSize}</span>
                 <button 
-                  className="p-1 hover:bg-brand-surface-secondary rounded-lg transition active:scale-90" 
+                  className="p-1 hover:bg-brand-surface-secondary rounded-2xl transition active:scale-90" 
                   onClick={() => update('householdSize', preferences.householdSize + 1)}
                 >
                   <Plus size={16} className="text-brand-primary" strokeWidth={2.5} />
@@ -383,7 +383,7 @@ export const Settings: React.FC = () => {
             <div className="p-4">
               <div className="flex justify-between items-center mb-3">
                 <span className="text-body font-semibold text-brand-text">Cooking Skill</span>
-                <span className="text-caption font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-lg">
+                <span className="text-caption font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-2xl">
                   {preferences.cookingSkill}
                 </span>
               </div>
@@ -397,7 +397,7 @@ export const Settings: React.FC = () => {
                   const val = parseInt(e.target.value); 
                   update('cookingSkill', val === 0 ? 'Beginner' : val === 1 ? 'Intermediate' : 'Advanced'); 
                 }} 
-                className="w-full h-2 bg-brand-surface-secondary rounded-lg appearance-none cursor-pointer accent-brand-primary" 
+                className="w-full h-2 bg-brand-surface-secondary rounded-2xl appearance-none cursor-pointer accent-brand-primary" 
               />
               <div className="flex justify-between mt-2 text-caption text-brand-text-tertiary font-medium uppercase tracking-wide">
                 <span>Beginner</span>
@@ -435,7 +435,7 @@ export const Settings: React.FC = () => {
             <div className="p-4">
               <div className="flex justify-between items-center mb-3">
                 <span className="text-body font-semibold text-brand-text">Max Calories / Meal</span>
-                <span className="text-caption font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-lg">
+                <span className="text-caption font-bold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-2xl">
                   {preferences.maxCaloriesPerMeal || 800} kcal
                 </span>
               </div>
@@ -446,7 +446,7 @@ export const Settings: React.FC = () => {
                 step="50" 
                 value={preferences.maxCaloriesPerMeal || 800} 
                 onChange={(e) => update('maxCaloriesPerMeal', parseInt(e.target.value))} 
-                className="w-full h-2 bg-brand-surface-secondary rounded-lg appearance-none cursor-pointer accent-brand-primary" 
+                className="w-full h-2 bg-brand-surface-secondary rounded-2xl appearance-none cursor-pointer accent-brand-primary" 
               />
             </div>
 
@@ -479,7 +479,7 @@ export const Settings: React.FC = () => {
                 <button
                   key={appliance} 
                   onClick={() => toggleArrayItem('appliances', appliance)} 
-                  className={`flex items-center gap-2.5 p-3 rounded-xl cursor-pointer transition-all ${
+                  className={`flex items-center gap-2.5 p-3 rounded-2xl cursor-pointer transition-all ${
                     isActive 
                       ? 'bg-brand-primary/10 border-2 border-brand-primary/30' 
                       : 'bg-brand-background border-2 border-transparent hover:border-brand-divider'
@@ -527,7 +527,7 @@ export const Settings: React.FC = () => {
             className="w-full flex items-center justify-between p-4 hover:bg-brand-background active:bg-brand-surface-secondary transition"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-brand-button-primary/20 rounded-xl flex items-center justify-center">
+              <div className="w-9 h-9 bg-brand-button-primary/20 rounded-2xl flex items-center justify-center">
                 <Bug size={16} className="text-brand-button-primary" />
               </div>
               <div className="text-left">
@@ -607,13 +607,13 @@ export const Settings: React.FC = () => {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setShowLogoutConfirm(false)}
-                    className="flex-1 py-3.5 bg-brand-surface-secondary text-brand-text font-bold rounded-xl text-body active:scale-[0.98] transition"
+                    className="flex-1 py-3.5 bg-brand-surface rounded-2xl text-body active:scale-[0.98] transition"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleLogout}
-                    className="flex-1 py-3.5 bg-brand-error hover:bg-brand-secondary text-white font-bold rounded-xl text-body active:scale-[0.98] transition shadow-lg shadow-red-500/30 flex items-center justify-center gap-2"
+                    className="flex-1 py-3.5 bg-brand-error hover:bg-brand-secondary text-white font-bold rounded-2xl text-body active:scale-[0.98] transition shadow-lg shadow-red-500/30 flex items-center justify-center gap-2"
                   >
                     <LogOut size={16} strokeWidth={2.5} />
                     Sign Out

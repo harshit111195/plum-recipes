@@ -199,7 +199,7 @@ export const ShoppingList: React.FC = () => {
           {/* Add item input in header - white bg */}
           <div 
             id="tour-shop-input" 
-            className="relative bg-white rounded-xl shadow-sm flex items-center p-1.5 transition-all duration-200 focus-within:ring-2 focus-within:ring-black/10 mb-4"
+            className="relative bg-white rounded-2xl shadow-sm flex items-center p-1.5 transition-all duration-200 focus-within:ring-2 focus-within:ring-black/10 mb-4"
           >
             <ShoppingBag size={18} className="absolute left-4 text-black/40" />
             <form onSubmit={handleAdd} className="flex-1">
@@ -260,7 +260,7 @@ export const ShoppingList: React.FC = () => {
                         {restockSuggestions.map(item => (
                           <div 
                             key={`suggest-${item.id}`} 
-                            className="flex items-center justify-between bg-brand-surface p-2.5 rounded-xl border border-brand-button-primary/20"
+                            className="flex items-center justify-between bg-brand-surface rounded-2xl border border-brand-button-primary/20"
                           >
                             <span className="text-body font-medium text-brand-text">{item.name}</span>
                             <button 
@@ -422,21 +422,21 @@ export const ShoppingList: React.FC = () => {
                 
                 <div className="space-y-3">
                   {/* Quantity input row - #0D0D0D background */}
-                  <div className="bg-brand-background rounded-xl p-3 flex items-center justify-center gap-2">
+                  <div className="bg-brand-background rounded-2xl p-3 flex items-center justify-center gap-2">
                     <span className="text-body font-bold text-brand-text-secondary uppercase text-caption tracking-wider">Qty:</span>
                     {/* Quantity input - #1A1A1A surface */}
                     <input 
                       type="text" 
                       value={buyQty} 
                       onChange={(e) => setBuyQty(e.target.value)} 
-                      className="w-16 text-center bg-brand-surface rounded-lg py-1 text-h3 font-bold text-brand-text shadow-sm outline-none border border-black/5" 
+                      className="w-16 text-center bg-brand-surface rounded-2xl py-1 text-h3 font-bold text-brand-text shadow-sm outline-none border border-black/5" 
                       autoFocus 
                     />
                     {/* Unit select - #1A1A1A surface */}
                     <select 
                       value={buyUnit} 
                       onChange={(e) => setBuyUnit(e.target.value)} 
-                      className="bg-brand-surface rounded-lg py-1 px-2 text-h3 font-bold text-brand-text shadow-sm outline-none border border-black/5"
+                      className="bg-brand-surface rounded-2xl py-1 px-2 text-h3 font-bold text-brand-text shadow-sm outline-none border border-black/5"
                     >
                       {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
                     </select>
@@ -444,7 +444,7 @@ export const ShoppingList: React.FC = () => {
                   
                   {/* Category select - #0D0D0D background */}
                   <select 
-                    className="w-full bg-brand-background text-brand-text text-body font-medium p-3 rounded-xl appearance-none outline-none border-none text-center" 
+                    className="w-full bg-brand-background rounded-2xl appearance-none outline-none border-none text-center" 
                     value={buyCategory} 
                     onChange={e => setBuyCategory(e.target.value)}
                   >
@@ -452,7 +452,7 @@ export const ShoppingList: React.FC = () => {
                   </select>
                   
                   {/* Expiry date input - #0D0D0D background */}
-                  <div className="relative flex items-center bg-brand-background rounded-xl px-3">
+                  <div className="relative flex items-center bg-brand-background rounded-2xl px-3">
                     <span className="text-brand-text-secondary text-caption mr-2 uppercase font-bold tracking-wider">Expires:</span>
                     <input 
                       type="date" 
