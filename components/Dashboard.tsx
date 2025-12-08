@@ -669,7 +669,7 @@ const QuickAction: React.FC<{ icon: React.ReactNode; label: string; onClick: () 
                     {/* Recipe title */}
                     <h3 className="text-h3 text-white mb-1 drop-shadow-lg line-clamp-2 text-left">
                       {quickMealSuggestion.title}
-                    </h2>
+                    </h3>
                     
                     {/* CTA */}
                     <div className="flex items-center gap-1 text-brand-primary font-semibold text-caption">
