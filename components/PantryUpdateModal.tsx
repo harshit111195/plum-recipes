@@ -39,25 +39,25 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
 
   return (
     <div className="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
-      <div className="bg-[#0D0D0D] w-full max-w-md rounded-t-[20px] sm:rounded-[20px] overflow-hidden animate-in slide-in-from-bottom-full duration-300 shadow-2xl border border-[#333333] max-h-[85vh] flex flex-col">
+      <div className="bg-brand-background w-full max-w-md rounded-t-[20px] sm:rounded-2xl overflow-hidden animate-in slide-in-from-bottom-full duration-300 shadow-2xl border border-brand-divider max-h-[85vh] flex flex-col">
         
         {/* Header - compact */}
-        <div className="p-4 bg-[#1A1A1A] flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#FFC244]/20 rounded-full flex items-center justify-center text-[#FFC244] shrink-0">
+        <div className="p-4 bg-brand-surface flex items-center gap-3">
+            <div className="w-10 h-10 bg-brand-primary/20 rounded-full flex items-center justify-center text-brand-primary shrink-0">
                 <Check size={20} strokeWidth={3} />
             </div>
             <div>
-                <h2 className="text-lg font-bold text-white">Recipe Complete! 🎉</h2>
-                <p className="text-[#A0A0A0] text-xs">Update your inventory</p>
+                <h2 className="text-lg font-bold text-brand-text">Recipe Complete! 🎉</h2>
+                <p className="text-brand-text-secondary text-xs">Update your inventory</p>
             </div>
         </div>
 
         {/* Items list - scrollable */}
         <div className="px-3 py-2 flex-1 overflow-y-auto">
-            <p className="text-[10px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-2">Ingredients Used</p>
-            <div className="bg-[#1A1A1A] rounded-xl overflow-hidden border border-[#333333]">
+            <p className="text-[10px] font-semibold text-brand-text-tertiary uppercase tracking-wider mb-2">Ingredients Used</p>
+            <div className="bg-brand-surface rounded-xl overflow-hidden border border-brand-divider">
                 {matchedItems.length === 0 ? (
-                    <div className="p-3 text-center text-[#6B6B6B] text-sm italic">
+                    <div className="p-3 text-center text-brand-text-tertiary text-sm italic">
                         No pantry items matched.
                     </div>
                 ) : (
@@ -65,24 +65,24 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
                         <div 
                             key={pantryItem.id}
                             onClick={() => toggleItem(pantryItem.id)}
-                            className={`flex items-center justify-between p-2.5 cursor-pointer active:bg-[#2A2A2A] transition ${
-                                index !== matchedItems.length - 1 ? 'border-b border-[#333333]' : ''
+                            className={`flex items-center justify-between p-2.5 cursor-pointer active:bg-brand-surface-secondary transition ${
+                                index !== matchedItems.length - 1 ? 'border-b border-brand-divider' : ''
                             }`}
                         >
                             <div className="flex items-center gap-2.5">
                                 <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${
                                     selectedIds.includes(pantryItem.id) 
-                                    ? 'bg-[#FFC244] border-[#FFC244] text-black' 
-                                    : 'border-[#6B6B6B] bg-[#2A2A2A]'
+                                    ? 'bg-brand-primary border-brand-primary text-black' 
+                                    : 'border-brand-text-tertiary bg-brand-surface-secondary'
                                 }`}>
                                     {selectedIds.includes(pantryItem.id) && <Check size={12} strokeWidth={3} />}
                                 </div>
                                 <div>
-                                    <div className="text-[14px] text-white leading-tight">{pantryItem.name}</div>
-                                    <div className="text-[11px] text-[#6B6B6B]">{pantryItem.quantity} {pantryItem.unit}</div>
+                                    <div className="text-[14px] text-brand-text leading-tight">{pantryItem.name}</div>
+                                    <div className="text-[11px] text-brand-text-tertiary">{pantryItem.quantity} {pantryItem.unit}</div>
                                 </div>
                             </div>
-                            <div className="text-[13px] font-bold text-[#E84142]">-{amount}</div>
+                            <div className="text-[13px] font-bold text-brand-secondary">-{amount}</div>
                         </div>
                     ))
                 )}
@@ -90,16 +90,16 @@ export const PantryUpdateModal: React.FC<Props> = ({ matchedItems, onConfirm, on
         </div>
 
         {/* Buttons - compact */}
-        <div className="p-3 flex gap-2 bg-[#0D0D0D]">
+        <div className="p-3 flex gap-2 bg-brand-background">
             <button 
                 onClick={onCancel} 
-                className="flex-1 py-2.5 bg-[#1A1A1A] border border-[#333333] text-[#A0A0A0] font-semibold text-[14px] rounded-xl active:bg-[#2A2A2A] transition"
+                className="flex-1 py-2.5 bg-brand-surface border border-brand-divider text-brand-text-secondary font-semibold text-[14px] rounded-xl active:bg-brand-surface-secondary transition"
             >
                 Skip
             </button>
             <button 
                 onClick={handleConfirm} 
-                className="flex-1 py-2.5 bg-[#FFC244] hover:bg-[#E5AD3D] text-black font-semibold text-[14px] rounded-xl active:scale-[0.98] transition"
+                className="flex-1 py-2.5 bg-brand-primary hover:bg-brand-primary-dark text-black font-semibold text-[14px] rounded-xl active:scale-[0.98] transition"
             >
                 Update Pantry
             </button>

@@ -6,6 +6,7 @@ import { UserProvider, useUser } from './context/UserContext';
 import { InventoryProvider, useInventory } from './context/InventoryContext';
 import { RecipeProvider, useRecipes } from './context/RecipeContext';
 import { OnboardingProvider } from './context/OnboardingContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navigation } from './components/Navigation';
 import { Dashboard } from './components/Dashboard';
 import { PageTransition } from './components/PageTransition';
@@ -69,10 +70,7 @@ const AppContent: React.FC = () => {
     }
   }, [isLoading]);
 
-  // Always use dark mode
-  useEffect(() => {
-    document.documentElement.classList.add('dark');
-  }, []);
+  // Theme is now managed by ThemeContext
 
   // Only show loader on initial load, not on subsequent navigations
   if (isLoading && !hasLoadedOnce) {
@@ -211,7 +209,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <>
+    <ThemeProvider>
       <Toaster position="bottom-center" toastOptions={{
           style: { background: '#333', color: '#fff', borderRadius: '12px', fontSize: '14px' },
       }} />
@@ -237,7 +235,7 @@ const App: React.FC = () => {
           </UserProvider>
         </ErrorBoundary>
       )}
-    </>
+    </ThemeProvider>
   );
 };
 

@@ -71,7 +71,7 @@ export const TourGuide: React.FC = () => {
           
           {/* Active Highlight Ring (Visual only) */}
           <div 
-            className="absolute border-2 border-brand-primary rounded-[16px] shadow-lg box-content transition-all duration-300 ease-out animate-pulse"
+            className="absolute border-2 border-brand-primary rounded-2xl shadow-lg box-content transition-all duration-300 ease-out animate-pulse"
             style={{ 
                 top: rect.top - 8, 
                 left: rect.left - 8, 

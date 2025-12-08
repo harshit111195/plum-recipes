@@ -21,14 +21,14 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
   // Validate recipe data
   if (!recipe || !recipe.instructions || !Array.isArray(recipe.instructions) || recipe.instructions.length === 0) {
     return (
-      <div className="fixed inset-0 z-[100] bg-[#0D0D0D] flex flex-col items-center justify-center p-6 text-center">
-        <div className="text-white mb-4">
+      <div className="fixed inset-0 z-[100] bg-brand-background flex flex-col items-center justify-center p-6 text-center">
+        <div className="text-brand-text mb-4">
           <h2 className="text-xl font-bold mb-2">Invalid Recipe</h2>
-          <p className="text-[#A0A0A0]">This recipe doesn't have cooking instructions.</p>
+          <p className="text-brand-text-secondary">This recipe doesn't have cooking instructions.</p>
         </div>
         <button 
           onClick={onClose}
-          className="px-6 py-3 bg-[#7C3AED] text-white font-bold rounded-full shadow-lg shadow-purple-500/30"
+          className="px-6 py-3 bg-brand-button-primary text-white font-bold rounded-full shadow-lg shadow-purple-500/30"
         >
           Go Back
         </button>
@@ -199,7 +199,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
         animate={{ clipPath: `circle(150% at ${x}px ${y}px)` }}
         exit={{ clipPath: `circle(0px at ${x}px ${y}px)` }}
         transition={{ duration: 0.85, ease: [0.32, 1, 0.6, 1] }}
-        className="fixed inset-0 z-[100] bg-[#0D0D0D] flex flex-col overflow-hidden"
+        className="fixed inset-0 z-[100] bg-brand-background flex flex-col overflow-hidden"
     >
       
       {/* Background Image (Reduced Blur) */}
@@ -214,8 +214,8 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
             className="w-full h-full object-cover opacity-40 blur-md scale-105"
             alt=""
          />
-         {/* Dark gradient overlay */}
-         <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/60 via-[#0D0D0D]/40 to-[#0D0D0D]/80" />
+         {/* Theme-aware gradient overlay - darker in light mode for better contrast */}
+         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 dark:from-black/60 dark:via-black/40 dark:to-black/80" />
       </MotionDiv>
 
       {/* Main Content Fade-In Wrapper */}
@@ -230,9 +230,9 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
             {/* Progress Segments - Yellow active, dark inactive */}
             <div className="flex gap-1.5 mb-4 mt-2">
                 {recipe.instructions.map((_, idx) => (
-                    <div key={idx} className="h-1.5 flex-1 bg-[#333333] rounded-full overflow-hidden">
+                    <div key={idx} className="h-1.5 flex-1 bg-brand-divider rounded-full overflow-hidden">
                         <div 
-                            className={`h-full bg-[#FFC244] transition-all duration-300 ${
+                            className={`h-full bg-brand-primary transition-all duration-300 ${
                                 idx <= safeActiveStep ? 'w-full' : 'w-0'
                             }`} 
                         />
@@ -243,12 +243,12 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
             <div className="flex justify-between items-center">
                 {/* Step badge - Yellow accent */}
                 <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-black uppercase tracking-widest bg-[#FFC244] px-3 py-1.5 rounded-full shadow-lg shadow-[#FFC244]/20">
+                    <span className="text-xs font-bold text-black uppercase tracking-widest bg-brand-primary px-3 py-1.5 rounded-full shadow-lg shadow-brand-primary/20">
                         Step {safeActiveStep + 1} of {recipe.instructions.length}
                     </span>
                 </div>
                 {/* Close button - Dark surface */}
-                <button onClick={onClose} aria-label="Exit cooking mode" className="w-10 h-10 rounded-full bg-[#1A1A1A] flex items-center justify-center text-[#A0A0A0] border border-[#333333] active:bg-[#2A2A2A] transition">
+                <button onClick={onClose} aria-label="Exit cooking mode" className="w-10 h-10 rounded-full bg-brand-surface flex items-center justify-center text-brand-text-secondary border border-brand-divider active:bg-brand-surface-secondary transition">
                     <X size={18} />
                 </button>
             </div>
@@ -285,7 +285,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                     className={`
                         absolute left-4 right-4 mx-auto
                         shadow-2xl flex flex-col overflow-hidden
-                        bg-[#1A1A1A]/95 backdrop-blur-xl border border-[#333333] rounded-[32px]
+                        bg-brand-surface/95 backdrop-blur-xl border border-brand-divider rounded-[24px]
                         transform-gpu will-change-transform
                         ${aiTip ? 'h-[85%]' : 'h-[75%] max-h-[600px]'} 
                     `}
@@ -296,7 +296,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                         ${aiTip ? 'justify-start overflow-y-auto' : 'justify-center overflow-y-auto'}
                     `}>
                         {/* Instruction text - White on dark */}
-                        <h2 className={`font-bold text-[#FFFFFF] font-sans transition-all duration-300 text-center ${getAdaptiveTextStyle(currentInstruction || '')}`}>
+                        <h2 className={`font-bold text-brand-text font-sans transition-all duration-300 text-center ${getAdaptiveTextStyle(currentInstruction || '')}`}>
                             {currentInstruction || 'No instruction available'}
                         </h2>
 
@@ -307,12 +307,12 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 exit={{ opacity: 0, height: 0 }}
-                                className="bg-[#0D0D0D] border border-[#FFC244]/30 p-4 rounded-2xl mt-6 overflow-hidden shrink-0 text-left"
+                                className="bg-brand-background border border-brand-primary/30 p-4 rounded-2xl mt-6 overflow-hidden shrink-0 text-left"
                             >
-                                <div className="flex items-center gap-2 text-[#FFC244] font-bold text-xs uppercase tracking-wider mb-2">
+                                <div className="flex items-center gap-2 text-brand-primary font-bold text-xs uppercase tracking-wider mb-2">
                                     <Sparkles size={12} fill="currentColor" /> Chef's Note
                                 </div>
-                                <p className="text-[#A0A0A0] text-[15px] leading-relaxed">{aiTip}</p>
+                                <p className="text-brand-text-secondary text-[15px] leading-relaxed">{aiTip}</p>
                             </MotionDiv>
                         )}
                         </AnimatePresence>
@@ -324,7 +324,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                             {/* Speak button - Dark surface */}
                             <button 
                                 onClick={speakStep}
-                                className="w-12 h-12 flex items-center justify-center rounded-full bg-[#0D0D0D] text-[#FFC244] active:scale-95 transition shrink-0 border border-[#333333]"
+                                className="w-12 h-12 flex items-center justify-center rounded-full bg-brand-background text-brand-primary active:scale-95 transition shrink-0 border border-brand-divider"
                             >
                                 <Volume2 size={20} />
                             </button>
@@ -333,7 +333,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                             <button 
                                 onClick={handleStepAiHelp}
                                 disabled={loadingTip || hasAskedCurrentStep}
-                                className="flex-1 py-3 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold rounded-full text-sm flex items-center justify-center gap-2 active:scale-95 transition disabled:opacity-70 shadow-lg shadow-purple-500/30"
+                                className="flex-1 py-3 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-full text-sm flex items-center justify-center gap-2 active:scale-95 transition disabled:opacity-70 shadow-lg shadow-purple-500/30"
                             >
                                 {loadingTip ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}
                                 {hasAskedCurrentStep ? 'Explained ✓' : aiTip ? 'Chef\'s Note' : 'Explain this step'}
@@ -352,7 +352,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                 onClick={prevStep}
                 disabled={safeActiveStep === 0}
                 aria-label="Previous step"
-                className={`w-14 h-14 rounded-full flex items-center justify-center text-white transition pointer-events-auto ${safeActiveStep === 0 ? 'opacity-0' : 'bg-[#1A1A1A] border border-[#333333] active:bg-[#2A2A2A]'}`}
+                className={`w-14 h-14 rounded-full flex items-center justify-center text-brand-text transition pointer-events-auto ${safeActiveStep === 0 ? 'opacity-0' : 'bg-brand-surface border border-brand-divider active:bg-brand-surface-secondary'}`}
             >
                 <ChevronLeft size={28} />
             </button>
@@ -362,7 +362,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                 <button 
                     onClick={onFinish}
                     aria-label="Finish cooking"
-                    className="pointer-events-auto px-8 py-4 bg-[#00A67E] hover:bg-[#008F6B] text-white font-bold text-lg rounded-full shadow-lg shadow-[#00A67E]/30 active:scale-95 transition flex items-center gap-2 animate-in zoom-in"
+                    className="pointer-events-auto px-8 py-4 bg-brand-accent hover:bg-brand-accent text-white font-bold text-lg rounded-full shadow-lg shadow-brand-accent/30 active:scale-95 transition flex items-center gap-2 animate-in zoom-in"
                 >
                     Done Cooking! <Check size={20} />
                 </button>
@@ -373,7 +373,7 @@ export const ChefMode: React.FC<Props> = ({ recipe, onClose, onFinish, origin })
                 onClick={nextStep}
                 disabled={safeActiveStep === recipe.instructions.length - 1}
                 aria-label="Next step"
-                className={`w-14 h-14 rounded-full flex items-center justify-center text-white transition pointer-events-auto ${safeActiveStep === recipe.instructions.length - 1 ? 'opacity-0' : 'bg-[#1A1A1A] border border-[#333333] active:bg-[#2A2A2A]'}`}
+                className={`w-14 h-14 rounded-full flex items-center justify-center text-brand-text transition pointer-events-auto ${safeActiveStep === recipe.instructions.length - 1 ? 'opacity-0' : 'bg-brand-surface border border-brand-divider active:bg-brand-surface-secondary'}`}
             >
                 <ChevronRight size={28} />
             </button>

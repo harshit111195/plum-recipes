@@ -178,29 +178,29 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
         animate={{ y: 0 }} 
         exit={{ y: "100%" }} 
         transition={{ type: "spring", damping: 25, stiffness: 200 }} 
-        className="fixed bottom-0 left-0 right-0 z-[110] bg-[#0D0D0D] rounded-t-[32px] overflow-hidden shadow-2xl h-[85vh] flex flex-col"
+        className="fixed bottom-0 left-0 right-0 z-[110] bg-brand-background rounded-t-[32px] overflow-hidden shadow-2xl h-[85vh] flex flex-col"
       >
         {/* Header */}
-        <div className="bg-[#1A1A1A] border-b border-[#333333] px-5 py-4 flex justify-between items-center">
-          <h2 className="text-[20px] font-bold text-[#FFFFFF]">Manage Account</h2>
+        <div className="bg-brand-surface border-b border-brand-divider px-5 py-4 flex justify-between items-center">
+          <h2 className="text-[20px] font-bold text-brand-text">Manage Account</h2>
           <button 
             onClick={onClose} 
-            className="w-9 h-9 bg-[#2A2A2A] rounded-full flex items-center justify-center text-[#A0A0A0] hover:text-[#FFFFFF] hover:bg-[#333333] transition"
+            className="w-9 h-9 bg-brand-surface-secondary rounded-full flex items-center justify-center text-brand-text-secondary hover:text-brand-text hover:bg-brand-divider transition"
           >
             <X size={18} />
           </button>
         </div>
         
         {/* Tab Bar */}
-        <div className="flex bg-[#1A1A1A] border-b border-[#333333] px-2">
+        <div className="flex bg-brand-surface border-b border-brand-divider px-2">
           {tabs.map(tab => (
             <button 
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)} 
               className={`flex-1 flex flex-col items-center gap-1 py-3 border-b-2 transition-colors ${
                 activeTab === tab.id 
-                  ? 'border-[#FFC244] text-[#FFC244]' 
-                  : 'border-transparent text-[#6B6B6B] hover:text-[#A0A0A0]'
+                  ? 'border-brand-primary text-brand-primary' 
+                  : 'border-transparent text-brand-text-tertiary hover:text-brand-text-secondary'
               }`}
             >
               <tab.icon size={18} />
@@ -217,22 +217,22 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
             <form onSubmit={handleUpdateProfile} className="space-y-5 animate-in fade-in slide-in-from-bottom-4">
               {/* Avatar */}
               <div className="flex flex-col items-center mb-6">
-                <div className="w-20 h-20 bg-[#FFC244] rounded-2xl flex items-center justify-center text-black text-3xl font-bold shadow-lg shadow-[#FFC244]/20 mb-3">
+                <div className="w-20 h-20 bg-brand-primary rounded-2xl flex items-center justify-center text-black text-3xl font-bold shadow-lg shadow-brand-primary/20 mb-3">
                   {getInitials()}
                 </div>
-                <p className="text-[12px] text-[#6B6B6B]">Tap avatar to change (coming soon)</p>
+                <p className="text-[12px] text-brand-text-tertiary">Tap avatar to change (coming soon)</p>
               </div>
               
               {/* Full Name */}
               <div>
-                <label className="block text-[11px] font-bold text-[#A0A0A0] uppercase mb-2 ml-1 tracking-wider">Full Name</label>
+                <label className="block text-[11px] font-bold text-brand-text-secondary uppercase mb-2 ml-1 tracking-wider">Full Name</label>
                 <div className="relative">
-                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B]" />
+                  <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary" />
                   <input 
                     type="text" 
                     value={fullName} 
                     onChange={(e) => setFullName(e.target.value)} 
-                    className="w-full bg-[#1A1A1A] p-4 pl-12 rounded-xl text-[16px] text-[#FFFFFF] font-medium outline-none focus:ring-2 focus:ring-[#FFC244]/30 border border-[#333333] focus:border-[#FFC244]/50 transition placeholder-[#6B6B6B]" 
+                    className="w-full bg-brand-surface p-4 pl-12 rounded-xl text-[16px] text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
                     placeholder="Your Name" 
                   />
                 </div>
@@ -240,28 +240,28 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               
               {/* Email */}
               <div>
-                <label className="block text-[11px] font-bold text-[#A0A0A0] uppercase mb-2 ml-1 tracking-wider">Email Address</label>
+                <label className="block text-[11px] font-bold text-brand-text-secondary uppercase mb-2 ml-1 tracking-wider">Email Address</label>
                 <div className="relative">
-                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B]" />
+                  <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary" />
                   <input 
                     type="email" 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
-                    className="w-full bg-[#1A1A1A] p-4 pl-12 rounded-xl text-[16px] text-[#FFFFFF] font-medium outline-none focus:ring-2 focus:ring-[#FFC244]/30 border border-[#333333] focus:border-[#FFC244]/50 transition placeholder-[#6B6B6B]" 
+                    className="w-full bg-brand-surface p-4 pl-12 rounded-xl text-[16px] text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
                   />
                 </div>
               </div>
               
               {/* Phone */}
               <div>
-                <label className="block text-[11px] font-bold text-[#A0A0A0] uppercase mb-2 ml-1 tracking-wider">Phone Number</label>
+                <label className="block text-[11px] font-bold text-brand-text-secondary uppercase mb-2 ml-1 tracking-wider">Phone Number</label>
                 <div className="relative">
-                  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B]" />
+                  <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary" />
                   <input 
                     type="tel" 
                     value={phone} 
                     onChange={(e) => setPhone(e.target.value)} 
-                    className="w-full bg-[#1A1A1A] p-4 pl-12 rounded-xl text-[16px] text-[#FFFFFF] font-medium outline-none focus:ring-2 focus:ring-[#FFC244]/30 border border-[#333333] focus:border-[#FFC244]/50 transition placeholder-[#6B6B6B]" 
+                    className="w-full bg-brand-surface p-4 pl-12 rounded-xl text-[16px] text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-primary/30 border border-brand-divider focus:border-brand-primary/50 transition placeholder-brand-text-tertiary" 
                     placeholder="+1 234 567 8900" 
                   />
                 </div>
@@ -271,7 +271,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               <button 
                 type="submit" 
                 disabled={isLoading} 
-                className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold text-[16px] py-4 rounded-xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-[16px] py-4 rounded-xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isLoading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Save Changes</>}
               </button>
@@ -282,40 +282,40 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
           {activeTab === 'security' && (
             <form onSubmit={handleUpdatePassword} className="space-y-5 animate-in fade-in slide-in-from-bottom-4">
               {/* Info Banner */}
-              <div className="bg-[#7C3AED]/10 p-4 rounded-xl border border-[#7C3AED]/20">
+              <div className="bg-brand-button-primary/10 p-4 rounded-xl border border-brand-button-primary/20">
                 <div className="flex gap-3">
-                  <Lock size={20} className="text-[#7C3AED] shrink-0 mt-0.5" />
+                  <Lock size={20} className="text-brand-button-primary shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-[#FFFFFF] text-[14px]">Secure your account</h4>
-                    <p className="text-[#A0A0A0] text-[12px] mt-1">Use a strong password with at least 6 characters.</p>
+                    <h4 className="font-bold text-brand-text text-[14px]">Secure your account</h4>
+                    <p className="text-brand-text-secondary text-[12px] mt-1">Use a strong password with at least 6 characters.</p>
                   </div>
                 </div>
               </div>
               
               {/* New Password */}
               <div>
-                <label className="block text-[11px] font-bold text-[#A0A0A0] uppercase mb-2 ml-1 tracking-wider">New Password</label>
+                <label className="block text-[11px] font-bold text-brand-text-secondary uppercase mb-2 ml-1 tracking-wider">New Password</label>
                 <input 
                   type="password" 
                   value={newPassword} 
                   onChange={(e) => setNewPassword(e.target.value)} 
-                  className="w-full bg-[#1A1A1A] p-4 rounded-xl text-[16px] text-[#FFFFFF] font-medium outline-none focus:ring-2 focus:ring-[#7C3AED]/30 border border-[#333333] focus:border-[#7C3AED]/50 transition placeholder-[#6B6B6B]" 
+                  className="w-full bg-brand-surface p-4 rounded-xl text-[16px] text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-button-primary/30 border border-brand-divider focus:border-brand-button-primary/50 transition placeholder-brand-text-tertiary" 
                   placeholder="••••••••" 
                 />
               </div>
               
               {/* Confirm Password */}
               <div>
-                <label className="block text-[11px] font-bold text-[#A0A0A0] uppercase mb-2 ml-1 tracking-wider">Confirm Password</label>
+                <label className="block text-[11px] font-bold text-brand-text-secondary uppercase mb-2 ml-1 tracking-wider">Confirm Password</label>
                 <input 
                   type="password" 
                   value={confirmPassword} 
                   onChange={(e) => setConfirmPassword(e.target.value)} 
-                  className="w-full bg-[#1A1A1A] p-4 rounded-xl text-[16px] text-[#FFFFFF] font-medium outline-none focus:ring-2 focus:ring-[#7C3AED]/30 border border-[#333333] focus:border-[#7C3AED]/50 transition placeholder-[#6B6B6B]" 
+                  className="w-full bg-brand-surface p-4 rounded-xl text-[16px] text-brand-text font-medium outline-none focus:ring-2 focus:ring-brand-button-primary/30 border border-brand-divider focus:border-brand-button-primary/50 transition placeholder-brand-text-tertiary" 
                   placeholder="••••••••" 
                 />
                 {newPassword && confirmPassword && newPassword === confirmPassword && (
-                  <p className="text-[#00A67E] text-[12px] mt-2 ml-1 flex items-center gap-1">
+                  <p className="text-brand-accent text-[12px] mt-2 ml-1 flex items-center gap-1">
                     <Check size={14} /> Passwords match
                   </p>
                 )}
@@ -325,7 +325,7 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               <button 
                 type="submit" 
                 disabled={isLoading || !newPassword || newPassword !== confirmPassword} 
-                className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold text-[16px] py-4 rounded-xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-[16px] py-4 rounded-xl shadow-lg shadow-purple-500/20 active:scale-[0.98] transition flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isLoading ? <Loader2 className="animate-spin" size={20} /> : "Update Password"}
               </button>
@@ -338,12 +338,12 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               {/* Current Plan Card */}
               <div className={`p-5 rounded-2xl relative overflow-hidden ${
                 preferences.isPro 
-                  ? 'bg-[#FFC244]' 
-                  : 'bg-[#1A1A1A] border border-[#333333]'
+                  ? 'bg-brand-primary' 
+                  : 'bg-brand-surface border border-brand-divider'
               }`}>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`text-[12px] font-bold uppercase tracking-wider ${preferences.isPro ? 'text-black/60' : 'text-[#A0A0A0]'}`}>
+                    <span className={`text-[12px] font-bold uppercase tracking-wider ${preferences.isPro ? 'text-black/60' : 'text-brand-text-secondary'}`}>
                       Current Plan
                     </span>
                     {preferences.isPro && (
@@ -352,10 +352,10 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                       </span>
                     )}
                   </div>
-                  <div className={`text-[28px] font-bold mb-1 ${preferences.isPro ? 'text-black' : 'text-[#FFFFFF]'}`}>
+                  <div className={`text-[28px] font-bold mb-1 ${preferences.isPro ? 'text-black' : 'text-brand-text'}`}>
                     {preferences.isPro ? `${APP_NAME} Pro` : 'Free Tier'}
                   </div>
-                  <p className={`text-[13px] ${preferences.isPro ? 'text-black/70' : 'text-[#A0A0A0]'}`}>
+                  <p className={`text-[13px] ${preferences.isPro ? 'text-black/70' : 'text-brand-text-secondary'}`}>
                     {preferences.isPro ? 'Unlimited AI recipes • No ads • Premium features' : 'Basic features • Ad supported'}
                   </p>
                 </div>
@@ -367,10 +367,10 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               {/* Upgrade Section */}
               {!preferences.isPro && (
                 <div className="space-y-3">
-                  <h3 className="font-bold text-[#FFFFFF] text-[16px]">Upgrade to Pro</h3>
+                  <h3 className="font-bold text-brand-text text-[16px]">Upgrade to Pro</h3>
                   
                   {/* Pro Features */}
-                  <div className="bg-[#1A1A1A] rounded-xl border border-[#333333] p-4 space-y-3">
+                  <div className="bg-brand-surface rounded-xl border border-brand-divider p-4 space-y-3">
                     {[
                       'Unlimited AI recipe generation',
                       'No advertisements',
@@ -378,33 +378,33 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                       'Priority support',
                     ].map((feature, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full bg-[#00A67E]/20 flex items-center justify-center">
-                          <Check size={12} className="text-[#00A67E]" />
+                        <div className="w-5 h-5 rounded-full bg-brand-accent/20 flex items-center justify-center">
+                          <Check size={12} className="text-brand-accent" />
                         </div>
-                        <span className="text-[14px] text-[#FFFFFF]">{feature}</span>
+                        <span className="text-[14px] text-brand-text">{feature}</span>
                       </div>
                     ))}
                   </div>
                   
                   {/* Coming Soon */}
-                  <div className="bg-[#7C3AED]/10 p-4 rounded-xl border border-[#7C3AED]/20">
-                    <p className="text-[13px] text-[#A0A0A0]">
-                      <span className="text-[#7C3AED] font-bold">Pro membership</span> billing integration coming soon. Contact support for early access.
+                  <div className="bg-brand-button-primary/10 p-4 rounded-xl border border-brand-button-primary/20">
+                    <p className="text-[13px] text-brand-text-secondary">
+                      <span className="text-brand-button-primary font-bold">Pro membership</span> billing integration coming soon. Contact support for early access.
                     </p>
                   </div>
                   
                   <button 
                     disabled 
-                    className="w-full p-4 rounded-xl flex items-center justify-between bg-[#2A2A2A] border border-[#333333] opacity-60 cursor-not-allowed"
+                    className="w-full p-4 rounded-xl flex items-center justify-between bg-brand-surface-secondary border border-brand-divider opacity-60 cursor-not-allowed"
                   >
                     <div className="text-left flex items-center gap-3">
-                      <Sparkles size={20} className="text-[#FFC244]" />
+                      <Sparkles size={20} className="text-brand-primary" />
                       <div>
-                        <div className="font-bold text-[#FFFFFF] text-[15px]">Upgrade to Pro</div>
-                        <div className="text-[12px] text-[#6B6B6B]">$4.99 / month</div>
+                        <div className="font-bold text-brand-text text-[15px]">Upgrade to Pro</div>
+                        <div className="text-[12px] text-brand-text-tertiary">$4.99 / month</div>
                       </div>
                     </div>
-                    <span className="text-[#6B6B6B] font-bold text-[12px] bg-[#333333] px-2 py-1 rounded">SOON</span>
+                    <span className="text-brand-text-tertiary font-bold text-[12px] bg-brand-divider px-2 py-1 rounded">SOON</span>
                   </button>
                 </div>
               )}
@@ -415,13 +415,13 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
           {activeTab === 'danger' && (
             <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4">
               {/* Warning Banner */}
-              <div className="bg-[#E84142]/10 p-5 rounded-xl border border-[#E84142]/20">
+              <div className="bg-brand-secondary/10 p-5 rounded-xl border border-brand-secondary/20">
                 <div className="flex gap-3 mb-4">
-                  <ShieldAlert size={24} className="text-[#E84142] shrink-0" />
+                  <ShieldAlert size={24} className="text-brand-secondary shrink-0" />
                   <div>
-                    <h4 className="font-bold text-[#FFFFFF] text-[15px]">Delete Account</h4>
-                    <p className="text-[#A0A0A0] text-[13px] mt-1 leading-relaxed">
-                      Permanently delete your account and all associated data. This action <span className="text-[#E84142] font-bold">cannot be undone</span>.
+                    <h4 className="font-bold text-brand-text text-[15px]">Delete Account</h4>
+                    <p className="text-brand-text-secondary text-[13px] mt-1 leading-relaxed">
+                      Permanently delete your account and all associated data. This action <span className="text-brand-secondary font-bold">cannot be undone</span>.
                     </p>
                   </div>
                 </div>
@@ -430,33 +430,33 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
                   <button 
                     onClick={startDeleteProcess} 
                     disabled={isLoading} 
-                    className="w-full bg-[#1A1A1A] text-[#E84142] font-bold py-3.5 rounded-xl border border-[#E84142]/30 hover:bg-[#E84142]/10 active:scale-[0.98] transition"
+                    className="w-full bg-brand-surface text-brand-secondary font-bold py-3.5 rounded-xl border border-brand-secondary/30 hover:bg-brand-secondary/10 active:scale-[0.98] transition"
                   >
                     Delete My Account
                   </button>
                 ) : (
                   <div className="space-y-3 animate-in fade-in">
-                    <p className="text-[12px] font-bold text-[#E84142] uppercase tracking-wide">
-                      Type <span className="select-all bg-[#0D0D0D] px-1.5 py-0.5 rounded border border-[#E84142]/30 font-mono">DELETE</span> to confirm
+                    <p className="text-[12px] font-bold text-brand-secondary uppercase tracking-wide">
+                      Type <span className="select-all bg-brand-background px-1.5 py-0.5 rounded border border-brand-secondary/30 font-mono">DELETE</span> to confirm
                     </p>
                     <input 
                       type="text" 
                       value={deleteInput}
                       onChange={(e) => setDeleteInput(e.target.value)}
                       placeholder="DELETE"
-                      className="w-full p-3.5 rounded-xl bg-[#0D0D0D] border border-[#E84142]/30 text-[#FFFFFF] placeholder-[#6B6B6B] outline-none focus:ring-2 focus:ring-[#E84142]/30 font-bold tracking-wider"
+                      className="w-full p-3.5 rounded-xl bg-brand-background border border-brand-secondary/30 text-brand-text placeholder-brand-text-tertiary outline-none focus:ring-2 focus:ring-brand-secondary/30 font-bold tracking-wider"
                     />
                     <div className="flex gap-3">
                       <button 
                         onClick={cancelDelete}
-                        className="flex-1 bg-[#2A2A2A] text-[#FFFFFF] font-bold py-3.5 rounded-xl border border-[#333333] hover:bg-[#333333] transition"
+                        className="flex-1 bg-brand-surface-secondary text-brand-text font-bold py-3.5 rounded-xl border border-brand-divider hover:bg-brand-divider transition"
                       >
                         Cancel
                       </button>
                       <button 
                         onClick={confirmDelete} 
                         disabled={deleteInput !== 'DELETE' || isLoading} 
-                        className="flex-1 bg-[#E84142] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-[#E84142]/30 active:scale-[0.98] transition disabled:opacity-50 disabled:shadow-none flex items-center justify-center"
+                        className="flex-1 bg-brand-secondary text-white font-bold py-3.5 rounded-xl shadow-lg shadow-brand-secondary/30 active:scale-[0.98] transition disabled:opacity-50 disabled:shadow-none flex items-center justify-center"
                       >
                         {isLoading ? <Loader2 className="animate-spin" size={20} /> : "Confirm Delete"}
                       </button>
@@ -466,23 +466,23 @@ export const ManageAccountModal: React.FC<Props> = ({ onClose }) => {
               </div>
               
               {/* Additional Info */}
-              <div className="bg-[#1A1A1A] p-4 rounded-xl border border-[#333333]">
-                <h4 className="font-bold text-[#FFFFFF] text-[14px] mb-2">What gets deleted?</h4>
-                <ul className="space-y-2 text-[13px] text-[#A0A0A0]">
+              <div className="bg-brand-surface p-4 rounded-xl border border-brand-divider">
+                <h4 className="font-bold text-brand-text text-[14px] mb-2">What gets deleted?</h4>
+                <ul className="space-y-2 text-[13px] text-brand-text-secondary">
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#E84142]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
                     Your profile and preferences
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#E84142]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
                     All saved recipes and history
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#E84142]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
                     Pantry items and shopping lists
                   </li>
                   <li className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#E84142]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></div>
                     Generated recipe images
                   </li>
                 </ul>
