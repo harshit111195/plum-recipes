@@ -164,10 +164,10 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                 scale: isExiting ? 0.95 : 1
             }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="min-h-screen w-full relative flex flex-col overflow-hidden bg-[#0D0D0D]"
+            className="min-h-screen w-full relative flex flex-col overflow-hidden bg-brand-background"
         >
             {/* ========== YELLOW HEADER SECTION ========== */}
-            <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
+            <div className="relative bg-brand-primary pt-safe overflow-hidden">
                 {/* Decorative food icons */}
                 <div className="absolute inset-0 overflow-hidden opacity-20">
                     {FOOD_ICONS.map((icon, i) => (
@@ -222,7 +222,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                 </div>
                 
                 {/* Curved bottom edge */}
-                <div className="absolute bottom-0 left-0 right-0 h-6 bg-[#0D0D0D] rounded-t-[24px]" />
+                <div className="absolute bottom-0 left-0 right-0 h-6 bg-brand-background rounded-t-[24px]" />
             </div>
 
             {/* ========== MAIN CONTENT ========== */}
@@ -235,13 +235,13 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                 >
                     {/* Toggle Login/Signup (only shown for login/signup views) */}
                     {(view === 'login' || view === 'signup') && (
-                        <div className="flex gap-2 p-1 bg-[#1A1A1A] rounded-2xl mb-6">
+                        <div className="flex gap-2 p-1 bg-brand-surface rounded-2xl mb-6">
                             <button
                                 onClick={() => { setView('login'); resetForm(); }}
                                 className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${
                                     view === 'login' 
-                                        ? 'bg-[#FFC244] text-black' 
-                                        : 'text-[#A0A0A0] hover:text-white'
+                                        ? 'bg-brand-primary text-black' 
+                                        : 'text-brand-text-secondary hover:text-white'
                                 }`}
                             >
                                 Sign In
@@ -250,8 +250,8 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                 onClick={() => { setView('signup'); resetForm(); }}
                                 className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${
                                     view === 'signup' 
-                                        ? 'bg-[#FFC244] text-black' 
-                                        : 'text-[#A0A0A0] hover:text-white'
+                                        ? 'bg-brand-primary text-black' 
+                                        : 'text-brand-text-secondary hover:text-white'
                                 }`}
                             >
                                 Create Account
@@ -263,7 +263,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                     {(view === 'forgot' || view === 'reset') && (
                         <button
                             onClick={() => { setView('login'); resetForm(); }}
-                            className="flex items-center gap-2 text-[#A0A0A0] hover:text-white mb-6 transition-colors"
+                            className="flex items-center gap-2 text-brand-text-secondary hover:text-white mb-6 transition-colors"
                         >
                             <ArrowLeft size={18} />
                             <span className="text-sm font-medium">Back to Sign In</span>
@@ -283,11 +283,11 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                 {/* Email Form */}
                                 <form onSubmit={handleEmailAuth} className="space-y-4" aria-label="Sign in form">
                                     <div>
-                                        <label htmlFor="auth-email" className="block text-[#A0A0A0] text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="auth-email" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
                                             Email Address
                                         </label>
                                         <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B] group-focus-within:text-[#FFC244] transition-colors">
+                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary group-focus-within:text-brand-primary transition-colors">
                                                 <Mail size={18} aria-hidden="true" />
                                             </div>
                                             <input 
@@ -295,7 +295,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="email" 
                                                 placeholder="you@example.com"
                                                 autoComplete="email"
-                                                className="w-full bg-[#1A1A1A] text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-[#333333] focus:border-[#FFC244] focus:ring-2 focus:ring-[#FFC244]/20 transition-all font-medium placeholder-[#6B6B6B] text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
                                                 value={email}
                                                 onChange={e => setEmail(e.target.value)}
                                                 required
@@ -304,11 +304,11 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     </div>
                                     
                                     <div>
-                                        <label htmlFor="auth-password" className="block text-[#A0A0A0] text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="auth-password" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
                                             Password
                                         </label>
                                         <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B] group-focus-within:text-[#FFC244] transition-colors">
+                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary group-focus-within:text-brand-primary transition-colors">
                                                 <Lock size={18} aria-hidden="true" />
                                             </div>
                                             <input 
@@ -316,7 +316,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder={isLogin ? "Enter your password" : "Create a password (min 6 chars)"}
                                                 autoComplete={isLogin ? "current-password" : "new-password"}
-                                                className="w-full bg-[#1A1A1A] text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-[#333333] focus:border-[#FFC244] focus:ring-2 focus:ring-[#FFC244]/20 transition-all font-medium placeholder-[#6B6B6B] text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
                                                 value={password}
                                                 onChange={e => setPassword(e.target.value)}
                                                 required
@@ -329,7 +329,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     <button 
                                         type="submit" 
                                         disabled={loading}
-                                        className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2"
+                                        className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2"
                                     >
                                         {loading ? <Loader2 className="animate-spin" size={20} /> : (
                                             <>
@@ -344,7 +344,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     <div className="text-center mt-4">
                                         <button 
                                             onClick={() => setView('forgot')}
-                                            className="text-[13px] text-[#A0A0A0] hover:text-[#FFC244] transition-colors"
+                                            className="text-[13px] text-brand-text-secondary hover:text-brand-primary transition-colors"
                                         >
                                             Forgot your password?
                                         </button>
@@ -353,10 +353,10 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
 
                                 {/* Terms text (for signup only) */}
                                 {view === 'signup' && (
-                                    <p className="text-center mt-4 text-[11px] text-[#6B6B6B] leading-relaxed">
+                                    <p className="text-center mt-4 text-[11px] text-brand-text-tertiary leading-relaxed">
                                         By creating an account, you agree to our{' '}
-                                        <span className="text-[#FFC244]">Terms of Service</span> and{' '}
-                                        <span className="text-[#FFC244]">Privacy Policy</span>
+                                        <span className="text-brand-primary">Terms of Service</span> and{' '}
+                                        <span className="text-brand-primary">Privacy Policy</span>
                                     </p>
                                 )}
                             </MotionDiv>
@@ -374,22 +374,22 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                 {!resetEmailSent ? (
                                     <>
                                         <div className="text-center mb-6">
-                                            <div className="w-16 h-16 bg-[#1A1A1A] rounded-full flex items-center justify-center mx-auto mb-4">
-                                                <KeyRound size={28} className="text-[#FFC244]" />
+                                            <div className="w-16 h-16 bg-brand-surface rounded-full flex items-center justify-center mx-auto mb-4">
+                                                <KeyRound size={28} className="text-brand-primary" />
                                             </div>
                                             <h2 className="text-xl font-bold text-white mb-2">Reset Password</h2>
-                                            <p className="text-[#A0A0A0] text-sm">
+                                            <p className="text-brand-text-secondary text-sm">
                                                 Enter your email and we'll send you a link to reset your password.
                                             </p>
                                         </div>
 
                                         <form onSubmit={handleForgotPassword} className="space-y-4">
                                             <div>
-                                                <label htmlFor="reset-email" className="block text-[#A0A0A0] text-xs font-medium mb-2 ml-1">
+                                                <label htmlFor="reset-email" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
                                                     Email Address
                                                 </label>
                                                 <div className="relative group">
-                                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B] group-focus-within:text-[#FFC244] transition-colors">
+                                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary group-focus-within:text-brand-primary transition-colors">
                                                         <Mail size={18} aria-hidden="true" />
                                                     </div>
                                                     <input 
@@ -397,7 +397,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                         type="email" 
                                                         placeholder="you@example.com"
                                                         autoComplete="email"
-                                                        className="w-full bg-[#1A1A1A] text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-[#333333] focus:border-[#FFC244] focus:ring-2 focus:ring-[#FFC244]/20 transition-all font-medium placeholder-[#6B6B6B] text-[15px]"
+                                                        className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
                                                         value={email}
                                                         onChange={e => setEmail(e.target.value)}
                                                         required
@@ -408,7 +408,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                             <button 
                                                 type="submit" 
                                                 disabled={loading}
-                                                className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                                                className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                                             >
                                                 {loading ? <Loader2 className="animate-spin" size={20} /> : (
                                                     <>
@@ -424,22 +424,22 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                             <CheckCircle2 size={40} className="text-green-400" />
                                         </div>
                                         <h2 className="text-xl font-bold text-white mb-3">Check Your Email</h2>
-                                        <p className="text-[#A0A0A0] text-sm mb-6 leading-relaxed">
+                                        <p className="text-brand-text-secondary text-sm mb-6 leading-relaxed">
                                             We've sent a password reset link to<br />
-                                            <span className="text-[#FFC244] font-medium">{email}</span>
+                                            <span className="text-brand-primary font-medium">{email}</span>
                                         </p>
-                                        <p className="text-[#6B6B6B] text-xs mb-6">
+                                        <p className="text-brand-text-tertiary text-xs mb-6">
                                             Didn't receive the email? Check your spam folder or{' '}
                                             <button 
                                                 onClick={() => setResetEmailSent(false)}
-                                                className="text-[#FFC244] hover:underline"
+                                                className="text-brand-primary hover:underline"
                                             >
                                                 try again
                                             </button>
                                         </p>
                                         <button
                                             onClick={() => { setView('login'); resetForm(); }}
-                                            className="text-[#A0A0A0] hover:text-white text-sm font-medium transition-colors"
+                                            className="text-brand-text-secondary hover:text-white text-sm font-medium transition-colors"
                                         >
                                             Return to Sign In
                                         </button>
@@ -458,22 +458,22 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                 transition={{ duration: 0.2 }}
                             >
                                 <div className="text-center mb-6">
-                                    <div className="w-16 h-16 bg-[#1A1A1A] rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <Lock size={28} className="text-[#FFC244]" />
+                                    <div className="w-16 h-16 bg-brand-surface rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <Lock size={28} className="text-brand-primary" />
                                     </div>
                                     <h2 className="text-xl font-bold text-white mb-2">Create New Password</h2>
-                                    <p className="text-[#A0A0A0] text-sm">
+                                    <p className="text-brand-text-secondary text-sm">
                                         Your new password must be at least 6 characters.
                                     </p>
                                 </div>
 
                                 <form onSubmit={handleResetPassword} className="space-y-4">
                                     <div>
-                                        <label htmlFor="new-password" className="block text-[#A0A0A0] text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="new-password" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
                                             New Password
                                         </label>
                                         <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B] group-focus-within:text-[#FFC244] transition-colors">
+                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary group-focus-within:text-brand-primary transition-colors">
                                                 <Lock size={18} aria-hidden="true" />
                                             </div>
                                             <input 
@@ -481,7 +481,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder="Enter new password"
                                                 autoComplete="new-password"
-                                                className="w-full bg-[#1A1A1A] text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-[#333333] focus:border-[#FFC244] focus:ring-2 focus:ring-[#FFC244]/20 transition-all font-medium placeholder-[#6B6B6B] text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
                                                 value={newPassword}
                                                 onChange={e => setNewPassword(e.target.value)}
                                                 required
@@ -491,11 +491,11 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="confirm-password" className="block text-[#A0A0A0] text-xs font-medium mb-2 ml-1">
+                                        <label htmlFor="confirm-password" className="block text-brand-text-secondary text-xs font-medium mb-2 ml-1">
                                             Confirm Password
                                         </label>
                                         <div className="relative group">
-                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B6B] group-focus-within:text-[#FFC244] transition-colors">
+                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-tertiary group-focus-within:text-brand-primary transition-colors">
                                                 <Lock size={18} aria-hidden="true" />
                                             </div>
                                             <input 
@@ -503,7 +503,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                                 type="password" 
                                                 placeholder="Confirm new password"
                                                 autoComplete="new-password"
-                                                className="w-full bg-[#1A1A1A] text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-[#333333] focus:border-[#FFC244] focus:ring-2 focus:ring-[#FFC244]/20 transition-all font-medium placeholder-[#6B6B6B] text-[15px]"
+                                                className="w-full bg-brand-surface text-white rounded-xl py-4 pl-12 pr-4 outline-none border border-brand-divider focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all font-medium placeholder-brand-text-tertiary text-[15px]"
                                                 value={confirmPassword}
                                                 onChange={e => setConfirmPassword(e.target.value)}
                                                 required
@@ -518,7 +518,7 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
                                     <button 
                                         type="submit" 
                                         disabled={loading || (confirmPassword !== '' && newPassword !== confirmPassword)}
-                                        className="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-purple-500/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {loading ? <Loader2 className="animate-spin" size={20} /> : (
                                             <>
@@ -536,11 +536,11 @@ export const AuthScreen: React.FC<Props> = ({ onSuccess }) => {
             {/* Footer (only for login/signup views) */}
             {(view === 'login' || view === 'signup') && (
                 <div className="pb-safe px-6 py-4 text-center">
-                    <p className="text-[#6B6B6B] text-xs">
+                    <p className="text-brand-text-tertiary text-xs">
                         {view === 'login' ? (
-                            <>New to {APP_NAME}? <button onClick={() => { setView('signup'); resetForm(); }} className="text-[#FFC244] font-bold">Create an account</button></>
+                            <>New to {APP_NAME}? <button onClick={() => { setView('signup'); resetForm(); }} className="text-brand-primary font-bold">Create an account</button></>
                         ) : (
-                            <>Already have an account? <button onClick={() => { setView('login'); resetForm(); }} className="text-[#FFC244] font-bold">Sign in</button></>
+                            <>Already have an account? <button onClick={() => { setView('login'); resetForm(); }} className="text-brand-primary font-bold">Sign in</button></>
                         )}
                     </p>
                 </div>

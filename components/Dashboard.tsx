@@ -105,13 +105,13 @@ const AnimatedNumber: React.FC<{ value: number; className?: string }> = ({ value
 // Skeleton loader component
 // Skeleton: #2A2A2A (surface secondary for dark mode)
 const Skeleton: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`animate-pulse bg-[#2A2A2A] rounded-lg ${className}`} />
+  <div className={`animate-pulse bg-brand-surface-secondary rounded-lg ${className}`} />
 );
 
 // Stat card skeleton
 // Card: #1A1A1A surface | Border: #333333
 const StatCardSkeleton: React.FC = () => (
-  <div className="bg-[#1A1A1A] p-5 rounded-[22px] shadow-sm border border-[#333333] flex flex-col justify-between h-[160px]">
+  <div className="bg-brand-surface p-5 rounded-[22px] shadow-sm border border-brand-divider flex flex-col justify-between h-[160px]">
     <div className="w-full flex items-start justify-between">
       <Skeleton className="w-10 h-10 rounded-full" />
       <Skeleton className="w-12 h-10" />
@@ -126,7 +126,7 @@ const StatCardSkeleton: React.FC = () => (
 // Recipe card skeleton
 // Card: #1A1A1A surface | Border: #333333
 const RecipeCardSkeleton: React.FC = () => (
-  <div className="snap-start shrink-0 w-[260px] h-[180px] bg-[#1A1A1A] rounded-[20px] shadow-sm border border-[#333333] overflow-hidden">
+  <div className="snap-start shrink-0 w-[260px] h-[180px] bg-brand-surface rounded-[20px] shadow-sm border border-brand-divider overflow-hidden">
     <Skeleton className="w-full h-full rounded-none" />
   </div>
 );
@@ -209,7 +209,7 @@ const RecipeCarousel: React.FC<{
               
               {/* CTA for inspiration cards */}
               {isInspiration && (
-                <div className="flex items-center gap-1 text-[#FFC244] font-semibold text-xs">
+                <div className="flex items-center gap-1 text-brand-primary font-semibold text-xs">
                   <span>Start cooking</span>
                   <ChevronRight size={14} />
                 </div>
@@ -240,8 +240,8 @@ const RecipeCarousel: React.FC<{
               key={index}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 index === activeIndex 
-                  ? 'w-5 bg-[#FFC244]' 
-                  : 'w-1.5 bg-[#333333]'
+                  ? 'w-5 bg-brand-primary' 
+                  : 'w-1.5 bg-brand-divider'
               }`}
             />
           ))}
@@ -440,7 +440,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
   // Background: #0D0D0D (near black - page bg)
   return (
     <div 
-      className="min-h-screen bg-[#0D0D0D] pb-28 relative"
+      className="min-h-screen bg-brand-background pb-28 relative"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -452,19 +452,19 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             style={{ top: Math.min(pullDistance, 80) - 40 }}
           >
             {/* Refresh icon: purple bg | Icon: white */}
-            <div className={`w-10 h-10 rounded-full bg-[#7C3AED] shadow-lg flex items-center justify-center ${isRefreshing ? 'animate-spin' : ''}`}>
+            <div className={`w-10 h-10 rounded-full bg-brand-button-primary shadow-lg flex items-center justify-center ${isRefreshing ? 'animate-spin' : ''}`}>
               <RefreshCw size={20} className="text-white" />
             </div>
           </div>
         )}
         
         {/* Yellow Header Section - compact for mobile */}
-        <div className="relative bg-[#FFC244] pt-safe overflow-hidden">
+        <div className="relative bg-brand-primary pt-safe overflow-hidden">
           {/* Purple wavy accent - diagonal stripe extending to bottom */}
-          <div className="absolute -right-10 -top-10 w-[180px] h-[500px] bg-[#7C3AED] rotate-[20deg] opacity-90" />
-          <div className="absolute -right-16 top-0 w-[80px] h-[500px] bg-[#7C3AED] rotate-[20deg] opacity-70" />
+          <div className="absolute -right-10 -top-10 w-[180px] h-[500px] bg-brand-button-primary rotate-[20deg] opacity-90" />
+          <div className="absolute -right-16 top-0 w-[80px] h-[500px] bg-brand-button-primary rotate-[20deg] opacity-70" />
           {/* Small purple circles for decoration */}
-          <div className="absolute right-6 top-16 w-3 h-3 bg-[#7C3AED] rounded-full opacity-60" />
+          <div className="absolute right-6 top-16 w-3 h-3 bg-brand-button-primary rounded-full opacity-60" />
           <div className="absolute right-14 top-24 w-2 h-2 bg-white rounded-full opacity-40" />
           
           {/* Header content - optimized spacing */}
@@ -494,7 +494,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                   to="/pantry"
                   className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 bg-black/10 hover:bg-black/15 rounded-full text-[13px] transition"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#00A67E]" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                   <span className="text-black/80 font-semibold">{pantry.length} items</span>
                   <ChevronRight size={12} className="text-black/60" />
                 </Link>
@@ -531,7 +531,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                       {/* Motivational state for 0 meals */}
                       <div className="flex items-center gap-2">
                         <span className="text-2xl">👨‍🍳</span>
-                        <span className="text-[11px] font-bold text-[#7C3AED] uppercase tracking-wide">
+                        <span className="text-[11px] font-bold text-brand-button-primary uppercase tracking-wide">
                           Let's cook<br/>this week!
                         </span>
                       </div>
@@ -547,16 +547,16 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
           </div>
           
           {/* Curved bottom edge */}
-          <div className="absolute bottom-0 left-0 right-0 h-5 bg-[#0D0D0D] rounded-t-[24px]" />
+          <div className="absolute bottom-0 left-0 right-0 h-5 bg-brand-background rounded-t-[24px]" />
         </div>
         
         <div className="space-y-6 pt-2">
             {/* SECTION: Recent Recipes */}
             <div>
               <div className="px-5 flex items-center justify-between mb-3">
-                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider">Cook Again</h2>
+                <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider">Cook Again</h2>
                 {carouselRecipes.length > 0 && (
-                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-[#FFC244] text-[13px] font-semibold">See All</button>
+                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-brand-primary text-[13px] font-semibold">See All</button>
                 )}
               </div>
               <div className="pl-5">
@@ -577,7 +577,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             
             {/* SECTION: Quick Actions */}
             <div className="px-5">
-                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-4">Quick Actions</h2>
+                <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-4">Quick Actions</h2>
                 <div className="flex justify-between items-start">
                     <QuickAction emoji="📸" label="Snap to add" onClick={() => navigate('/pantry?action=snap')} />
                     <QuickAction emoji="✨" label="Surprise me" onClick={() => navigate('/recipes', { state: { triggerSurprise: true } })} />
@@ -588,7 +588,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             
             {/* SECTION: Pantry Status */}
             <div className="px-5">
-              <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Pantry Status</h2>
+              <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-3">Pantry Status</h2>
               {isLoading ? (
                 <div className="flex gap-2">
                   <Skeleton className="w-32 h-12 rounded-full" />
@@ -598,10 +598,10 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
               ) : (
                 <PantryStatsGrid 
                   stats={[
-                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", bg: "bg-[#FFC244]", onClick: () => setShowExpiring(true) },
-                    { emoji: "📉", count: lowStockItems.length, label: "Low on stock", bg: "bg-[#7C3AED]", onClick: () => setShowLowStock(true) },
-                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", bg: "bg-[#E84142]", onClick: () => setShowOutOfStock(true) },
-                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", bg: "bg-[#00A67E]", onClick: () => navigate('/shopping') },
+                    { emoji: "⏰", count: expiringSoon.length, label: "Expiring soon", bg: "bg-brand-primary", onClick: () => setShowExpiring(true) },
+                    { emoji: "📉", count: lowStockItems.length, label: "Low on stock", bg: "bg-brand-button-primary", onClick: () => setShowLowStock(true) },
+                    { emoji: "⚠️", count: outOfStockItems.length, label: "Out of stock", bg: "bg-brand-secondary", onClick: () => setShowOutOfStock(true) },
+                    { emoji: "🛒", count: shoppingList.filter(i => !i.checked).length, label: "To buy", bg: "bg-brand-accent", onClick: () => navigate('/shopping') },
                   ]}
                 />
               )}
@@ -612,7 +612,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {/* SECTION: Quick Meal Idea */}
             {quickMealSuggestion && (
               <div className="px-5">
-                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Quick Meal Idea</h2>
+                <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-3">Quick Meal Idea</h2>
                 <button 
                   onClick={() => navigate('/recipes', { state: { recipeToOpen: quickMealSuggestion, fromDashboard: true } })}
                   className="w-full h-[180px] rounded-[20px] overflow-hidden relative group focus:outline-none shadow-lg active:scale-[0.98] transition-all"
@@ -637,7 +637,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                     </div>
                     
                     {/* Ingredient match badge */}
-                    <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#00A67E]/90 backdrop-blur-md px-2 py-1 rounded-full">
+                    <div className="absolute top-3 left-3 flex items-center gap-1 bg-brand-accent/90 backdrop-blur-md px-2 py-1 rounded-full">
                       <span className="text-white text-[11px] font-semibold">
                         ✓ {quickMealSuggestion.matchCount}/{quickMealSuggestion.totalCount} ingredients
                       </span>
@@ -649,7 +649,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                     </h2>
                     
                     {/* CTA */}
-                    <div className="flex items-center gap-1 text-[#FFC244] font-semibold text-xs">
+                    <div className="flex items-center gap-1 text-brand-primary font-semibold text-xs">
                       <span>Cook now</span>
                       <ChevronRight size={14} />
                     </div>
@@ -660,7 +660,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             
             {/* SECTION: Today's Tip */}
             <div className="px-5">
-              <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Today's Tip</h2>
+              <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-3">Today's Tip</h2>
               <div className="relative animate-[float_3s_ease-in-out_infinite]">
                 {/* Card */}
                 <div className="relative bg-[#E8E8E8] rounded-[20px] p-5 text-center overflow-hidden shadow-xl">
@@ -676,12 +676,12 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                   <span className="text-5xl block mb-3 drop-shadow-lg">{todaysTip.emoji}</span>
                   
                   {/* Tip text */}
-                  <p className="text-[#1A1A1A] text-[15px] leading-relaxed font-medium italic">
+                  <p className="text-brand-text-on-light text-[15px] leading-relaxed font-medium italic">
                     "{todaysTip.tip}"
                   </p>
                   
                   {/* Footer label */}
-                  <div className="flex items-center justify-center gap-1.5 mt-4 text-[#6B6B6B] text-[11px] font-semibold">
+                  <div className="flex items-center justify-center gap-1.5 mt-4 text-brand-text-tertiary text-[11px] font-semibold">
                     <span>💡</span>
                     <span>Daily Tip</span>
                   </div>
@@ -693,13 +693,13 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {recentRecipes.length > carouselRecipes.length && (
               <div className="pb-4">
                 <div className="px-5 flex items-center justify-between mb-3">
-                  <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider">More Recipes</h2>
-                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-[#FFC244] text-[13px] font-semibold">See All</button>
+                  <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider">More Recipes</h2>
+                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-brand-primary text-[13px] font-semibold">See All</button>
                 </div>
                 
                 <div className="flex overflow-x-auto px-5 gap-3 no-scrollbar pb-4 snap-x">
                     {recentRecipes.filter(r => !carouselRecipes.find(c => c.id === r.id)).map((recipe, index) => (
-                        <button key={recipe.id} onClick={() => navigate('/recipes', { state: { recipeToOpen: recipe, fromDashboard: true } })} className="snap-start shrink-0 w-[200px] h-[140px] bg-[#1A1A1A] rounded-[16px] shadow-sm border border-[#333333] overflow-hidden relative group cursor-pointer active:scale-[0.98] transition-all text-left focus:outline-none focus:ring-4 focus:ring-[#FFC244]/20">
+                        <button key={recipe.id} onClick={() => navigate('/recipes', { state: { recipeToOpen: recipe, fromDashboard: true } })} className="snap-start shrink-0 w-[200px] h-[140px] bg-brand-surface rounded-[16px] shadow-sm border border-brand-divider overflow-hidden relative group cursor-pointer active:scale-[0.98] transition-all text-left focus:outline-none focus:ring-4 focus:ring-brand-primary/20">
                             <img src={getOptimizedImageUrl(recipe.generatedImage, 400) || `https://picsum.photos/seed/${recipe.id}/400/300`} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" alt={recipe.title} />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                             <div className="absolute bottom-3 left-3 right-3">
@@ -714,16 +714,16 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {/* Empty state for new users */}
             {!isLoading && history.length === 0 && (
               <div className="px-5 pb-4">
-                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Get Started</h2>
-                <div className="bg-[#1A1A1A] rounded-[20px] p-6 text-center border border-[#333333]">
-                  <div className="w-14 h-14 rounded-full bg-[#0D0D0D] flex items-center justify-center mx-auto mb-3">
-                    <ChefHat size={28} className="text-[#A0A0A0]" />
+                <h2 className="text-[13px] font-bold text-brand-text-secondary uppercase tracking-wider mb-3">Get Started</h2>
+                <div className="bg-brand-surface rounded-[20px] p-6 text-center border border-brand-divider">
+                  <div className="w-14 h-14 rounded-full bg-brand-background flex items-center justify-center mx-auto mb-3">
+                    <ChefHat size={28} className="text-brand-text-secondary" />
                   </div>
-                  <h4 className="text-[16px] font-bold text-[#FFFFFF] mb-1">Ready to start cooking?</h4>
-                  <p className="text-[13px] text-[#A0A0A0] mb-4">Add ingredients to your pantry and discover recipes</p>
+                  <h4 className="text-[16px] font-bold text-brand-text mb-1">Ready to start cooking?</h4>
+                  <p className="text-[13px] text-brand-text-secondary mb-4">Add ingredients to your pantry and discover recipes</p>
                   <button 
                     onClick={() => navigate('/recipes')}
-                    className="px-5 py-2.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold text-sm rounded-full active:scale-95 transition"
+                    className="px-5 py-2.5 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold text-sm rounded-full active:scale-95 transition"
                   >
                     Find Recipes
                   </button>
@@ -733,10 +733,10 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
         </div>
         
         {/* Modals */}
-        {showExpiring && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="expiring-title"><div className="bg-[#0D0D0D] w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-[#1A1A1A] border-b border-[#333333] flex justify-between items-center"><div><h3 id="expiring-title" className="font-bold text-xl text-[#FFFFFF]">Expiring Soon</h3><p className="text-xs text-[#A0A0A0]">Use within 3 days</p></div><button onClick={(e) => { e.stopPropagation(); setShowExpiring(false); }} aria-label="Close expiring items modal" className="w-8 h-8 bg-[#2A2A2A] rounded-full flex items-center justify-center text-[#FFFFFF] active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{expiringSoon.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 mx-auto mb-2"><AlertCircle size={24} /></div><p className="text-[#A0A0A0] font-medium">Nothing expiring. You're winning at life.</p></div>) : (expiringSoon.map(item => (<div key={item.id} className="bg-[#1A1A1A] p-3 rounded-[18px] border border-[#333333] flex items-center justify-between"><div><div className="font-semibold text-[#FFFFFF]">{item.name}</div><div className="text-xs text-[#A0A0A0]">Qty: {item.quantity} {item.unit}</div></div><span className="text-xs font-bold text-orange-400 bg-orange-500/20 px-2.5 py-1 rounded-full">{item.expiryDate ? formatDistanceToNow(new Date(item.expiryDate), { addSuffix: true }) : 'Soon'}</span></div>)))}</div><div className="p-4 bg-[#1A1A1A] border-t border-[#333333]"><button onClick={() => { setShowExpiring(false); navigate('/recipes'); }} className="w-full py-3.5 bg-[#FFC244] text-white font-bold rounded-[18px] active:scale-[0.98] transition">Find Recipes</button></div></div></div>}
-        {showLowStock && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="lowstock-title"><div className="bg-[#0D0D0D] w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-[#1A1A1A] border-b border-[#333333] flex justify-between items-center"><div><h3 id="lowstock-title" className="font-bold text-xl text-[#FFFFFF]">Running Low</h3><p className="text-xs text-[#A0A0A0]">Restock your essentials</p></div><button onClick={(e) => { e.stopPropagation(); setShowLowStock(false); }} aria-label="Close low stock modal" className="w-8 h-8 bg-[#2A2A2A] rounded-full flex items-center justify-center text-[#FFFFFF] active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{lowStockItems.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-rose-500/20 rounded-full flex items-center justify-center text-rose-400 mx-auto mb-2"><BatteryWarning size={24} /></div><p className="text-[#A0A0A0] font-medium">Your pantry is well stocked.</p></div>) : (lowStockItems.map(item => (<div key={item.id} className="bg-[#1A1A1A] p-3 rounded-[18px] border border-[#333333] flex items-center justify-between"><div><div className="font-semibold text-[#FFFFFF]">{item.name}</div><div className="text-xs text-[#A0A0A0]">Qty: {item.quantity} {item.unit}</div></div><button onClick={() => handleAddToShoppingList(item.name)} className="w-8 h-8 rounded-full bg-[#2A2A2A] flex items-center justify-center text-[#FFC244] active:scale-90 transition"><Plus size={18} strokeWidth={2.5} /></button></div>)))}</div><div className="p-4 bg-[#1A1A1A] border-t border-[#333333]"><button onClick={() => { setShowLowStock(false); navigate('/shopping'); }} className="w-full py-3.5 bg-rose-500 text-white font-bold rounded-[18px] active:scale-[0.98] transition">Go to Shopping List</button></div></div></div>}
-        {showOutOfStock && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="outofstock-title"><div className="bg-[#0D0D0D] w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-[#1A1A1A] border-b border-[#333333] flex justify-between items-center"><div><h3 id="outofstock-title" className="font-bold text-xl text-[#FFFFFF]">Gone but not forgotten</h3><p className="text-xs text-[#A0A0A0]">Finished in last 7 days</p></div><button onClick={(e) => { e.stopPropagation(); setShowOutOfStock(false); }} aria-label="Close out of stock modal" className="w-8 h-8 bg-[#2A2A2A] rounded-full flex items-center justify-center text-[#FFFFFF] active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{outOfStockItems.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center text-gray-400 mx-auto mb-2"><Archive size={24} /></div><p className="text-[#A0A0A0] font-medium">No recent history.</p></div>) : (outOfStockItems.map(item => (<div key={item.id} className="bg-[#1A1A1A] p-3 rounded-[18px] border border-[#333333] flex items-center justify-between"><div><div className="font-semibold text-[#FFFFFF]">{item.name}</div><div className="text-xs text-[#A0A0A0]">{item.category}</div></div><button onClick={() => handleAddToShoppingList(item.name)} className="w-8 h-8 rounded-full bg-[#2A2A2A] flex items-center justify-center text-[#FFC244] active:scale-90 transition"><Plus size={18} strokeWidth={2.5} /></button></div>)))}</div><div className="p-4 bg-[#1A1A1A] border-t border-[#333333]"><button onClick={() => { setShowOutOfStock(false); navigate('/shopping'); }} className="w-full py-3.5 bg-gray-900 text-white font-bold rounded-[18px] active:scale-[0.98] transition">Go to Shopping List</button></div></div></div>}
-        {showCleanUp && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="cleanup-title"><div className="bg-[#0D0D0D] w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-[#1A1A1A] border-b border-[#333333] flex justify-between items-center"><div><h3 id="cleanup-title" className="font-bold text-xl text-[#FFFFFF]">Pantry Cleanup</h3><p className="text-xs text-[#A0A0A0]">Stale items ({staleItems.length})</p></div><button onClick={(e) => { e.stopPropagation(); setShowCleanUp(false); }} aria-label="Close cleanup modal" className="w-8 h-8 bg-[#2A2A2A] rounded-full flex items-center justify-center text-[#FFFFFF] active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{staleItems.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 mx-auto mb-2"><Sparkles size={24} /></div><p className="text-[#A0A0A0] font-medium">Your pantry is fresh!</p></div>) : (staleItems.map(item => (<div key={item.id} className="bg-[#1A1A1A] p-3 rounded-[18px] border border-[#333333] flex items-center justify-between"><div><div className="font-semibold text-[#FFFFFF]">{item.name}</div><div className="text-xs text-[#A0A0A0]">Added {formatDistanceToNow(item.addedAt || Date.now())} ago</div></div><div className="flex gap-2"><button onClick={() => updatePantryItem(item.id, { addedAt: Date.now() })} className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 active:scale-90 transition" title="Keep (Update Date)"><Check size={16} /></button><button onClick={() => removePantryItem(item.id)} className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 active:scale-90 transition" title="Remove"><Trash2 size={16} /></button></div></div>)))}</div></div></div>}
+        {showExpiring && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="expiring-title"><div className="bg-brand-background w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-brand-surface border-b border-brand-divider flex justify-between items-center"><div><h3 id="expiring-title" className="font-bold text-xl text-brand-text">Expiring Soon</h3><p className="text-xs text-brand-text-secondary">Use within 3 days</p></div><button onClick={(e) => { e.stopPropagation(); setShowExpiring(false); }} aria-label="Close expiring items modal" className="w-8 h-8 bg-brand-surface-secondary rounded-full flex items-center justify-center text-brand-text active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{expiringSoon.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 mx-auto mb-2"><AlertCircle size={24} /></div><p className="text-brand-text-secondary font-medium">Nothing expiring. You're winning at life.</p></div>) : (expiringSoon.map(item => (<div key={item.id} className="bg-brand-surface p-3 rounded-[18px] border border-brand-divider flex items-center justify-between"><div><div className="font-semibold text-brand-text">{item.name}</div><div className="text-xs text-brand-text-secondary">Qty: {item.quantity} {item.unit}</div></div><span className="text-xs font-bold text-orange-400 bg-orange-500/20 px-2.5 py-1 rounded-full">{item.expiryDate ? formatDistanceToNow(new Date(item.expiryDate), { addSuffix: true }) : 'Soon'}</span></div>)))}</div><div className="p-4 bg-brand-surface border-t border-brand-divider"><button onClick={() => { setShowExpiring(false); navigate('/recipes'); }} className="w-full py-3.5 bg-brand-primary text-white font-bold rounded-[18px] active:scale-[0.98] transition">Find Recipes</button></div></div></div>}
+        {showLowStock && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="lowstock-title"><div className="bg-brand-background w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-brand-surface border-b border-brand-divider flex justify-between items-center"><div><h3 id="lowstock-title" className="font-bold text-xl text-brand-text">Running Low</h3><p className="text-xs text-brand-text-secondary">Restock your essentials</p></div><button onClick={(e) => { e.stopPropagation(); setShowLowStock(false); }} aria-label="Close low stock modal" className="w-8 h-8 bg-brand-surface-secondary rounded-full flex items-center justify-center text-brand-text active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{lowStockItems.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-rose-500/20 rounded-full flex items-center justify-center text-rose-400 mx-auto mb-2"><BatteryWarning size={24} /></div><p className="text-brand-text-secondary font-medium">Your pantry is well stocked.</p></div>) : (lowStockItems.map(item => (<div key={item.id} className="bg-brand-surface p-3 rounded-[18px] border border-brand-divider flex items-center justify-between"><div><div className="font-semibold text-brand-text">{item.name}</div><div className="text-xs text-brand-text-secondary">Qty: {item.quantity} {item.unit}</div></div><button onClick={() => handleAddToShoppingList(item.name)} className="w-8 h-8 rounded-full bg-brand-surface-secondary flex items-center justify-center text-brand-primary active:scale-90 transition"><Plus size={18} strokeWidth={2.5} /></button></div>)))}</div><div className="p-4 bg-brand-surface border-t border-brand-divider"><button onClick={() => { setShowLowStock(false); navigate('/shopping'); }} className="w-full py-3.5 bg-rose-500 text-white font-bold rounded-[18px] active:scale-[0.98] transition">Go to Shopping List</button></div></div></div>}
+        {showOutOfStock && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="outofstock-title"><div className="bg-brand-background w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-brand-surface border-b border-brand-divider flex justify-between items-center"><div><h3 id="outofstock-title" className="font-bold text-xl text-brand-text">Gone but not forgotten</h3><p className="text-xs text-brand-text-secondary">Finished in last 7 days</p></div><button onClick={(e) => { e.stopPropagation(); setShowOutOfStock(false); }} aria-label="Close out of stock modal" className="w-8 h-8 bg-brand-surface-secondary rounded-full flex items-center justify-center text-brand-text active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{outOfStockItems.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center text-gray-400 mx-auto mb-2"><Archive size={24} /></div><p className="text-brand-text-secondary font-medium">No recent history.</p></div>) : (outOfStockItems.map(item => (<div key={item.id} className="bg-brand-surface p-3 rounded-[18px] border border-brand-divider flex items-center justify-between"><div><div className="font-semibold text-brand-text">{item.name}</div><div className="text-xs text-brand-text-secondary">{item.category}</div></div><button onClick={() => handleAddToShoppingList(item.name)} className="w-8 h-8 rounded-full bg-brand-surface-secondary flex items-center justify-center text-brand-primary active:scale-90 transition"><Plus size={18} strokeWidth={2.5} /></button></div>)))}</div><div className="p-4 bg-brand-surface border-t border-brand-divider"><button onClick={() => { setShowOutOfStock(false); navigate('/shopping'); }} className="w-full py-3.5 bg-gray-900 text-white font-bold rounded-[18px] active:scale-[0.98] transition">Go to Shopping List</button></div></div></div>}
+        {showCleanUp && <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="cleanup-title"><div className="bg-brand-background w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl animate-in zoom-in-95"><div className="p-4 bg-brand-surface border-b border-brand-divider flex justify-between items-center"><div><h3 id="cleanup-title" className="font-bold text-xl text-brand-text">Pantry Cleanup</h3><p className="text-xs text-brand-text-secondary">Stale items ({staleItems.length})</p></div><button onClick={(e) => { e.stopPropagation(); setShowCleanUp(false); }} aria-label="Close cleanup modal" className="w-8 h-8 bg-brand-surface-secondary rounded-full flex items-center justify-center text-brand-text active:opacity-70 transition"><X size={18} /></button></div><div className="max-h-[50vh] overflow-y-auto p-4 space-y-3">{staleItems.length === 0 ? (<div className="text-center py-8"><div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 mx-auto mb-2"><Sparkles size={24} /></div><p className="text-brand-text-secondary font-medium">Your pantry is fresh!</p></div>) : (staleItems.map(item => (<div key={item.id} className="bg-brand-surface p-3 rounded-[18px] border border-brand-divider flex items-center justify-between"><div><div className="font-semibold text-brand-text">{item.name}</div><div className="text-xs text-brand-text-secondary">Added {formatDistanceToNow(item.addedAt || Date.now())} ago</div></div><div className="flex gap-2"><button onClick={() => updatePantryItem(item.id, { addedAt: Date.now() })} className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 active:scale-90 transition" title="Keep (Update Date)"><Check size={16} /></button><button onClick={() => removePantryItem(item.id)} className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 active:scale-90 transition" title="Remove"><Trash2 size={16} /></button></div></div>)))}</div></div></div>}
     </div>
   );
 };

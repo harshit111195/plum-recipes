@@ -55,6 +55,10 @@ export default {
           background: 'var(--brand-background)',
           surface: 'var(--brand-surface)',
           'surface-secondary': 'var(--brand-surface-secondary)',
+          'surface-light': 'var(--brand-surface-light)',
+          
+          // Text on light surfaces
+          'text-on-light': 'var(--brand-text-on-light)',
           
           // Text
           text: 'var(--brand-text)',

@@ -17,11 +17,11 @@
   --brand-primary-lighter: #FFE4A0;   /* Even lighter */
   --brand-primary-dark: #E5A830;      /* Darker for hover states */
   
-  /* Button Colors */
-  --brand-button-primary: #8B5CF6;    /* Purple - Primary buttons */
-  --brand-button-primary-hover: #7C3AED; /* Darker purple for hover */
-  --brand-button-secondary: #34D399;  /* Green - Secondary buttons */
-  --brand-button-secondary-hover: #10B981; /* Darker green for hover */
+  /* Button Colors - SYNCED with brand.ts and components */
+  --brand-button-primary: #7C3AED;    /* Purple - Primary buttons */
+  --brand-button-primary-hover: #6D28D9; /* Darker purple for hover */
+  --brand-button-secondary: #10B981;  /* Emerald Green - Secondary buttons */
+  --brand-button-secondary-hover: #059669; /* Darker green for hover */
   
   /* Secondary/Accent Colors */
   --brand-secondary: #E84142;         /* Tomato Red */
@@ -37,19 +37,23 @@
   --brand-text-secondary: #A0A0A0;    /* Muted white */
   --brand-text-tertiary: #6B6B6B;     /* Even more muted */
   
-  /* Semantic Colors */
-  --brand-success: #34D399;           /* Bright green */
-  --brand-warning: #FBBF24;           /* Bright amber */
-  --brand-error: #F87171;             /* Bright red */
-  --brand-info: #60A5FA;              /* Bright blue */
+  /* Semantic Colors - SYNCED with brand.ts */
+  --brand-success: #10B981;           /* Emerald green (was #34D399) */
+  --brand-warning: #F59E0B;           /* Amber (matches brand.ts) */
+  --brand-error: #EF4444;             /* Red (matches brand.ts) */
+  --brand-info: #3B82F6;              /* Blue (matches brand.ts) */
   
   /* UI Colors */
   --brand-divider: #333333;           /* Dark divider */
   --brand-overlay: rgba(0,0,0,0.7);   /* Dark overlay */
   
-  /* Shadows (glow effect) */
-  --shadow-primary: 0 4px 14px -2px rgba(139, 92, 246, 0.3);
-  --shadow-secondary: 0 4px 14px -2px rgba(52, 211, 153, 0.25);
+  /* Light surface (for cards that need light bg in dark mode) */
+  --brand-surface-light: #FAFAFA;     /* Light card backgrounds */
+  --brand-text-on-light: #1A1A1A;     /* Dark text for light surfaces */
+  
+  /* Shadows (glow effect) - SYNCED with button colors */
+  --shadow-primary: 0 4px 14px -2px rgba(124, 58, 237, 0.3);   /* #7C3AED */
+  --shadow-secondary: 0 4px 14px -2px rgba(16, 185, 129, 0.25); /* #10B981 */
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.5);
   
@@ -70,10 +74,10 @@
 /* Display P3 colors for vibrant screens (iPhones, newer Macs) */
 @supports (color: color(display-p3 1 0 0)) {
   :root {
-    --brand-primary: color(display-p3 1 0.76 0.27);      /* Vibrant yellow */
-    --brand-secondary: color(display-p3 0.91 0.25 0.26); /* Vibrant tomato red */
-    --brand-accent: color(display-p3 0 0.65 0.49);       /* Vibrant green */
-    --brand-button-primary: color(display-p3 0.55 0.36 0.96); /* Vibrant purple */
+    --brand-primary: color(display-p3 1 0.76 0.27);      /* Vibrant yellow #FFC244 */
+    --brand-secondary: color(display-p3 0.91 0.25 0.26); /* Vibrant tomato red #E84142 */
+    --brand-accent: color(display-p3 0 0.65 0.49);       /* Vibrant green #00A67E */
+    --brand-button-primary: color(display-p3 0.49 0.23 0.93); /* Vibrant purple #7C3AED */
   }
 }
 

@@ -87,13 +87,13 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[#1A1A1A] w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl relative border border-[#333333]"
+          className="bg-brand-surface w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl relative border border-brand-divider"
           onClick={(e: React.MouseEvent) => e.stopPropagation()}
         >
           {/* Close Button: #0D0D0D bg | #A0A0A0 icon */}
           <button 
             onClick={onClose}
-            className="absolute top-4 right-4 w-9 h-9 bg-[#0D0D0D] rounded-full flex items-center justify-center text-[#A0A0A0] hover:bg-[#2A2A2A] active:scale-90 transition z-10"
+            className="absolute top-4 right-4 w-9 h-9 bg-brand-background rounded-full flex items-center justify-center text-brand-text-secondary hover:bg-brand-surface-secondary active:scale-90 transition z-10"
           >
             <X size={18} strokeWidth={2.5} />
           </button>
@@ -114,13 +114,13 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 15 }}
-                  className="w-20 h-20 bg-[#00A67E] rounded-full flex items-center justify-center mb-5 shadow-lg shadow-[#00A67E]/30"
+                  className="w-20 h-20 bg-brand-accent rounded-full flex items-center justify-center mb-5 shadow-lg shadow-brand-accent/30"
                 >
                   <CheckCircle2 size={36} className="text-white" strokeWidth={2.5} />
                 </MotionDiv>
                 {/* Text: #FFFFFF | #A0A0A0 */}
-                <h3 className="text-2xl font-bold text-[#FFFFFF] mb-2">Message Sent!</h3>
-                <p className="text-[#A0A0A0] text-[15px] leading-relaxed">
+                <h3 className="text-2xl font-bold text-brand-text mb-2">Message Sent!</h3>
+                <p className="text-brand-text-secondary text-[15px] leading-relaxed">
                   Thanks for helping us cook up a better app. 🍳
                 </p>
               </MotionDiv>
@@ -137,13 +137,13 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                   {/* Header with icon */}
                   <div className="flex items-center gap-3 mb-6">
                     {/* Icon bg: #FFC244 (yellow) */}
-                    <div className="w-12 h-12 bg-[#FFC244] rounded-2xl flex items-center justify-center shadow-lg shadow-[#FFC244]/20">
+                    <div className="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center shadow-lg shadow-brand-primary/20">
                       <MessageSquare size={22} className="text-black" strokeWidth={2} />
                     </div>
                     <div>
                       {/* Title: #FFFFFF | Subtitle: #A0A0A0 */}
-                      <h3 className="text-[20px] font-bold text-[#FFFFFF]">Feedback</h3>
-                      <p className="text-[13px] text-[#A0A0A0]">Tell the chef what you think</p>
+                      <h3 className="text-[20px] font-bold text-brand-text">Feedback</h3>
+                      <p className="text-[13px] text-brand-text-secondary">Tell the chef what you think</p>
                     </div>
                   </div>
 
@@ -164,7 +164,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                           fill={star <= rating ? "#FFC244" : "#333333"} 
                           className={`transition-all duration-200 ${
                             star <= rating 
-                              ? "text-[#FFC244] drop-shadow-sm" 
+                              ? "text-brand-primary drop-shadow-sm" 
                               : "text-[#333333]"
                           }`}
                           strokeWidth={star <= rating ? 0 : 1.5}
@@ -178,7 +178,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     placeholder="Found a bug? Have a feature idea? Let us know..."
-                    className="w-full bg-[#0D0D0D] rounded-xl p-4 h-32 text-[#FFFFFF] text-[15px] outline-none focus:ring-2 focus:ring-[#FFC244]/20 transition mb-4 resize-none border border-[#333333] focus:border-[#FFC244]/50 placeholder-[#6B6B6B]"
+                    className="w-full bg-brand-background rounded-xl p-4 h-32 text-brand-text text-[15px] outline-none focus:ring-2 focus:ring-brand-primary/20 transition mb-4 resize-none border border-brand-divider focus:border-brand-primary/50 placeholder-brand-text-tertiary"
                   />
 
                   {/* Submit button: #7C3AED (purple) */}
@@ -186,7 +186,7 @@ export const FeedbackModal: React.FC<Props> = ({ onClose }) => {
                     type="submit"
                     disabled={isSubmitting || (rating === 0 && !feedback.trim())}
                     whileTap={{ scale: isSubmitting || (rating === 0 && !feedback.trim()) ? 1 : 0.98 }}
-                    className="w-full py-4 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+                    className="w-full py-4 bg-brand-button-primary hover:bg-brand-button-primary-hover text-white font-bold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
                   >
                     {isSubmitting ? (
                       <>

@@ -100,7 +100,7 @@ export const CookingLoader: React.FC<Props> = ({ onCancel }) => {
         animate={{ clipPath: "circle(150% at 50% 50%)" }}
         exit={{ opacity: 0, clipPath: "circle(0% at 50% 50%)" }}
         transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }} 
-        className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#7C3AED] cursor-wait transform-gpu isolate overflow-hidden" /* #7C3AED = Purple background */
+        className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-brand-button-primary cursor-wait transform-gpu isolate overflow-hidden" /* #7C3AED = Purple background */
     >
         {/* Subtle gradient overlay for depth */}
         <div 
@@ -113,7 +113,7 @@ export const CookingLoader: React.FC<Props> = ({ onCancel }) => {
         {/* Floating Food Icons */}
         <div className="relative w-72 h-72 mb-10 flex items-center justify-center">
             {/* Ambient glow behind logo */}
-            <div className="absolute w-40 h-40 bg-[#FFC244]/80 rounded-full blur-[50px]" /> {/* #FFC244 = Yellow glow */}
+            <div className="absolute w-40 h-40 bg-brand-primary/80 rounded-full blur-[50px]" /> {/* #FFC244 = Yellow glow */}
             
             {/* Food icons with individual floating animations */}
             {FOOD_ICONS.map((icon, index) => {
@@ -194,7 +194,7 @@ export const CookingLoader: React.FC<Props> = ({ onCancel }) => {
                 }}
             >
                 {/* Logo glow ring */}
-                <div className="absolute inset-0 bg-[#FFC244]/80 rounded-full blur-xl scale-125" /> {/* #FFC244 = Yellow glow */}
+                <div className="absolute inset-0 bg-brand-primary/80 rounded-full blur-xl scale-125" /> {/* #FFC244 = Yellow glow */}
                 
                 <MotionImg
                     src={ASSETS.logo}
@@ -224,7 +224,7 @@ export const CookingLoader: React.FC<Props> = ({ onCancel }) => {
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     className="flex flex-col items-center gap-4"
                 >
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#FFFFFF] text-center tracking-tight leading-tight"> {/* #FFFFFF = White text */}
+                    <h2 className="text-2xl md:text-3xl font-bold text-brand-text text-center tracking-tight leading-tight"> {/* #FFFFFF = White text */}
                         {LOADING_MESSAGES[messageIndex]}
                     </h2>
                     {/* Yellow loading dots */}
@@ -232,17 +232,17 @@ export const CookingLoader: React.FC<Props> = ({ onCancel }) => {
                         <MotionDiv 
                             animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} 
                             transition={{ duration: 0.8, repeat: Infinity, delay: 0 }}
-                            className="w-2.5 h-2.5 rounded-full bg-[#FFC244]" /* #FFC244 = Yellow dot */
+                            className="w-2.5 h-2.5 rounded-full bg-brand-primary" /* #FFC244 = Yellow dot */
                         />
                         <MotionDiv 
                             animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} 
                             transition={{ duration: 0.8, repeat: Infinity, delay: 0.15 }}
-                            className="w-2.5 h-2.5 rounded-full bg-[#FFC244]" /* #FFC244 = Yellow dot */
+                            className="w-2.5 h-2.5 rounded-full bg-brand-primary" /* #FFC244 = Yellow dot */
                         />
                         <MotionDiv 
                             animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }} 
                             transition={{ duration: 0.8, repeat: Infinity, delay: 0.3 }}
-                            className="w-2.5 h-2.5 rounded-full bg-[#FFC244]" /* #FFC244 = Yellow dot */
+                            className="w-2.5 h-2.5 rounded-full bg-brand-primary" /* #FFC244 = Yellow dot */
                         />
                     </div>
                 </MotionDiv>
