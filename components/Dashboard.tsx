@@ -196,20 +196,20 @@ const RecipeCarousel: React.FC<{
               {(recipe.time || recipe.cookTime) && (
                 <div className="absolute top-3 right-3 flex items-center gap-1 bg-black/50 backdrop-blur-md px-2 py-1 rounded-full">
                   <Clock size={12} className="text-white/80" />
-                  <span className="text-white text-[13px] font-normal leading-[1.4]">
+                  <span className="text-white text-[11px] font-semibold">
                     {recipe.time || `${recipe.cookTime} min`}
                   </span>
                 </div>
               )}
               
               {/* Recipe title */}
-              <h2 className="text-white text-[17px] font-medium leading-[1.4] mb-1 drop-shadow-lg line-clamp-2 text-left">
+              <h2 className="text-white text-[18px] font-bold leading-tight mb-1 drop-shadow-lg line-clamp-2 text-left">
                 {recipe.title}
               </h2>
               
               {/* CTA for inspiration cards */}
               {isInspiration && (
-                <div className="flex items-center gap-1 text-[#FFC244] font-normal text-[13px] leading-[1.4]">
+                <div className="flex items-center gap-1 text-[#FFC244] font-semibold text-xs">
                   <span>Start cooking</span>
                   <ChevronRight size={14} />
                 </div>
@@ -217,7 +217,7 @@ const RecipeCarousel: React.FC<{
               
               {/* Last cooked date for real recipes */}
               {!isInspiration && (
-                <div className="flex items-center gap-1.5 text-white/70 text-[13px] font-normal leading-[1.4]">
+                <div className="flex items-center gap-1.5 text-white/70 text-xs font-medium">
                   <Clock size={12} />
                   <span>
                     {recipe.lastCooked 
@@ -263,8 +263,8 @@ const PantryStatsGrid: React.FC<{ stats: { emoji: string; count: number; label: 
       >
         <span className="text-2xl">{stat.emoji}</span>
         <div className="text-left">
-          <span className="text-white font-semibold text-[20px] leading-[1.4] block">{stat.count}</span>
-          <span className="text-white/90 text-[15px] font-normal leading-[1.4]">{stat.label}</span>
+          <span className="text-white font-bold text-base block">{stat.count}</span>
+          <span className="text-white/90 text-[15px] font-semibold">{stat.label}</span>
         </div>
       </button>
     ))}
@@ -433,7 +433,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
         {/* Large colorful emoji icon */}
         <span className="text-[42px] group-active:scale-90 transition-transform drop-shadow-lg">{emoji}</span>
         {/* White label */}
-        <span className="text-[13px] font-normal text-white leading-[1.4]">{label}</span>
+        <span className="text-[12px] font-semibold text-white">{label}</span>
     </button>
   );
 
@@ -472,7 +472,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {/* Top row: Date */}
             <div className="mb-3">
               <div className="inline-flex items-center gap-1.5 bg-black/10 px-2.5 py-1 rounded-full">
-                <span className="text-black/70 text-[13px] font-normal uppercase tracking-wider leading-[1.4]">
+                <span className="text-black/70 text-[11px] font-bold uppercase tracking-wider">
                   {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                 </span>
               </div>
@@ -482,20 +482,20 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             <div className="flex items-start justify-between gap-4">
               {/* Left: Greeting */}
               <div className="flex-1">
-                <h1 className="text-[28px] font-semibold text-black tracking-tight leading-[1.4]">
+                <h1 className="text-[24px] font-bold text-black tracking-tight leading-tight">
                   {userName ? `Hey ${userName}! 👋` : 'Hey there! 👋'}
                 </h1>
-                <p className="text-black/70 text-[15px] font-normal leading-[1.5] mt-0.5">
+                <p className="text-black/70 text-[14px] font-medium mt-0.5">
                   {timeContext.greeting.replace('?', '')} — let's cook!
                 </p>
                 
                 {/* Pantry status badge */}
                 <Link 
                   to="/pantry"
-                  className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 bg-black/10 hover:bg-black/15 rounded-full text-[13px] font-normal leading-[1.4] transition"
+                  className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 bg-black/10 hover:bg-black/15 rounded-full text-[13px] transition"
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-[#00A67E]" />
-                  <span className="text-black/80">{pantry.length} items</span>
+                  <span className="text-black/80 font-semibold">{pantry.length} items</span>
                   <ChevronRight size={12} className="text-black/60" />
                 </Link>
               </div>
@@ -510,13 +510,13 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                     {/* Top row: Trophy + Count + Label */}
                     <div className="flex items-center gap-2">
                       <span className="text-2xl">🏆</span>
-                      <span className="text-2xl font-semibold text-black leading-[1.4]">{weeklyStats.count}</span>
-                      <span className="text-[13px] font-normal text-amber-600 uppercase tracking-wide leading-[1.4]">
+                      <span className="text-2xl font-black text-black leading-none">{weeklyStats.count}</span>
+                      <span className="text-[11px] font-bold text-amber-600 uppercase tracking-wide">
                         {weeklyStats.count === 1 ? 'meal' : 'meals'}<br/>cooked
                       </span>
                     </div>
                     {/* Bottom: Motivational text */}
-                    <div className="text-[13px] font-normal text-gray-500 mt-1 text-center leading-[1.4]">
+                    <div className="text-[11px] font-semibold text-gray-500 mt-1 text-center">
                       🔥 Keep it up!
                     </div>
                   </div>
@@ -533,9 +533,9 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {/* SECTION: Recent Recipes */}
             <div>
               <div className="px-5 flex items-center justify-between mb-3">
-                <h2 className="text-[20px] font-semibold text-[#A0A0A0] uppercase tracking-wider leading-[1.4]">Cook Again</h2>
+                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider">Cook Again</h2>
                 {carouselRecipes.length > 0 && (
-                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-[#FFC244] text-[15px] font-normal leading-[1.4]">See All</button>
+                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-[#FFC244] text-[13px] font-semibold">See All</button>
                 )}
               </div>
               <div className="pl-5">
@@ -556,7 +556,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             
             {/* SECTION: Quick Actions */}
             <div className="px-5">
-                <h2 className="text-[20px] font-semibold text-[#A0A0A0] uppercase tracking-wider mb-4 leading-[1.4]">Quick Actions</h2>
+                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-4">Quick Actions</h2>
                 <div className="flex justify-between items-start">
                     <QuickAction emoji="📸" label="Snap to add" onClick={() => navigate('/pantry?action=snap')} />
                     <QuickAction emoji="✨" label="Surprise me" onClick={() => navigate('/recipes', { state: { triggerSurprise: true } })} />
@@ -567,7 +567,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             
             {/* SECTION: Pantry Status */}
             <div className="px-5">
-              <h2 className="text-[20px] font-semibold text-[#A0A0A0] uppercase tracking-wider mb-3 leading-[1.4]">Pantry Status</h2>
+              <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Pantry Status</h2>
               {isLoading ? (
                 <div className="flex gap-2">
                   <Skeleton className="w-32 h-12 rounded-full" />
@@ -591,7 +591,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {/* SECTION: Quick Meal Idea */}
             {quickMealSuggestion && (
               <div className="px-5">
-                <h2 className="text-[20px] font-semibold text-[#A0A0A0] uppercase tracking-wider mb-3 leading-[1.4]">Quick Meal Idea</h2>
+                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Quick Meal Idea</h2>
                 <button 
                   onClick={() => navigate('/recipes', { state: { recipeToOpen: quickMealSuggestion, fromDashboard: true } })}
                   className="w-full h-[180px] rounded-[20px] overflow-hidden relative group focus:outline-none shadow-lg active:scale-[0.98] transition-all"
@@ -610,25 +610,25 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                     {/* Time badge */}
                     <div className="absolute top-3 right-3 flex items-center gap-1 bg-black/50 backdrop-blur-md px-2 py-1 rounded-full">
                       <Clock size={12} className="text-white/80" />
-                      <span className="text-white text-[13px] font-normal leading-[1.4]">
+                      <span className="text-white text-[11px] font-semibold">
                         {quickMealSuggestion.totalTimeMinutes || 30} min
                       </span>
                     </div>
                     
                     {/* Ingredient match badge */}
                     <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#00A67E]/90 backdrop-blur-md px-2 py-1 rounded-full">
-                      <span className="text-white text-[13px] font-normal leading-[1.4]">
+                      <span className="text-white text-[11px] font-semibold">
                         ✓ {quickMealSuggestion.matchCount}/{quickMealSuggestion.totalCount} ingredients
                       </span>
                     </div>
                     
                     {/* Recipe title */}
-                    <h2 className="text-white text-[17px] font-medium leading-[1.4] mb-1 drop-shadow-lg line-clamp-2 text-left">
+                    <h2 className="text-white text-[18px] font-bold leading-tight mb-1 drop-shadow-lg line-clamp-2 text-left">
                       {quickMealSuggestion.title}
                     </h2>
                     
                     {/* CTA */}
-                    <div className="flex items-center gap-1 text-[#FFC244] font-normal text-[13px] leading-[1.4]">
+                    <div className="flex items-center gap-1 text-[#FFC244] font-semibold text-xs">
                       <span>Cook now</span>
                       <ChevronRight size={14} />
                     </div>
@@ -639,7 +639,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             
             {/* SECTION: Today's Tip */}
             <div className="px-5">
-              <h2 className="text-[20px] font-semibold text-[#A0A0A0] uppercase tracking-wider mb-3 leading-[1.4]">Today's Tip</h2>
+              <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Today's Tip</h2>
               <div className="relative animate-[float_3s_ease-in-out_infinite]">
                 {/* Card */}
                 <div className="relative bg-[#E8E8E8] rounded-[20px] p-5 text-center overflow-hidden shadow-xl">
@@ -655,12 +655,12 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                   <span className="text-5xl block mb-3 drop-shadow-lg">{todaysTip.emoji}</span>
                   
                   {/* Tip text */}
-                  <p className="text-[#1A1A1A] text-[15px] leading-[1.5] font-normal italic">
+                  <p className="text-[#1A1A1A] text-[15px] leading-relaxed font-medium italic">
                     "{todaysTip.tip}"
                   </p>
                   
                   {/* Footer label */}
-                  <div className="flex items-center justify-center gap-1.5 mt-4 text-[#6B6B6B] text-[13px] font-normal leading-[1.4]">
+                  <div className="flex items-center justify-center gap-1.5 mt-4 text-[#6B6B6B] text-[11px] font-semibold">
                     <span>💡</span>
                     <span>Daily Tip</span>
                   </div>
@@ -672,8 +672,8 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {recentRecipes.length > carouselRecipes.length && (
               <div className="pb-4">
                 <div className="px-5 flex items-center justify-between mb-3">
-                  <h2 className="text-[20px] font-semibold text-[#A0A0A0] uppercase tracking-wider leading-[1.4]">More Recipes</h2>
-                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-[#FFC244] text-[15px] font-normal leading-[1.4]">See All</button>
+                  <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider">More Recipes</h2>
+                  <button onClick={() => navigate('/recipes?view=history', { state: { fromDashboard: true } })} className="text-[#FFC244] text-[13px] font-semibold">See All</button>
                 </div>
                 
                 <div className="flex overflow-x-auto px-5 gap-3 no-scrollbar pb-4 snap-x">
@@ -682,7 +682,7 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
                             <img src={getOptimizedImageUrl(recipe.generatedImage, 400) || `https://picsum.photos/seed/${recipe.id}/400/300`} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" alt={recipe.title} />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                             <div className="absolute bottom-3 left-3 right-3">
-                              <h4 className="text-white font-medium text-[17px] leading-[1.4] line-clamp-2">{recipe.title}</h4>
+                              <h4 className="text-white font-bold text-sm leading-tight line-clamp-2">{recipe.title}</h4>
                             </div>
                         </button>
                     ))}
@@ -693,16 +693,16 @@ const QuickAction: React.FC<{ emoji: string; label: string; onClick: () => void 
             {/* Empty state for new users */}
             {!isLoading && history.length === 0 && (
               <div className="px-5 pb-4">
-                <h2 className="text-[20px] font-semibold text-[#A0A0A0] uppercase tracking-wider mb-3 leading-[1.4]">Get Started</h2>
+                <h2 className="text-[13px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">Get Started</h2>
                 <div className="bg-[#1A1A1A] rounded-[20px] p-6 text-center border border-[#333333]">
                   <div className="w-14 h-14 rounded-full bg-[#0D0D0D] flex items-center justify-center mx-auto mb-3">
                     <ChefHat size={28} className="text-[#A0A0A0]" />
                   </div>
-                  <h4 className="text-[17px] font-medium text-[#FFFFFF] mb-1 leading-[1.4]">Ready to start cooking?</h4>
-                  <p className="text-[13px] font-normal text-[#A0A0A0] mb-4 leading-[1.4]">Add ingredients to your pantry and discover recipes</p>
+                  <h4 className="text-[16px] font-bold text-[#FFFFFF] mb-1">Ready to start cooking?</h4>
+                  <p className="text-[13px] text-[#A0A0A0] mb-4">Add ingredients to your pantry and discover recipes</p>
                   <button 
                     onClick={() => navigate('/recipes')}
-                    className="px-5 py-2.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold text-[15px] rounded-full active:scale-95 transition leading-[1.4]"
+                    className="px-5 py-2.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold text-sm rounded-full active:scale-95 transition"
                   >
                     Find Recipes
                   </button>

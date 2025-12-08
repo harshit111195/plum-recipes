@@ -8,7 +8,7 @@ import { ManageAccountModal } from './ManageAccountModal';
 import { CONFIG } from '../config';
 import { supabase } from '../services/supabase';
 import toast from 'react-hot-toast';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { APP_NAME, MESSAGES, LINKS } from '../brand';
 
 /**
@@ -136,6 +136,7 @@ export const Settings: React.FC = () => {
   const { preferences, updatePreferences } = useUser();
   const [showFeedback, setShowFeedback] = useState(false);
   const [showAccountModal, setShowAccountModal] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>('Chef');
 
@@ -148,6 +149,7 @@ export const Settings: React.FC = () => {
   }, []);
 
   const handleLogout = async () => { 
+      setShowLogoutConfirm(false);
       try { 
           await supabase.auth.signOut(); 
           toast.success(MESSAGES.loggedOut); 
@@ -259,19 +261,13 @@ export const Settings: React.FC = () => {
             </div>
             
             {/* Action Buttons */}
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3">
               <button 
                 onClick={() => setShowAccountModal(true)} 
-                className="flex-1 py-3 bg-[#7C3AED] text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#7C3AED] text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition flex items-center justify-center gap-2"
               >
                 <SettingsIcon size={16} /> 
                 Manage Account
-              </button>
-              <button 
-                onClick={handleLogout} 
-                className="w-12 h-12 flex items-center justify-center bg-[#0D0D0D] text-[#F87171] rounded-xl active:scale-90 transition border border-[#333333]"
-              >
-                <LogOut size={18} />
               </button>
             </div>
           </div>
@@ -524,12 +520,95 @@ export const Settings: React.FC = () => {
           </button>
         </Section>
 
+        {/* ========== ACCOUNT GROUP ========== */}
+        <GroupHeader title="Account" emoji="🔐" />
+
+        {/* Sign Out */}
+        <Section title="Sign Out" icon={<LogOut size={14} />}>
+          <button 
+            onClick={() => setShowLogoutConfirm(true)} 
+            className="w-full flex items-center justify-between p-4 hover:bg-[#0D0D0D] active:bg-[#2A2A2A] transition"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-[#F87171]/20 rounded-xl flex items-center justify-center">
+                <LogOut size={16} className="text-[#F87171]" />
+              </div>
+              <div className="text-left">
+                <span className="text-[15px] font-semibold text-[#F87171] block">Sign Out</span>
+                <span className="text-[11px] text-[#6B6B6B]">Sign out of your account</span>
+              </div>
+            </div>
+            <ChevronRight size={16} className="text-[#6B6B6B]" />
+          </button>
+        </Section>
+
         {/* Version */}
         <p className="text-center text-[11px] text-[#6B6B6B] mt-6 mb-4">{APP_NAME} v{CONFIG.version}</p>
       </div>
       
       {showFeedback && <FeedbackModal onClose={() => setShowFeedback(false)} />}
       {showAccountModal && <ManageAccountModal onClose={() => setShowAccountModal(false)} />}
+      
+      {/* Sign Out Confirmation Modal */}
+      <AnimatePresence>
+        {showLogoutConfirm && (
+          <MotionDiv
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-md flex items-center justify-center p-4"
+            onClick={() => setShowLogoutConfirm(false)}
+          >
+            <MotionDiv
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-[#1A1A1A] w-full max-w-sm rounded-[28px] overflow-hidden shadow-2xl relative border border-[#333333]"
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setShowLogoutConfirm(false)}
+                className="absolute top-4 right-4 w-9 h-9 bg-[#0D0D0D] rounded-full flex items-center justify-center text-[#A0A0A0] hover:bg-[#2A2A2A] active:scale-90 transition z-10"
+              >
+                <X size={18} strokeWidth={2.5} />
+              </button>
+
+              <div className="p-6">
+                {/* Header with icon */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-[#F87171]/20 rounded-2xl flex items-center justify-center">
+                    <LogOut size={22} className="text-[#F87171]" strokeWidth={2} />
+                  </div>
+                  <div>
+                    <h3 className="text-[20px] font-bold text-[#FFFFFF]">Sign Out?</h3>
+                    <p className="text-[13px] text-[#A0A0A0]">Are you sure you want to sign out?</p>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setShowLogoutConfirm(false)}
+                    className="flex-1 py-3.5 bg-[#2A2A2A] text-[#FFFFFF] font-bold rounded-xl text-[14px] active:scale-[0.98] transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className="flex-1 py-3.5 bg-[#F87171] hover:bg-[#E84142] text-white font-bold rounded-xl text-[14px] active:scale-[0.98] transition shadow-lg shadow-red-500/30 flex items-center justify-center gap-2"
+                  >
+                    <LogOut size={16} strokeWidth={2.5} />
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            </MotionDiv>
+          </MotionDiv>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
